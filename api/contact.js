@@ -181,8 +181,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true, message: 'Your message has been received.' });
   } catch (err) {
-    console.error('Failed to send email:', err.message, err.code, err.response);
-    // Return a slightly more specific error for debugging (remove in production if desired)
-    return res.status(500).json({ success: false, error: 'Failed to send message. SMTP error: ' + (err.code || err.message) });
+    console.error('Failed to send email:', err.message, err.code);
+    return res.status(500).json({ success: false, error: 'Failed to send message. Please try again later.' });
   }
 }
