@@ -230,6 +230,57 @@
     </div>
   </div>
 
+  <!-- Rate Card Modal -->
+  <div id="rateCardModal" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h2>Request the Rate Card</h2>
+      <p>Fill in your details and we'll send you the full RoadReach rate card and media kit via email.</p>
+      <form name="rate-card" action="/api/contact" method="POST">
+        <div class="form-group">
+          <label for="rc-name">Full Name *</label>
+          <input type="text" id="rc-name" name="name" required placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label for="rc-company">Company *</label>
+          <input type="text" id="rc-company" name="company" required placeholder="Your company name" />
+        </div>
+        <div class="form-group">
+          <label for="rc-email">Work Email *</label>
+          <input type="email" id="rc-email" name="email" required placeholder="you@company.com" />
+        </div>
+        <div class="form-group">
+          <label for="rc-phone">Phone Number</label>
+          <input type="tel" id="rc-phone" name="phone" placeholder="+27 XX XXX XXXX" />
+        </div>
+        <div class="form-group">
+          <label for="rc-interest">I&apos;m Interested In *</label>
+          <select id="rc-interest" name="interest" required>
+            <option value="">Select package...</option>
+            <option value="lite">Lite Package</option>
+            <option value="standard">Standard Package</option>
+            <option value="premium">Premium Package</option>
+            <option value="multiple">Multiple / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="rc-fleet">Estimated Fleet Size</label>
+          <select id="rc-fleet" name="fleet-size">
+            <option value="">Select range...</option>
+            <option value="1-5">1 &ndash; 5 cars</option>
+            <option value="6-10">6 &ndash; 10 cars</option>
+            <option value="11-20">11 &ndash; 20 cars</option>
+            <option value="21-50">21 &ndash; 50 cars</option>
+            <option value="50+">50+ cars</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <i class="fas fa-file-invoice"></i> Send Me the Rate Card
+        </button>
+      </form>
+    </div>
+  </div>
+
   <a href="https://wa.me/27812987137" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
   <script src="js/main.js"></script>
 </body>

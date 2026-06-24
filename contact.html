@@ -112,8 +112,7 @@
         <!-- Contact Form -->
         <div class="contact-form animate-up">
           <h3>Send Us a Message</h3>
-          <form name="contact" method="POST" data-netlify="true" netlify>
-            <input type="hidden" name="form-name" value="contact" />
+          <form name="contact" action="/api/contact" method="POST">
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name *</label>
@@ -246,8 +245,7 @@
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <h2>Request the Rate Card</h2>
       <p>Fill in your details and we'll send you the full RoadReach rate card and media kit via email.</p>
-      <form name="rate-card" method="POST" data-netlify="true" netlify>
-        <input type="hidden" name="form-name" value="rate-card" />
+      <form name="rate-card" action="/api/contact" method="POST">
         <div class="form-group">
           <label for="rc-name">Full Name *</label>
           <input type="text" id="rc-name" name="name" required placeholder="Your full name" />

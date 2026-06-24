@@ -99,38 +99,47 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Form handling (Netlify forms) ---
-  const forms = document.querySelectorAll('form[data-netlify="true"]');
+  // --- Form handling (Vercel API) ---
+  const forms = document.querySelectorAll('form');
 
   forms.forEach(form => {
     form.addEventListener('submit', function(e) {
-      // If not using Netlify (static fallback), prevent and show thank you
-      // Otherwise Netlify handles it natively
-      const isNetlify = window.location.hostname.includes('netlify.app') || 
-                        window.location.hostname === 'localhost';
-      
-      if (!isNetlify) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const submitBtn = this.querySelector('button[type="submit"]');
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending...';
-        }
+      e.preventDefault();
 
-        // Simulate submission with fetch
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
-        })
-        .then(() => {
-          showFormSuccess(this);
-        })
-        .catch(() => {
-          showFormSuccess(this); // Show success anyway for demo
-        });
+      const formData = new FormData(this);
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+      // Disable button & show sending state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       }
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData))
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          showFormSuccess(this);
+        } else {
+          alert('Something went wrong. Please try again or email us directly at info@roadreach.co.za.');
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHTML;
+          }
+        }
+      })
+      .catch(() => {
+        alert('Network error. Please check your connection and try again, or email us directly at info@roadreach.co.za.');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+        }
+      });
     });
   });
 

@@ -13,5 +13,9 @@ desktop.ini
 *.swo
 *~
 
+# Environment (local credentials — NEVER COMMIT)
+.env
+.env.local
+
 # Logs
 *.log
