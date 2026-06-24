@@ -97,15 +97,15 @@ export async function generateRateCardPDF(recipient = {}) {
 
     divider(tableTop + 28);
 
-    // Table header
-    const col1 = 50;   // Package
-    const col2 = 200;  // Coverage
-    const col3 = 380;  // Price
-    const col4 = 480;  // Note
+    // Table header column positions
+    const col1 = 50;   // Package name
+    const col2 = 195;  // Coverage description
+    const col3 = 370;  // Price
+    const col4 = 475;  // Volume discount note
     const rowH = 24;
     let y = tableTop + 42;
 
-    // Header row
+    // Header row background
     doc
       .rect(50, y - 4, 495, rowH)
       .fillColor(CHARCOAL)
@@ -114,10 +114,10 @@ export async function generateRateCardPDF(recipient = {}) {
     doc
       .font('Helvetica-Bold', 9)
       .fillColor(WHITE);
-    doc.text('PACKAGE', col1 + 8, y, { width: 140 });
-    doc.text('COVERAGE', col2 + 8, y, { width: 170 });
-    doc.text('PRICE / CAR / MO', col3 + 8, y, { width: 90 });
-    doc.text('VOLUME DISCOUNTS', col4 + 8, y, { width: 70 });
+    doc.text('PACKAGE', col1 + 8, y, { width: 135 });
+    doc.text('COVERAGE', col2 + 8, y, { width: 165 });
+    doc.text('PRICE PER CAR / MO', col3 + 6, y, { width: 100 });
+    doc.text('VOLUME DISCOUNT', col4 + 4, y, { width: 70 });
 
     y += rowH;
 
@@ -125,19 +125,19 @@ export async function generateRateCardPDF(recipient = {}) {
     const packages = [
       {
         name: 'LITE',
-        coverage: 'Front door decals + rear window',
+        coverage: 'Front door decals and rear window',
         price: 'From R2,125',
         discount: '10% off 20+',
       },
       {
-        name: 'STANDARD ★',
-        coverage: 'Half-car wrap (back doors forward)',
+        name: 'STANDARD (Most Popular)',
+        coverage: 'Half-car wrap — back doors forward',
         price: 'From R4,675',
         discount: '15% off 20+',
       },
       {
         name: 'PREMIUM',
-        coverage: 'Full vehicle wrap (entire car)',
+        coverage: 'Full vehicle wrap — entire car',
         price: 'From R8,500',
         discount: '20% off 10+',
       },
@@ -153,17 +153,17 @@ export async function generateRateCardPDF(recipient = {}) {
       doc
         .font(pkg.name.includes('STANDARD') ? 'Helvetica-Bold' : 'Helvetica', 9)
         .fillColor(DARK);
-      doc.text(pkg.name, col1 + 8, y, { width: 140 });
+      doc.text(pkg.name, col1 + 8, y, { width: 135 });
 
       doc
         .font('Helvetica', 9)
         .fillColor(DARK);
-      doc.text(pkg.coverage, col2 + 8, y, { width: 170 });
+      doc.text(pkg.coverage, col2 + 8, y, { width: 165 });
 
       doc
         .font('Helvetica-Bold', 9)
         .fillColor(RED);
-      doc.text(pkg.price, col3 + 6, y, { width: 90 });
+      doc.text(pkg.price, col3 + 6, y, { width: 95 });
 
       doc
         .font('Helvetica', 8)
@@ -190,7 +190,7 @@ export async function generateRateCardPDF(recipient = {}) {
 
     const fleet = [
       { type: 'Small', vehicles: 'Hyundai i10, Kia Picanto, VW Up', use: 'Urban routes, tight spaces' },
-      { type: 'Medium ★', vehicles: 'VW Polo, Ford Fiesta, Toyota Yaris', use: 'Versatile, all suburbs' },
+      { type: 'Medium', vehicles: 'VW Polo, Ford Fiesta, Toyota Yaris', use: 'Versatile, all suburbs' },
       { type: 'Large', vehicles: 'Toyota Corolla, BMW 3 Series, Kia Optima', use: 'Bold, detailed branding' },
       { type: 'Extra Large', vehicles: 'SUVs, bakkies, delivery vans', use: 'Maximum surface area' },
     ];
@@ -205,8 +205,8 @@ export async function generateRateCardPDF(recipient = {}) {
       .font('Helvetica-Bold', 9)
       .fillColor(WHITE);
     doc.text('CATEGORY', col1 + 8, y, { width: 100 });
-    doc.text('EXAMPLE VEHICLES', col1 + 120, y, { width: 200 });
-    doc.text('BEST FOR', col1 + 340, y, { width: 150 });
+    doc.text('EXAMPLE VEHICLES', col1 + 115, y, { width: 210 });
+    doc.text('BEST FOR', col1 + 335, y, { width: 160 });
 
     y += rowH;
 
@@ -218,19 +218,19 @@ export async function generateRateCardPDF(recipient = {}) {
         .fill();
 
       doc
-        .font(f.type.includes('★') ? 'Helvetica-Bold' : 'Helvetica', 9)
+        .font('Helvetica', 9)
         .fillColor(DARK);
       doc.text(f.type, col1 + 8, y, { width: 100 });
 
       doc
         .font('Helvetica', 8)
         .fillColor(DARK);
-      doc.text(f.vehicles, col1 + 120, y, { width: 200 });
+      doc.text(f.vehicles, col1 + 115, y, { width: 210 });
 
       doc
         .font('Helvetica', 8)
         .fillColor(CHARCOAL);
-      doc.text(f.use, col1 + 340, y, { width: 150 });
+      doc.text(f.use, col1 + 335, y, { width: 160 });
 
       y += rowH;
     });
@@ -249,10 +249,10 @@ export async function generateRateCardPDF(recipient = {}) {
 
     const reasons = [
       '70% of campaign budget goes directly to drivers',
-      'Professional installation & campaign management',
+      'Professional installation and campaign management',
       'Real-time campaign analytics dashboard',
-      'Volume-based pricing — the more vehicles, the better the value',
-      'Nationwide reach across all major SA metros',
+      'Volume-based pricing — more vehicles means better value',
+      'Nationwide reach across all major South African metros',
       'POPIA compliant with secure data handling',
     ];
 
@@ -276,21 +276,29 @@ export async function generateRateCardPDF(recipient = {}) {
       .fillColor(DARK)
       .text('Contact Us', 50, y);
 
-    y += 18;
+    y += 20;
 
     doc
       .font('Helvetica', 10)
       .fillColor(CHARCOAL)
-      .text('Email: info@roadreach.co.za', 50, y, { continued: true })
-      .text('     WhatsApp: +27 81 298 7137', { continued: true })
-      .text('     Web: www.roadreach.co.za', 50, y + 16);
+      .text('Email: info@roadreach.co.za', 50, y);
 
-    y += 44;
+    doc
+      .font('Helvetica', 10)
+      .fillColor(CHARCOAL)
+      .text('WhatsApp: +27 81 298 7137', 50, y + 16);
+
+    doc
+      .font('Helvetica', 10)
+      .fillColor(CHARCOAL)
+      .text('Web: www.roadreach.co.za', 50, y + 32);
+
+    y += 56;
 
     doc
       .font('Helvetica', 8)
       .fillColor(MID_GREY)
-      .text('© 2026 RoadReach Media. All rights reserved.', 50, y, { align: 'center', width: 495 });
+      .text('Copyright 2026 RoadReach Media. All rights reserved.', 50, y, { align: 'center', width: 495 });
 
     // ═════════════════════ FINALISE ═════════════════════
     doc.end();
