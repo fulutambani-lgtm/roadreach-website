@@ -11,6 +11,7 @@
  */
 
 import nodemailer from 'nodemailer';
+import { generateRateCardPDF, buildAutoReplyText } from './generate-rate-card.js';
 
 // ---- Configuration ----
 const ZOHO_EMAIL    = process.env.ZOHO_EMAIL;
@@ -169,6 +170,8 @@ export default async function handler(req, res) {
 
     // --- Send ---
     const transport = createTransport();
+
+    // ── 1. Send notification to RoadReach ──
     await transport.sendMail({
       from: `"RoadReach Website" <${ZOHO_EMAIL}>`,
       replyTo: body.email,
@@ -177,9 +180,92 @@ export default async function handler(req, res) {
       html: emailContent.html,
     });
 
-    console.log(`Email sent: ${emailContent.subject}`);
+    console.log(`Notification sent: ${emailContent.subject}`);
 
-    return res.status(200).json({ success: true, message: 'Your message has been received.' });
+    // ── 2. Send auto-reply to the submitter with Rate Card PDF ──
+    try {
+      const pdfBuffer = await generateRateCardPDF({
+        name: body.name,
+        company: body.company,
+      });
+
+      await transport.sendMail({
+        from: `"RoadReach Media" <${ZOHO_EMAIL}>`,
+        replyTo: ZOHO_EMAIL,
+        to: body.email,
+        subject: 'Your RoadReach Rate Card & Media Kit',
+        html: `
+          <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="background: #D9040E; padding: 24px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="color: #fff; margin: 0; font-size: 24px;">RoadReach</h1>
+              <p style="color: rgba(255,255,255,0.85); margin: 4px 0 0; font-size: 14px;">
+                South Africa's Premier Mobile Billboard Network
+              </p>
+            </div>
+
+            <div style="padding: 32px 24px; background: #ffffff;">
+              <h2 style="color: #1A1A1A; margin-top: 0;">Hi ${body.name || 'there'},</h2>
+
+              <p style="color: #444; line-height: 1.6;">
+                Thank you for your interest in RoadReach's mobile billboard advertising solutions!
+              </p>
+
+              <p style="color: #444; line-height: 1.6;">
+                Attached to this email you'll find our complete
+                <strong style="color: #D9040E;">Rate Card &amp; Media Kit</strong>
+                with full package pricing, fleet information, and volume discounts.
+              </p>
+
+              <p style="color: #444; line-height: 1.6;">
+                One of our campaign specialists will follow up within
+                <strong>24 hours</strong> with a personalised proposal tailored to your needs.
+              </p>
+
+              <div style="background: #f9f9f9; border-left: 4px solid #D9040E; padding: 16px; margin: 24px 0;">
+                <p style="margin: 0; color: #333; font-size: 14px;">
+                  <strong>Quick questions?</strong><br/>
+                  WhatsApp us directly: <a href="https://wa.me/27812987137" style="color: #D9040E;">+27 81 298 7137</a>
+                </p>
+              </div>
+            </div>
+
+            <div style="background: #1A1A1A; padding: 20px 24px; border-radius: 0 0 8px 8px; text-align: center;">
+              <p style="color: rgba(255,255,255,0.6); margin: 0; font-size: 12px;">
+                © 2026 RoadReach Media &bull; info@roadreach.co.za &bull; www.roadreach.co.za
+              </p>
+            </div>
+          </div>
+        `,
+        attachments: [
+          {
+            filename: 'RoadReach-Rate-Card.pdf',
+            content: pdfBuffer,
+            contentType: 'application/pdf',
+          },
+        ],
+      });
+
+      console.log(`Auto-reply sent to ${body.email}`);
+    } catch (autoReplyErr) {
+      // If auto-reply fails (PDF gen or SMTP), log but don't break the response
+      console.error('Auto-reply failed:', autoReplyErr.message);
+
+      // Try sending a plain-text fallback without attachment
+      try {
+        await transport.sendMail({
+          from: `"RoadReach Media" <${ZOHO_EMAIL}>`,
+          replyTo: ZOHO_EMAIL,
+          to: body.email,
+          subject: 'Thank you for contacting RoadReach',
+          text: buildAutoReplyText(body.name),
+        });
+        console.log(`Fallback auto-reply sent to ${body.email}`);
+      } catch (fallbackErr) {
+        console.error('Fallback auto-reply also failed:', fallbackErr.message);
+      }
+    }
+
+    return res.status(200).json({ success: true, message: 'Your message has been received. Check your email for your Rate Card.' });
   } catch (err) {
     console.error('Failed to send email:', err.message, err.code);
     return res.status(500).json({ success: false, error: 'Failed to send message. Please try again later.' });

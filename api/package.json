@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^6.9.16",
+    "pdfkit": "^0.15.0"
   }
 }

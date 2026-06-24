@@ -12,6 +12,11 @@ desktop.ini
 *.swp
 *.swo
 *~
+*~
+
+# Dependencies (Vercel installs its own)
+api/node_modules
+node_modules
 
 # Environment (local credentials — NEVER COMMIT)
 .env
@@ -19,3 +24,5 @@ desktop.ini
 
 # Logs
 *.log
+
+.vercel
