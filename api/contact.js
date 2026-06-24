@@ -19,10 +19,11 @@ const CONTACT_EMAIL = process.env.CONTACT_EMAIL || ZOHO_EMAIL;
 
 // ---- SMTP Transport (ZohoMail) ----
 function createTransport() {
+  // ZohoMail SMTP: try port 465 (SSL) first, fallback to 587 (STARTTLS)
   return nodemailer.createTransport({
     host: 'smtp.zoho.com',
-    port: 587,
-    secure: false,           // true for 465, false for 587
+    port: 465,
+    secure: true,
     auth: {
       user: ZOHO_EMAIL,
       pass: ZOHO_PASSWORD,
@@ -180,7 +181,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true, message: 'Your message has been received.' });
   } catch (err) {
-    console.error('Failed to send email:', err);
-    return res.status(500).json({ success: false, error: 'Failed to send message. Please try again later.' });
+    console.error('Failed to send email:', err.message, err.code, err.response);
+    // Return a slightly more specific error for debugging (remove in production if desired)
+    return res.status(500).json({ success: false, error: 'Failed to send message. SMTP error: ' + (err.code || err.message) });
   }
 }
