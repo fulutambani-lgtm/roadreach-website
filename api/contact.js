@@ -217,6 +217,14 @@ export default async function handler(req, res) {
               </p>
 
               <p style="color: #444; line-height: 1.6;">
+                You can also view the full interactive rate card here:<br/>
+                <a href="https://docs.google.com/spreadsheets/d/1YjVG0nhpl42n0k7sbnY1gKBscE25L9fztjma6piZAdI/edit?usp=sharing" 
+                   style="background: #D9040E; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 6px; display: inline-block; margin-top: 6px; font-weight: 600;">
+                  📊 Open Rate Card in Google Sheets
+                </a>
+              </p>
+
+              <p style="color: #444; line-height: 1.6;">
                 One of our campaign specialists will follow up within
                 <strong>24 hours</strong> with a personalised proposal tailored to your needs.
               </p>
