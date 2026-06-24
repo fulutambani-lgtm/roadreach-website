@@ -22,30 +22,32 @@ document.addEventListener('DOMContentLoaded', function() {
   updateNav();
 
   // --- Mobile menu ---
-  hamburger.addEventListener('click', function() {
-    this.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-  });
-
-  // Close mobile menu on link click
-  navLinksAnchors.forEach(link => {
-    link.addEventListener('click', function(e) {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
-      document.body.style.overflow = '';
-
-      // Smooth scroll for anchor links
-      const href = this.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
-  });
+
+    // Close mobile menu on link click
+    navLinksAnchors.forEach(link => {
+      link.addEventListener('click', function(e) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Smooth scroll for anchor links
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  }
 
   // --- Scroll animations (Intersection Observer) ---
   const animateElements = document.querySelectorAll('.animate-up');
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const modalClose = document.querySelector('.modal-close');
   const openModalButtons = document.querySelectorAll('[data-open-modal]');
 
-  if (modalOverlay) {
+  if (modalOverlay && modalClose) {
     function openModal() {
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
