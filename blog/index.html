@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights — RoadReach Blog</title>
+  <meta name="description" content="Latest insights, thought leadership, and updates from RoadReach — South Africa's premier mobile billboard network." />
+
+  <link rel="icon" href="../images/logo-square.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .blog-header {
+      background: var(--dark-charcoal);
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+    .blog-header h1 {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .blog-header p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .blog-list { padding: 80px 0; }
+    .blog-post-full {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 32px;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+    .blog-post-full:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .blog-post-full .post-image {
+      height: 100%;
+      min-height: 220px;
+      overflow: hidden;
+    }
+    .blog-post-full .post-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .blog-post-full:hover .post-image img { transform: scale(1.05); }
+    .blog-post-full .post-body { padding: 32px 32px 32px 0; }
+    .blog-post-full .post-body .date {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .blog-post-full .post-body h2 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--dark-text);
+      margin-bottom: 12px;
+    }
+    .blog-post-full .post-body p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 768px) {
+      .blog-post-full { grid-template-columns: 1fr; }
+      .blog-post-full .post-body { padding: 24px; }
+      .blog-post-full .post-image { min-height: 200px; }
+      .blog-header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav scrolled" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="../#hero" class="nav-logo">
+        <img src="../images/logo-landscape.png" alt="RoadReach Logo" />
+        <span class="dark">RoadReach</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../packages.html">Packages</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../drivers.html">Drivers</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../contact.html" class="btn btn-primary">Book a Meeting</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="blog-header">
+    <div class="container">
+      <span class="section-label" style="color:var(--brand-red);background:rgba(217,4,14,0.15);padding:8px 16px;border-radius:4px;">Insights</span>
+      <h1>RoadReach Blog</h1>
+      <p>Thought leadership, industry insights, and updates from the mobile advertising frontier.</p>
+    </div>
+  </section>
+
+  <!-- Blog List -->
+  <section class="blog-list">
+    <div class="container">
+      <article class="blog-post-full animate-up">
+        <div class="post-image">
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80" alt="Mobile billboard advertising" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <div class="date">June 15, 2026</div>
+          <h2>Why Mobile Billboards Are South Africa's Fastest-Growing Ad Medium</h2>
+          <p>With digital ad fatigue at an all-time high, brands are rediscovering the power of physical presence. Here's why mobile billboards are winning — and how RoadReach is leading the charge.</p>
+          <a href="post1.html" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-post-full animate-up">
+        <div class="post-image">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80" alt="Brand recognition study" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <div class="date">June 8, 2026</div>
+          <h2>15x More Effective: The Neuroscience of Vehicle Advertising</h2>
+          <p>Scientific research shows car wrap advertising achieves 15x higher name recognition than traditional media. We explore the science behind why mobile billboards work.</p>
+          <a href="post2.html" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-post-full animate-up">
+        <div class="post-image">
+          <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&q=80" alt="RoadReach launch" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <div class="date">June 1, 2026</div>
+          <h2>RoadReach Launches: A New Chapter for South African Advertising</h2>
+          <p>We're officially live! Read about our mission to revolutionise out-of-home advertising while empowering everyday South Africans to earn from their vehicles.</p>
+          <a href="post3.html" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-landscape.png" alt="RoadReach" />
+          <p>South Africa's premier mobile billboard network.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../packages.html">Packages</a></li>
+            <li><a href="../case-studies.html">Case Studies</a></li>
+            <li><a href="../drivers.html">For Drivers</a></li>
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow Us</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.facebook.com/roadreachza" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/roadreachza/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/roadreachza" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.tiktok.com/@roadreachza" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 RoadReach Media.</p>
+        <div class="footer-legal">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../refund-policy.html">Refund Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/27812987137" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

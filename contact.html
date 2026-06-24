@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — RoadReach</title>
+  <meta name="description" content="Get in touch with RoadReach. Book a meeting, request our rate card, or enquire about becoming a driver." />
+  <link rel="icon" href="images/logo-square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page-header { background: var(--dark-charcoal); padding: 150px 0 60px; text-align: center; }
+    .page-header h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; color: var(--white); }
+    .page-header p { color: rgba(255,255,255,0.6); margin-top: 8px; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .contact-page { padding-top: 0; }
+    @media (max-width: 768px) { .page-header h1 { font-size: 2rem; } .page-header { padding: 120px 0 40px; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-landscape.png" alt="RoadReach Logo" />
+        <span>RoadReach</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active-page">Contact</a>
+        <a href="contact.html" class="btn btn-primary">Book a Meeting</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label" style="color:var(--brand-red);background:rgba(217,4,14,0.15);padding:8px 16px;border-radius:4px;">Contact</span>
+      <h1>Let's Talk</h1>
+      <p>Whether you're a brand ready to launch a campaign or a driver wanting to join the fleet — we're here to help.</p>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact section-padding contact-page">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info animate-up">
+          <h3>Get in Touch</h3>
+
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:info@roadreach.co.za">info@roadreach.co.za</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/27812987137" target="_blank">+27 81 298 7137</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Address</h4>
+              <p>Festura Street, Lotus Gardens<br />Pretoria, 0008<br />South Africa</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Office Hours</h4>
+              <p>Monday – Friday: 8:00 AM – 5:00 PM<br />Saturday: 9:00 AM – 1:00 PM</p>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <a href="https://www.facebook.com/roadreachza" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/roadreachza/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/roadreachza" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@roadreachza" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px;">
+            <button class="btn btn-primary" data-open-modal style="justify-content:center;">
+              <i class="fas fa-file-invoice"></i> Request Rate Card &amp; Media Kit
+            </button>
+            <a href="https://wa.me/27812987137" target="_blank" class="btn btn-outline" style="justify-content:center;border-color:#25D366;color:#25D366;">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form animate-up">
+          <h3>Send Us a Message</h3>
+          <form name="contact" method="POST" data-netlify="true" netlify>
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Your full name" />
+              </div>
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" placeholder="Your company name" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="you@company.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+27 XX XXX XXXX" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="interest">I'm Interested In *</label>
+              <select id="interest" name="interest" required>
+                <option value="">Select one...</option>
+                <option value="advertising">Advertising as a Brand</option>
+                <option value="rate-card">Rate Card &amp; Media Kit</option>
+                <option value="driving">Becoming a Driver</option>
+                <option value="partnership">Partnership Opportunities</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your campaign or enquiry..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-landscape.png" alt="RoadReach" />
+          <p>South Africa's premier mobile billboard network.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="drivers.html">For Drivers</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog/">Insights</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.facebook.com/roadreachza" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/roadreachza/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/roadreachza" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@roadreach.co.za">info@roadreach.co.za</a></li>
+            <li><a href="https://wa.me/27812987137" target="_blank">WhatsApp: +27 81 298 7137</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Trust Badges -->
+      <div class="trust-bar">
+        <div class="container">
+          <div class="trust-bar-grid">
+            <span class="trust-badge-item"><i class="fas fa-shield-alt"></i> POPIA Compliant</span>
+            <span class="trust-badge-item"><i class="fas fa-lock"></i> Secure Data Handling</span>
+            <span class="trust-badge-item"><i class="fas fa-handshake"></i> 70% to Drivers</span>
+            <span class="trust-badge-item"><i class="fas fa-certificate"></i> Signorama Partner</span>
+            <span class="trust-badge-item"><i class="fas fa-phone-alt"></i> WhatsApp Support</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 RoadReach Media. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== STICKY CTA BAR ========== -->
+  <div class="sticky-cta-bar" id="stickyCtaBar">
+    <div class="container">
+      <div class="sticky-cta-content">
+        <span class="sticky-cta-text"><i class="fas fa-rocket"></i> Free Campaign Proposal &amp; Rate Card</span>
+        <div class="sticky-cta-buttons">
+          <button class="btn btn-primary btn-sm" data-open-modal>
+            <i class="fas fa-file-invoice"></i> Get the Rate Card
+          </button>
+          <a href="contact.html" class="btn btn-outline btn-sm">
+            <i class="fas fa-calendar"></i> Book a Meeting
+          </a>
+          <button class="sticky-cta-close" data-close-bar aria-label="Close">&times;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/27812987137" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Rate Card Modal -->
+  <div id="rateCardModal" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h2>Request the Rate Card</h2>
+      <p>Fill in your details and we'll send you the full RoadReach rate card and media kit via email.</p>
+      <form name="rate-card" method="POST" data-netlify="true" netlify>
+        <input type="hidden" name="form-name" value="rate-card" />
+        <div class="form-group">
+          <label for="rc-name">Full Name *</label>
+          <input type="text" id="rc-name" name="name" required placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label for="rc-company">Company *</label>
+          <input type="text" id="rc-company" name="company" required placeholder="Your company name" />
+        </div>
+        <div class="form-group">
+          <label for="rc-email">Work Email *</label>
+          <input type="email" id="rc-email" name="email" required placeholder="you@company.com" />
+        </div>
+        <div class="form-group">
+          <label for="rc-phone">Phone Number</label>
+          <input type="tel" id="rc-phone" name="phone" placeholder="+27 XX XXX XXXX" />
+        </div>
+        <div class="form-group">
+          <label for="rc-interest">I'm Interested In *</label>
+          <select id="rc-interest" name="interest" required>
+            <option value="">Select package...</option>
+            <option value="lite">Lite Package</option>
+            <option value="standard">Standard Package</option>
+            <option value="premium">Premium Package</option>
+            <option value="multiple">Multiple / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="rc-fleet">Estimated Fleet Size</label>
+          <select id="rc-fleet" name="fleet-size">
+            <option value="">Select range...</option>
+            <option value="1-5">1 – 5 cars</option>
+            <option value="6-10">6 – 10 cars</option>
+            <option value="11-20">11 – 20 cars</option>
+            <option value="21-50">21 – 50 cars</option>
+            <option value="50+">50+ cars</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <i class="fas fa-file-invoice"></i> Send Me the Rate Card
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
