@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You — RoadReach</title>
+  <meta name="description" content="Thank you for contacting RoadReach. We've received your message and will be in touch within 24 hours." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="images/logo-square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .thank-you-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light-gray);
+      padding: 120px 24px 60px;
+    }
+    .thank-you-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 60px 48px;
+      text-align: center;
+      max-width: 560px;
+      width: 100%;
+    }
+    .thank-you-card .checkmark {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #27ae60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 1.8rem;
+      color: var(--white);
+    }
+    .thank-you-card h1 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark-text);
+      margin-bottom: 12px;
+    }
+    .thank-you-card p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .thank-you-card .highlight {
+      color: var(--dark-text);
+      font-weight: 600;
+    }
+    .thank-you-card .whatsapp-nudge {
+      background: var(--light-gray);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.95rem;
+      color: var(--body-text);
+    }
+    .thank-you-card .whatsapp-nudge a {
+      color: #25D366;
+      font-weight: 600;
+    }
+    .thank-you-card .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    @media (max-width: 480px) {
+      .thank-you-card { padding: 40px 24px; }
+      .thank-you-card h1 { font-size: 1.5rem; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.roadreach.co.za/#organization",
+        "name": "RoadReach Media",
+        "url": "https://www.roadreach.co.za/",
+        "logo": "https://www.roadreach.co.za/images/logo-square.png",
+        "description": "South Africa's premier mobile billboard network.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+27-81-298-7137",
+          "contactType": "sales",
+          "email": "info@roadreach.co.za"
+        },
+        "sameAs": [
+          "https://www.facebook.com/roadreachza",
+          "https://www.instagram.com/roadreachza/",
+          "https://www.linkedin.com/company/roadreachza",
+          "https://www.tiktok.com/@roadreachza"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.roadreach.co.za/thank-you.html",
+        "name": "Thank You — RoadReach",
+        "isPartOf": {
+          "@id": "https://www.roadreach.co.za/#website"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.roadreach.co.za/#website",
+        "name": "RoadReach",
+        "url": "https://www.roadreach.co.za/",
+        "publisher": {
+          "@id": "https://www.roadreach.co.za/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F13FWS4SWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F13FWS4SWH');
+</script>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" style="background: var(--white); box-shadow: var(--shadow-sm); padding: 10px 0;" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-landscape.png" alt="RoadReach Logo" />
+        <span>RoadReach</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-primary">Book a Meeting</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== THANK YOU CONTENT ========== -->
+  <section class="thank-you-page">
+    <div class="thank-you-card animate-up visible">
+      <div class="checkmark"><i class="fas fa-check"></i></div>
+      <h1>Thank You!</h1>
+      <p>Your message has been received.</p>
+      <p><span class="highlight">Check your email</span> — we've sent you our Rate Card &amp; Media Kit.</p>
+      <p>A campaign specialist will follow up within <strong>24 hours</strong>.</p>
+
+      <div class="whatsapp-nudge">
+        <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+        Prefer instant answers?
+        <a href="https://wa.me/27812987137" target="_blank">Chat on WhatsApp</a>
+      </div>
+
+      <div class="actions">
+        <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Back to Home</a>
+        <a href="packages.html" class="btn btn-outline">View Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" style="padding: 40px 0;">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 RoadReach Media. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

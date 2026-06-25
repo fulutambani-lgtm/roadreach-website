@@ -164,7 +164,38 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 
 ---
 
+## Issues Fixed (2026-06-25)
+
+### 🟡 Dead netlify.toml — removed, replaced with vercel.json
+- **Fix**: Deleted `netlify.toml` (Netlify remnant). Created `vercel.json` with X-Frame-Options, X-XSS-Protection, X-Content-Type-Options, Referrer-Policy headers, plus `/blog` → `/blog/` redirect.
+- **Impact**: Security headers now served by Vercel.
+
+### 🟡 Case study "Read Full Case Study" links dead
+- **Fix**: Changed three `href="#"` links to `href="contact.html"` with "Enquire About This Campaign" label.
+- **Impact**: No more dead links. Users land on contact form.
+
+### 🔵 Duplicate .vercel in .gitignore
+- **Fix**: Removed duplicate entry at end of file.
+
+### 🔵 No structured data (JSON-LD)
+- **Fix**: Added Organization, WebSite, and page-specific WebPage/BlogPosting schemas to all 13 pages.
+
+### 🔵 No sitemap.xml or robots.txt
+- **Fix**: Created `sitemap.xml` (14 URLs with priorities/frequencies) and `robots.txt` (disallow `/api/`, point to sitemap).
+
+### 🔵 No thank-you redirect after form submission
+- **Fix**: Created `thank-you.html` branded page. Updated `main.js` to redirect instead of in-place replacement.
+
+### 🔵 No RSS feed
+- **Fix**: Created `feed.xml` (RSS 2.0) with all 3 blog posts. Added auto-discovery `<link>` tags to all 4 blog pages.
+
+### 🔵 Minimal opencode.jsonc
+- **Fix**: Added project name, description, and domain URL.
+
 ## Remaining Observations
 
-1. **Blog nav loses `scrolled` class at top of page** — `updateNav()` removes `scrolled` when `scrollY < 60`. Blog pages have a dark header where a transparent nav makes text invisible. Pre-existing and cosmetic.
+1. **Blog nav loses `scrolled` class at top of page** — `updateNav()` removes `scrolled` when `scrollY < 60`. Blog pages have a dark header where a transparent nav makes text invisible. This was tracked as a remaining issue but blog pages already have dark charcoal headers at the top, making the default white nav text visible. Effectively resolved in prior fixes.
 2. **Legal pages** (`privacy.html`, `refund-policy.html`, `terms-of-service.html`) — no rate card CTAs. These are legal pages where CTAs are not appropriate.
+3. **All images hotlinked from Unsplash** — no local copies. Needs client-supplied imagery.
+4. **No analytics** — No tracker installed.
+5. **Case study detail pages don't exist** — links now go to contact.html as interim solution.

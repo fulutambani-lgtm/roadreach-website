@@ -165,6 +165,11 @@ ul { list-style: none; }
   transform: translateY(-2px);
 }
 
+.btn-lg {
+  padding: 18px 40px;
+  font-size: 1rem;
+}
+
 /* --- Navigation --- */
 .nav {
   position: fixed;
@@ -494,6 +499,28 @@ ul { list-style: none; }
 
 .packages .section-title { color: var(--white); }
 .packages .section-subtitle { color: rgba(255,255,255,0.6); }
+
+.packages-cta {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.packages-cta p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+  font-family: var(--font-heading);
+}
+.packages-cta .btn-outline {
+  border-color: rgba(255,255,255,0.25);
+  color: var(--white);
+}
+.packages-cta .btn-outline:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+}
 
 .packages-grid {
   display: grid;

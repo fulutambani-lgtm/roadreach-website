@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RoadReach Insights</title>
+    <link>https://www.roadreach.co.za/blog/</link>
+    <description>Latest insights, thought leadership, and updates from RoadReach — South Africa's premier mobile billboard network.</description>
+    <language>en-za</language>
+    <lastBuildDate>Thu, 25 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.roadreach.co.za/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Why Mobile Billboards Are South Africa's Fastest-Growing Ad Medium</title>
+      <link>https://www.roadreach.co.za/blog/post1.html</link>
+      <description>With digital ad fatigue at an all-time high, brands are rediscovering the power of physical presence.</description>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.roadreach.co.za/blog/post1.html</guid>
+    </item>
+
+    <item>
+      <title>15x More Effective: The Neuroscience of Vehicle Advertising</title>
+      <link>https://www.roadreach.co.za/blog/post2.html</link>
+      <description>Scientific research shows car wrap advertising achieves 15x higher name recognition than traditional media.</description>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.roadreach.co.za/blog/post2.html</guid>
+    </item>
+
+    <item>
+      <title>RoadReach Launches: A New Chapter for South African Advertising</title>
+      <link>https://www.roadreach.co.za/blog/post3.html</link>
+      <description>We're officially live! Read about our mission to revolutionise out-of-home advertising while empowering everyday South Africans.</description>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.roadreach.co.za/blog/post3.html</guid>
+    </item>
+  </channel>
+</rss>

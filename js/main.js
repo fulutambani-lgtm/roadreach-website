@@ -146,19 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function showFormSuccess(form) {
-    const thankYouHTML = `
-      <div class="form-thank-you">
-        <div class="checkmark"><i class="fas fa-check"></i></div>
-        <h3>Thank You!</h3>
-        <p>Your message has been received.</p>
-        <p><strong>Check your email</strong> — we've sent you our Rate Card &amp; Media Kit.</p>
-        <p>A campaign specialist will follow up within <strong>24 hours</strong>.</p>
-        <div class="whatsapp-nudge">
-          Prefer instant answers? <a href="https://wa.me/27812987137" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-        </div>
-      </div>
-    `;
-    form.innerHTML = thankYouHTML;
+    window.location.href = '/thank-you.html';
   }
 
   // --- Sticky CTA Bar ---
