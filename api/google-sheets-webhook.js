@@ -36,7 +36,17 @@ function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     const type = data.type || 'unknown';
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let ss = SpreadsheetApp.getActiveSpreadsheet();
+    if (!ss) {
+      // Standalone deployment — create or open the webhook spreadsheet
+      const ssName = 'RoadReach Webhook Data';
+      const files = DriveApp.getFilesByName(ssName);
+      if (files.hasNext()) {
+        ss = SpreadsheetApp.open(files.next());
+      } else {
+        ss = SpreadsheetApp.create(ssName);
+      }
+    }
 
     if (type === 'rate-card') {
       logRateCard(ss, data);
