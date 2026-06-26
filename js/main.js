@@ -124,7 +124,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function showFormSuccess(form) {
-    window.location.href = '/thank-you.html';
+    var formName = (form.querySelector('[name="form-name"]') || {}).value || '';
+    var type = 'contact';
+    if (formName === 'rate-card') type = 'rate-card';
+    else if (formName === 'book-meeting' || formName === 'booking-response') type = 'booking';
+    window.location.href = '/thank-you.html?type=' + type;
   }
 
   // --- Sticky CTA Bar ---

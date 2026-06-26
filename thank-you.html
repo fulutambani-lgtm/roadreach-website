@@ -165,19 +165,19 @@
     <div class="thank-you-card animate-up visible">
       <div class="checkmark"><i class="fas fa-check"></i></div>
       <h1>Thank You!</h1>
-      <p>Your message has been received.</p>
-      <p><span class="highlight">Check your email</span> — we've sent you our Rate Card &amp; Media Kit.</p>
-      <p>A campaign specialist will follow up within <strong>24 hours</strong>.</p>
+      <p id="ty-subtitle">Your message has been received.</p>
+      <p id="ty-body"><span class="highlight">Check your email</span> — we've sent you our Rate Card &amp; Media Kit.</p>
+      <p id="ty-followup">A campaign specialist will follow up within <strong>24 hours</strong>.</p>
 
-      <div class="whatsapp-nudge">
+      <div class="whatsapp-nudge" id="ty-whatsapp">
         <i class="fab fa-whatsapp" style="color:#25D366;"></i>
         Prefer instant answers?
         <a href="https://wa.me/27812987137" target="_blank">Chat on WhatsApp</a>
       </div>
 
-      <div class="actions">
+      <div class="actions" id="ty-actions">
         <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Back to Home</a>
-        <a href="packages.html" class="btn btn-outline">View Packages</a>
+        <a href="packages.html" class="btn btn-outline" id="ty-action-secondary">View Packages</a>
       </div>
     </div>
   </section>
@@ -197,6 +197,50 @@
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var type = params.get('type') || 'rate-card';
+
+      var subtitle = document.getElementById('ty-subtitle');
+      var body = document.getElementById('ty-body');
+      var followup = document.getElementById('ty-followup');
+      var actionSecondary = document.getElementById('ty-action-secondary');
+
+      switch (type) {
+        case 'booking':
+          subtitle.textContent = 'Your meeting request has been submitted!';
+          body.innerHTML = '<span class="highlight">Check your email</span> \u2014 we\'ll confirm your meeting within <strong>24 hours</strong>.';
+          followup.textContent = 'If you need to change or cancel, reply to the confirmation email or WhatsApp us.';
+          if (actionSecondary) {
+            actionSecondary.href = 'book-meeting.html';
+            actionSecondary.innerHTML = '<i class="fas fa-calendar-alt"></i> Book Again';
+          }
+          break;
+
+        case 'rate-card':
+          subtitle.textContent = 'Your message has been received.';
+          body.innerHTML = '<span class="highlight">Check your email</span> \u2014 we\'ve sent you our Rate Card &amp; Media Kit.';
+          followup.innerHTML = 'A campaign specialist will follow up within <strong>24 hours</strong>.';
+          if (actionSecondary) {
+            actionSecondary.href = 'packages.html';
+            actionSecondary.innerHTML = 'View Packages';
+          }
+          break;
+
+        case 'contact':
+        default:
+          subtitle.textContent = 'Your message has been received.';
+          body.innerHTML = 'We\'ve received your message and will be in touch within <strong>24 hours</strong>.';
+          followup.textContent = '';
+          if (actionSecondary) {
+            actionSecondary.href = 'contact.html';
+            actionSecondary.innerHTML = '<i class="fas fa-envelope"></i> Contact Us';
+          }
+          break;
+      }
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
