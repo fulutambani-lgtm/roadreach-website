@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Meeting — RoadReach</title>
+  <meta name="description" content="Book a meeting with RoadReach. Propose your preferred date, time, and platform — Zoom, Google Meet, WhatsApp, or phone." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="images/logo-square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .book-header { background: var(--dark-charcoal); padding: 150px 0 60px; text-align: center; }
+    .book-header h1 { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--white); }
+    .book-header p { color: rgba(255,255,255,0.6); max-width: 500px; margin: 8px auto 0; }
+
+    .book-section { padding: 64px 0; }
+    .book-section .container { max-width: 720px; }
+
+    .book-card { background: var(--white); border-radius: 12px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+
+    .book-card h2 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 600; color: var(--dark-text); margin-bottom: 24px; }
+
+    .book-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .book-form .full { grid-column: 1 / -1; }
+    .book-form label { display: block; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: var(--dark-text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .book-form label .required { color: var(--brand-red); }
+    .book-form input, .book-form select, .book-form textarea { width: 100%; padding: 12px 14px; border: 2px solid #ddd; border-radius: 8px; font-family: var(--font-body); font-size: 0.95rem; }
+    .book-form input:focus, .book-form select:focus, .book-form textarea:focus { outline: none; border-color: var(--brand-red); }
+    .book-form textarea { resize: vertical; min-height: 80px; }
+    .book-form .btn { grid-column: 1 / -1; justify-content: center; padding: 16px 32px; font-size: 1.05rem; }
+
+    .book-info { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .book-info-item { text-align: center; padding: 20px; background: var(--light-gray); border-radius: 8px; }
+    .book-info-item i { font-size: 1.4rem; color: var(--brand-red); margin-bottom: 8px; }
+    .book-info-item h4 { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; color: var(--dark-text); margin-bottom: 4px; }
+    .book-info-item p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+    .book-alt { text-align: center; margin-top: 32px; padding: 24px; background: var(--light-gray); border-radius: 8px; }
+    .book-alt p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px; }
+    .book-alt .alt-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      .book-header h1 { font-size: 1.8rem; }
+      .book-card { padding: 24px; }
+      .book-form { grid-template-columns: 1fr; }
+      .book-info { grid-template-columns: 1fr; }
+    }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.roadreach.co.za/#organization",
+      "name": "RoadReach Media",
+      "url": "https://www.roadreach.co.za/",
+      "logo": "https://www.roadreach.co.za/images/logo-square.png",
+      "description": "South Africa's premier mobile billboard network.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Festura Street, Lotus Gardens",
+        "addressLocality": "Pretoria",
+        "postalCode": "0008",
+        "addressCountry": "ZA"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.roadreach.co.za/book-meeting.html",
+      "name": "Book a Meeting — RoadReach",
+      "description": "Propose a meeting date, time, and platform with RoadReach.",
+      "isPartOf": { "@id": "https://www.roadreach.co.za/#website" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.roadreach.co.za/#website",
+      "name": "RoadReach",
+      "url": "https://www.roadreach.co.za/",
+      "publisher": { "@id": "https://www.roadreach.co.za/#organization" }
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F13FWS4SWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F13FWS4SWH');
+</script>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-landscape.png" alt="RoadReach Logo" />
+        <span>RoadReach</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="rate-card.html">Rate Card</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="book-meeting.html" class="btn btn-primary">Book a Meeting</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════ PAGE HEADER ════════ -->
+  <section class="book-header">
+    <div class="container">
+      <span class="section-label" style="color:var(--brand-red);background:rgba(217,4,14,0.15);padding:8px 16px;border-radius:4px;">Schedule a Meeting</span>
+      <h1>Book a Meeting</h1>
+      <p>Propose your preferred date, time, and meeting platform. We'll confirm or suggest an alternative within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- ════════ MEETING FORM ════════ -->
+  <section class="book-section">
+    <div class="container">
+      <div class="book-card">
+        <h2><i class="fas fa-calendar-alt" style="color:var(--brand-red);margin-right:8px;"></i> Request a Meeting</h2>
+
+        <form class="book-form" id="bookingForm">
+          <input type="hidden" name="form-name" value="book-meeting" />
+
+          <div class="full">
+            <label for="bk-name">Full Name <span class="required">*</span></label>
+            <input type="text" id="bk-name" name="name" required placeholder="Your full name" />
+          </div>
+
+          <div>
+            <label for="bk-email">Email Address <span class="required">*</span></label>
+            <input type="email" id="bk-email" name="email" required placeholder="you@company.com" />
+          </div>
+
+          <div>
+            <label for="bk-phone">Phone Number</label>
+            <input type="tel" id="bk-phone" name="phone" placeholder="+27 XX XXX XXXX" />
+          </div>
+
+          <div class="full">
+            <label for="bk-company">Company</label>
+            <input type="text" id="bk-company" name="company" placeholder="Your company name" />
+          </div>
+
+          <div>
+            <label for="bk-date">Proposed Date <span class="required">*</span></label>
+            <input type="date" id="bk-date" name="proposed-date" required />
+          </div>
+
+          <div>
+            <label for="bk-time">Proposed Time <span class="required">*</span></label>
+            <input type="time" id="bk-time" name="proposed-time" required />
+          </div>
+
+          <div class="full">
+            <label for="bk-platform">Preferred Platform <span class="required">*</span></label>
+            <select id="bk-platform" name="platform" required>
+              <option value="">Select a platform...</option>
+              <option value="zoom">Zoom</option>
+              <option value="google-meet">Google Meet</option>
+              <option value="whatsapp">WhatsApp Video / Voice</option>
+              <option value="phone">Phone Call</option>
+              <option value="in-person">In Person (Pretoria area)</option>
+              <option value="other">Other / Not sure</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="bk-message">Message or Agenda (optional)</label>
+            <textarea id="bk-message" name="message" placeholder="Tell us what you'd like to discuss — campaign goals, fleet size, budget range, etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="fas fa-paper-plane"></i> Submit Booking Request
+          </button>
+        </form>
+      </div>
+
+      <!-- Quick info -->
+      <div class="book-info">
+        <div class="book-info-item">
+          <i class="fas fa-clock"></i>
+          <h4>Response Time</h4>
+          <p>We'll respond within 24 hours</p>
+        </div>
+        <div class="book-info-item">
+          <i class="fas fa-exchange-alt"></i>
+          <h4>Flexible</h4>
+          <p>We can suggest an alternative if the time doesn't work</p>
+        </div>
+        <div class="book-info-item">
+          <i class="fas fa-check-circle"></i>
+          <h4>Free</h4>
+          <p>No commitment — just a conversation</p>
+        </div>
+      </div>
+
+      <!-- Alternative contact -->
+      <div class="book-alt">
+        <p><strong>Prefer instant contact?</strong> WhatsApp us directly or send an email.</p>
+        <div class="alt-links">
+          <a href="https://wa.me/27812987137" target="_blank" class="btn btn-outline">
+            <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp Us
+          </a>
+          <a href="mailto:info@roadreach.co.za" class="btn btn-outline">
+            <i class="fas fa-envelope"></i> info@roadreach.co.za
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-landscape.png" alt="RoadReach" />
+          <p>South Africa's premier mobile billboard network.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="rate-card.html">Rate Card</a></li>
+            <li><a href="rate-card.html">Rate Card</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="drivers.html">For Drivers</a></li>
+            <li><a href="driver-application.html">Driver Application</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog/">Insights</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="book-meeting.html">Book a Meeting</a></li>
+            <li><a href="https://www.facebook.com/roadreachza" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/roadreachza/" target="_blank">Instagram</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@roadreach.co.za">info@roadreach.co.za</a></li>
+            <li><a href="https://wa.me/27812987137" target="_blank">WhatsApp: +27 81 298 7137</a></li>
+            <li><a href="book-meeting.html">Book a Meeting</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="trust-bar">
+        <div class="container">
+          <div class="trust-bar-grid">
+            <span class="trust-badge-item"><i class="fas fa-shield-alt"></i> POPIA Compliant</span>
+            <span class="trust-badge-item"><i class="fas fa-lock"></i> Secure Data Handling</span>
+            <span class="trust-badge-item"><i class="fas fa-handshake"></i> 70% to Drivers</span>
+            <span class="trust-badge-item"><i class="fas fa-certificate"></i> Signorama Partner</span>
+            <span class="trust-badge-item"><i class="fas fa-phone-alt"></i> WhatsApp Support</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 RoadReach Media. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="driver-terms.html">Driver Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/27812987137" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Set min date to today
+    document.addEventListener('DOMContentLoaded', function() {
+      var dateEl = document.getElementById('bk-date');
+      if (dateEl) {
+        var today = new Date();
+        var yyyy = today.getFullYear();
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var dd = String(today.getDate()).padStart(2, '0');
+        dateEl.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+      }
+    });
+  </script>
+</body>
+</html>

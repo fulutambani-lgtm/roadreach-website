@@ -89,11 +89,12 @@
       <div class="nav-links">
         <a href="index.html" class="active-page">Home</a>
         <a href="packages.html">Packages</a>
+        <a href="rate-card.html">Rate Card</a>
         <a href="case-studies.html">Case Studies</a>
         <a href="drivers.html">Drivers</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="btn btn-primary">Book a Meeting</a>
+        <a href="book-meeting.html" class="btn btn-primary">Book a Meeting</a>
       </div>
       <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
@@ -117,10 +118,10 @@
           and 70% of your media spend goes directly to local drivers.
         </p>
         <div class="hero-actions">
-          <button class="btn btn-primary btn-lg" data-open-modal>
-            <i class="fas fa-download"></i> Get the Free Rate Card
-          </button>
-          <a href="contact.html" class="btn btn-secondary">
+          <a href="rate-card.html" class="btn btn-primary btn-lg">
+            <i class="fas fa-file-invoice"></i> View the Interactive Rate Card
+          </a>
+          <a href="book-meeting.html" class="btn btn-secondary">
             <i class="fas fa-calendar"></i> Book a Consultation
           </a>
         </div>
@@ -181,9 +182,9 @@
             <li><i class="fas fa-check"></i> Ideal for small vehicles</li>
             <li><i class="fas fa-check"></i> Professional installation included</li>
           </ul>
-          <button class="btn btn-outline" data-open-modal>
-            <i class="fas fa-file-invoice"></i> Get Pricing
-          </button>
+          <a href="rate-card.html" class="btn btn-outline">
+            <i class="fas fa-file-invoice"></i> View Pricing
+          </a>
         </div>
 
         <div class="package-card featured animate-up">
@@ -198,9 +199,9 @@
             <li><i class="fas fa-check"></i> Professional installation included</li>
             <li><i class="fas fa-check"></i> Campaign analytics dashboard</li>
           </ul>
-          <button class="btn btn-primary" data-open-modal>
-            <i class="fas fa-file-invoice"></i> Get Pricing
-          </button>
+          <a href="rate-card.html" class="btn btn-primary">
+            <i class="fas fa-file-invoice"></i> View Pricing
+          </a>
         </div>
 
         <div class="package-card animate-up">
@@ -216,16 +217,16 @@
             <li><i class="fas fa-check"></i> Campaign analytics dashboard</li>
             <li><i class="fas fa-check"></i> Priority driver matching</li>
           </ul>
-          <button class="btn btn-outline" data-open-modal>
-            <i class="fas fa-file-invoice"></i> Get Pricing
-          </button>
+          <a href="rate-card.html" class="btn btn-outline">
+            <i class="fas fa-file-invoice"></i> View Pricing
+          </a>
         </div>
       </div>
       <div class="packages-cta">
         <p>Volume pricing available for fleets of 10+ vehicles.</p>
-        <button class="btn btn-lg btn-outline" data-open-modal>
-          <i class="fas fa-download"></i> Download Full Rate Card (PDF)
-        </button>
+        <a href="rate-card.html" class="btn btn-lg btn-outline">
+          <i class="fas fa-file-invoice"></i> View Full Rate Card
+        </a>
       </div>
     </div>
   </section>
@@ -379,9 +380,9 @@
     <div class="container">
       <h2>Ready to Move Your Brand?</h2>
       <p>Get the full 2026 RoadReach Rate Card with detailed pricing, vehicle categories, volume discounts, and campaign options.</p>
-      <button class="btn btn-lg" data-open-modal>
-        <i class="fas fa-download"></i> Download the Rate Card
-      </button>
+      <a href="rate-card.html" class="btn btn-lg">
+        <i class="fas fa-file-invoice"></i> View the Interactive Rate Card
+      </a>
     </div>
   </section>
 
@@ -397,6 +398,7 @@
           <h4>Quick Links</h4>
           <ul class="footer-links">
             <li><a href="packages.html">Packages</a></li>
+            <li><a href="rate-card.html">Rate Card</a></li>
             <li><a href="case-studies.html">Case Studies</a></li>
             <li><a href="drivers.html">For Drivers</a></li>
             <li><a href="driver-application.html">Driver Application</a></li>
@@ -451,10 +453,10 @@
       <div class="sticky-cta-content">
         <span class="sticky-cta-text"><i class="fas fa-file-invoice"></i> Free 2026 Rate Card — Full Pricing &amp; Packages</span>
         <div class="sticky-cta-buttons">
-          <button class="btn btn-primary btn-sm" data-open-modal>
-            <i class="fas fa-download"></i> Get the Rate Card
-          </button>
-          <a href="contact.html" class="btn btn-outline btn-sm">
+          <a href="rate-card.html" class="btn btn-primary btn-sm">
+            <i class="fas fa-file-invoice"></i> View Interactive Rate Card
+          </a>
+          <a href="book-meeting.html" class="btn btn-outline btn-sm">
             <i class="fas fa-calendar"></i> Book a Meeting
           </a>
           <button class="sticky-cta-close" data-close-bar aria-label="Close">&times;</button>
@@ -468,56 +470,6 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- ========== RATE CARD MODAL ========== -->
-  <div id="rateCardModal" class="modal-overlay">
-    <div class="modal">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <h2>Get Your Free Rate Card</h2>
-      <p>Fill in your details and we'll send you the full 2026 RoadReach rate card and media kit via email — including volume pricing for fleets of all sizes.</p>
-      <form name="rate-card" action="/api/contact" method="POST">
-        <div class="form-group">
-          <label for="rc-name">Full Name *</label>
-          <input type="text" id="rc-name" name="name" required placeholder="Your full name" />
-        </div>
-        <div class="form-group">
-          <label for="rc-company">Company *</label>
-          <input type="text" id="rc-company" name="company" required placeholder="Your company name" />
-        </div>
-        <div class="form-group">
-          <label for="rc-email">Work Email *</label>
-          <input type="email" id="rc-email" name="email" required placeholder="you@company.com" />
-        </div>
-        <div class="form-group">
-          <label for="rc-phone">Phone Number</label>
-          <input type="tel" id="rc-phone" name="phone" placeholder="+27 XX XXX XXXX" />
-        </div>
-        <div class="form-group">
-          <label for="rc-interest">I'm Interested In *</label>
-          <select id="rc-interest" name="interest" required>
-            <option value="">Select package...</option>
-            <option value="lite">Lite Package</option>
-            <option value="standard">Standard Package</option>
-            <option value="premium">Premium Package</option>
-            <option value="multiple">Multiple / Not Sure Yet</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="rc-fleet">Estimated Fleet Size</label>
-          <select id="rc-fleet" name="fleet-size">
-            <option value="">Select range...</option>
-            <option value="1-5">1 &ndash; 5 cars</option>
-            <option value="6-10">6 &ndash; 10 cars</option>
-            <option value="11-20">11 &ndash; 20 cars</option>
-            <option value="21-50">21 &ndash; 50 cars</option>
-            <option value="50+">50+ cars</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-          <i class="fas fa-file-invoice"></i> Send Me the Rate Card
-        </button>
-      </form>
-    </div>
-  </div>
 
   <script src="js/main.js"></script>
 </body>

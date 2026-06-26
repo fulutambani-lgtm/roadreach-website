@@ -1566,75 +1566,7 @@ body.has-sticky-bar .whatsapp-float {
   transform: translateY(0);
 }
 
-/* --- Rate Card Modal --- */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 2000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  backdrop-filter: blur(4px);
-}
 
-.modal-overlay.active {
-  display: flex;
-}
-
-.modal {
-  background: var(--white);
-  border-radius: var(--radius);
-  max-width: 540px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 48px;
-  position: relative;
-  animation: modalIn 0.3s ease;
-}
-
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(0.95) translateY(20px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background: var(--light-gray);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  transition: var(--transition);
-}
-.modal-close:hover {
-  background: var(--brand-red);
-  color: var(--white);
-}
-
-.modal h2 {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--dark-text);
-  margin-bottom: 8px;
-}
-
-.modal p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 28px;
-}
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
@@ -1703,7 +1635,6 @@ body.has-sticky-bar .whatsapp-float {
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
 
-  .modal { padding: 32px 24px; }
 }
 
 @media (max-width: 480px) {

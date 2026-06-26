@@ -67,50 +67,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
   animateElements.forEach(el => observer.observe(el));
 
-  // --- Rate Card Modal ---
-  const modalOverlay = document.getElementById('rateCardModal');
-  const modalClose = document.querySelector('.modal-close');
-  const openModalButtons = document.querySelectorAll('[data-open-modal]');
-
-  if (modalOverlay && modalClose) {
-    function openModal() {
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    openModalButtons.forEach(btn => {
-      btn.addEventListener('click', openModal);
-    });
-
-    modalClose.addEventListener('click', closeModal);
-
-    modalOverlay.addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
-
-    // Close on Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-        closeModal();
-      }
-    });
-  }
-
   // --- Form handling (Vercel API) ---
   const forms = document.querySelectorAll('form');
+
+  function getFormEndpoint(form) {
+    var name = (form.querySelector('[name="form-name"]') || {}).value || '';
+    var action = form.getAttribute('action') || '';
+    if (action) return action;
+    if (name === 'rate-card') return '/api/rate-card';
+    if (name === 'book-meeting') return '/api/book-meeting';
+    if (name === 'booking-response') return '/api/meeting-response';
+    return '/api/contact';
+  }
 
   forms.forEach(form => {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const formData = new FormData(this);
-      const submitBtn = this.querySelector('button[type="submit"]');
-      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+      var formData = new FormData(this);
+      var submitBtn = this.querySelector('button[type="submit"]');
+      var originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
 
       // Disable button & show sending state
       if (submitBtn) {
@@ -118,13 +94,15 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       }
 
-      fetch('/api/contact', {
+      var endpoint = getFormEndpoint(this);
+
+      fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Object.fromEntries(formData))
       })
-      .then(res => res.json())
-      .then(data => {
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
         if (data.success) {
           showFormSuccess(this);
         } else {
@@ -134,8 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = originalBtnHTML;
           }
         }
-      })
-      .catch(() => {
+      }.bind(this))
+      .catch(function() {
         alert('Network error. Please check your connection and try again, or email us directly at info@roadreach.co.za.');
         if (submitBtn) {
           submitBtn.disabled = false;
