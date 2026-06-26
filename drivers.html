@@ -16,6 +16,31 @@
     .page-header h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; color: var(--white); }
     .page-header p { color: rgba(255,255,255,0.6); margin-top: 8px; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto; }
     @media (max-width: 768px) { .page-header h1 { font-size: 2rem; } .page-header { padding: 120px 0 40px; } }
+
+    /* ---- Earnings Calculator ---- */
+    .calc-section { background: var(--light-gray); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 700px; margin: 0 auto 32px; }
+    .calc-field label { display: block; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; color: var(--dark-text); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .calc-field select { width: 100%; padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); color: var(--dark-text); cursor: pointer; transition: border-color 0.2s; }
+    .calc-field select:focus { outline: none; border-color: var(--brand-red); }
+    .calc-result { text-align: center; padding: 32px; background: var(--white); border-radius: 12px; max-width: 500px; margin: 0 auto 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .calc-result .label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px; }
+    .calc-result .amount { font-family: var(--font-heading); font-size: 3rem; font-weight: 800; color: var(--brand-red); line-height: 1.2; }
+    .calc-result .per-month { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+    .calc-result .note { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee; }
+    .calc-table-wrap { overflow-x: auto; max-width: 700px; margin: 0 auto; }
+    .calc-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .calc-table th, .calc-table td { padding: 12px 16px; text-align: center; border-bottom: 1px solid #e0e0e0; }
+    .calc-table th { background: var(--dark-charcoal); color: var(--white); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .calc-table td { background: var(--white); }
+    .calc-table tr.highlight td { background: #fff5f5; font-weight: 700; color: var(--brand-red); }
+    .calc-table .pkg-name { text-align: left; font-weight: 600; color: var(--dark-text); }
+    .calc-table .coverage { display: block; font-size: 0.75rem; font-weight: 400; color: var(--text-muted); }
+    .calc-intro { text-align: center; max-width: 600px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .calc-result .amount { font-size: 2.2rem; }
+    }
   </style>
 <script type="application/ld+json">
 {
@@ -181,6 +206,84 @@
           <h3>Own a Vehicle</h3>
           <p>Own a vehicle in good condition that meets our quality standards (all sizes welcome).</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EARNINGS CALCULATOR ========== -->
+  <section class="calc-section section-padding" id="earnings-calculator">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Earnings Calculator</span>
+        <h2 class="section-title">How Much Will You Earn?</h2>
+        <p class="calc-intro">Your monthly payout depends on your vehicle size and the wrap coverage. Select your options below to see your estimated earnings.</p>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="calc-size">Vehicle Size</label>
+          <select id="calc-size">
+            <option value="small">Small (e.g. hatchback)</option>
+            <option value="medium" selected>Medium (e.g. sedan)</option>
+            <option value="large">Large (e.g. SUV / bakkie)</option>
+            <option value="xl">Extra Large (e.g. double cab / minibus)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="calc-package">Wrap Coverage</label>
+          <select id="calc-package">
+            <option value="lite">Lite — Rear window + Side decals</option>
+            <option value="standard" selected>Standard — Partial wrap (half car)</option>
+            <option value="premium">Premium — Full vehicle wrap</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-result" id="calcResult">
+        <div class="label">Estimated Monthly Payout</div>
+        <div class="amount" id="calcAmount">R2,700</div>
+        <div class="per-month">per month</div>
+        <div class="note">You'll know the exact amount before agreeing to any campaign.</div>
+      </div>
+
+      <div class="text-center">
+        <h3 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:600;color:var(--dark-text);margin-bottom:16px;">Full Payout Table</h3>
+      </div>
+      <div class="calc-table-wrap">
+        <table class="calc-table" id="calcTable">
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>Small</th>
+              <th>Medium</th>
+              <th>Large</th>
+              <th>Extra Large</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-package="lite">
+              <td class="pkg-name">Lite <span class="coverage">Rear window + decals</span></td>
+              <td>R800</td>
+              <td>R1,080</td>
+              <td>R1,458</td>
+              <td>R1,968</td>
+            </tr>
+            <tr data-package="standard" class="highlight">
+              <td class="pkg-name">Standard <span class="coverage">Partial wrap (half car)</span></td>
+              <td>R2,000</td>
+              <td>R2,700</td>
+              <td>R3,645</td>
+              <td>R4,921</td>
+            </tr>
+            <tr data-package="premium">
+              <td class="pkg-name">Premium <span class="coverage">Full vehicle wrap</span></td>
+              <td>R4,000</td>
+              <td>R5,400</td>
+              <td>R7,290</td>
+              <td>R9,842</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -351,5 +454,38 @@
 
   <a href="https://wa.me/27812987137" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
   <script src="js/main.js"></script>
+  <script>
+    // Driver Earnings Calculator
+    (function() {
+      var BASE = 800;
+      var SIZE_MULT = { small: 1.0, medium: 1.35, large: 1.8225, xl: 2.460375 };
+      var PKG_MULT  = { lite: 1.0, standard: 2.5, premium: 5.0 };
+
+      var sizeEl    = document.getElementById('calc-size');
+      var pkgEl     = document.getElementById('calc-package');
+      var amountEl  = document.getElementById('calcAmount');
+      var tableRows = document.querySelectorAll('#calcTable tbody tr');
+
+      function formatRand(n) {
+        return 'R' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+
+      function update() {
+        var size = sizeEl.value;
+        var pkg  = pkgEl.value;
+        var payout = BASE * PKG_MULT[pkg] * SIZE_MULT[size];
+        amountEl.textContent = formatRand(payout);
+
+        // Highlight matching row in table
+        tableRows.forEach(function(row) {
+          row.classList.toggle('highlight', row.getAttribute('data-package') === pkg);
+        });
+      }
+
+      sizeEl.addEventListener('change', update);
+      pkgEl.addEventListener('change', update);
+      update(); // run once on load
+    })();
+  </script>
 </body>
 </html>
