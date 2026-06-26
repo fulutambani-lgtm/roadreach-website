@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Packages &amp; Pricing — RoadReach</title>
-  <meta name="description" content="Explore RoadReach's premium vehicle wrap packages: Lite, Standard, and Full. Volume-based pricing for fleets of all sizes." />
+  <meta name="robots" content="index, follow" />
+  <title>Vehicle Wrap Packages &amp; Pricing | RoadReach — South Africa</title>
+  <meta name="description" content="Compare RoadReach's vehicle wrap packages across South Africa: Lite (from R2,125), Standard (R4,675), and Premium (R8,500). Volume discounts for fleets of 10+ vehicles. Installation charged separately." />
+  <link rel="canonical" href="https://www.roadreach.co.za/packages.html" />
   <link rel="icon" href="images/logo-square.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,22 +55,78 @@
       ]
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.roadreach.co.za/#localbusiness",
+      "name": "RoadReach Media",
+      "url": "https://www.roadreach.co.za/",
+      "image": "https://www.roadreach.co.za/images/logo-square.png",
+      "description": "South Africa's premier mobile billboard network.",
+      "telephone": "+27-81-298-7137",
+      "priceRange": "R2,125 - R17,000/month",
+      "areaServed": ["Gauteng", "Cape Town", "Durban", "Pretoria", "Johannesburg", "South Africa"],
+      "openingHours": "Mo-Fr 08:00-17:00",
+      "address": { "@id": "https://www.roadreach.co.za/#organization" }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://www.roadreach.co.za/packages.html",
-      "name": "Packages & Pricing — RoadReach",
-      "description": "Explore RoadReach's premium vehicle wrap packages: Lite, Standard, and Full. Volume-based pricing for fleets of all sizes.",
-      "isPartOf": {
-        "@id": "https://www.roadreach.co.za/#website"
-      }
+      "name": "Vehicle Wrap Packages &amp; Pricing | RoadReach — South Africa",
+      "description": "Compare RoadReach's vehicle wrap packages: Lite (from R2,125), Standard (R4,675), and Premium (R8,500) per car per month. Volume discounts available.",
+      "isPartOf": { "@id": "https://www.roadreach.co.za/#website" },
+      "breadcrumb": { "@id": "https://www.roadreach.co.za/packages.html#breadcrumb" }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.roadreach.co.za/#website",
       "name": "RoadReach",
       "url": "https://www.roadreach.co.za/",
-      "publisher": {
-        "@id": "https://www.roadreach.co.za/#organization"
-      }
+      "publisher": { "@id": "https://www.roadreach.co.za/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.roadreach.co.za/packages.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.roadreach.co.za/" },
+        { "@type": "ListItem", "position": 2, "name": "Packages", "item": "https://www.roadreach.co.za/packages.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.roadreach.co.za/packages.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What vehicle wrap packages does RoadReach offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RoadReach offers three packages: Lite (R2,125/month, front door decals plus rear window), Standard (R4,675/month, half wrap covering back doors backwards), and Premium (R8,500/month, full vehicle wrap). All packages are available across four vehicle categories from small hatchbacks to large SUVs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there volume discounts for fleet advertising?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Volume discounts start at 5+ vehicles and go up to 20% off for fleets of 50+ vehicles. The larger your fleet, the lower your per-vehicle cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is installation included in the monthly price?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, installation is charged separately as a one-off fee. Costs vary by wrap type and vehicle size. All installations are done by Signorama, our accredited partner."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What vehicle categories are available for advertising?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work with four vehicle categories: Small (Hyundai i10, Kia Picanto, VW Up), Medium (VW Polo, Toyota Yaris, Ford Fiesta), Large (Toyota Corolla, BMW 3 Series, Kia Optima), and Extra Large (Toyota Fortuner, Ford Ranger, BMW X5)."
+          }
+        }
+      ]
     }
   ]
 }
@@ -310,6 +368,6 @@
   </a>
 
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

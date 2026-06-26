@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us — RoadReach</title>
-  <meta name="description" content="Get in touch with RoadReach. Book a meeting, request our rate card, or enquire about becoming a driver." />
+  <meta name="robots" content="index, follow" />
+  <title>Contact RoadReach — Mobile Billboard Advertising South Africa | Pretoria</title>
+  <meta name="description" content="Get in touch with RoadReach for mobile billboard advertising in South Africa. Call +27 81 298 7137, email info@roadreach.co.za, or book a meeting. Based in Pretoria." />
+  <link rel="canonical" href="https://www.roadreach.co.za/contact.html" />
   <link rel="icon" href="images/logo-square.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,43 +31,45 @@
       "url": "https://www.roadreach.co.za/",
       "logo": "https://www.roadreach.co.za/images/logo-square.png",
       "description": "South Africa's premier mobile billboard network. Connecting brands with communities, one kilometre at a time.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Festura Street, Lotus Gardens",
-        "addressLocality": "Pretoria",
-        "postalCode": "0008",
-        "addressCountry": "ZA"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+27-81-298-7137",
-        "contactType": "sales",
-        "email": "info@roadreach.co.za"
-      },
-      "sameAs": [
-        "https://www.facebook.com/roadreachza",
-        "https://www.instagram.com/roadreachza/",
-        "https://www.linkedin.com/company/roadreachza",
-        "https://www.tiktok.com/@roadreachza"
-      ]
+      "address": { "@type": "PostalAddress", "streetAddress": "Festura Street, Lotus Gardens", "addressLocality": "Pretoria", "postalCode": "0008", "addressCountry": "ZA" },
+      "contactPoint": { "@type": "ContactPoint", "telephone": "+27-81-298-7137", "contactType": "sales", "email": "info@roadreach.co.za" },
+      "sameAs": ["https://www.facebook.com/roadreachza", "https://www.instagram.com/roadreachza/", "https://www.linkedin.com/company/roadreachza", "https://www.tiktok.com/@roadreachza"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.roadreach.co.za/#localbusiness",
+      "name": "RoadReach Media",
+      "url": "https://www.roadreach.co.za/",
+      "image": "https://www.roadreach.co.za/images/logo-square.png",
+      "description": "South Africa's premier mobile billboard network.",
+      "telephone": "+27-81-298-7137",
+      "priceRange": "R2,125 - R17,000/month",
+      "areaServed": ["Gauteng", "Cape Town", "Durban", "Pretoria", "Johannesburg", "South Africa"],
+      "openingHours": "Mo-Fr 08:00-17:00",
+      "address": { "@id": "https://www.roadreach.co.za/#organization" }
     },
     {
       "@type": "WebPage",
       "@id": "https://www.roadreach.co.za/contact.html",
-      "name": "Contact Us — RoadReach",
-      "description": "Get in touch with RoadReach. Book a meeting, request our rate card, or enquire about becoming a driver.",
-      "isPartOf": {
-        "@id": "https://www.roadreach.co.za/#website"
-      }
+      "name": "Contact RoadReach — Mobile Billboard Advertising South Africa | Pretoria",
+      "description": "Get in touch with RoadReach for mobile billboard advertising in South Africa. Call +27 81 298 7137 or email info@roadreach.co.za.",
+      "isPartOf": { "@id": "https://www.roadreach.co.za/#website" },
+      "breadcrumb": { "@id": "https://www.roadreach.co.za/contact.html#breadcrumb" }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.roadreach.co.za/#website",
       "name": "RoadReach",
       "url": "https://www.roadreach.co.za/",
-      "publisher": {
-        "@id": "https://www.roadreach.co.za/#organization"
-      }
+      "publisher": { "@id": "https://www.roadreach.co.za/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.roadreach.co.za/contact.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.roadreach.co.za/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.roadreach.co.za/contact.html" }
+      ]
     }
   ]
 }
@@ -303,6 +307,6 @@
   </a>
 
 
-  <script src="js/main.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>

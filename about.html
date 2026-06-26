@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us — RoadReach</title>
-  <meta name="description" content="Learn about RoadReach Media's story, our mission to connect brands with communities, and our commitment to empowering South African drivers." />
+  <meta name="robots" content="index, follow" />
+  <title>About RoadReach — South Africa's Mobile Billboard Network | Pretoria</title>
+  <meta name="description" content="RoadReach was founded to connect brands with South African communities while putting money in the pockets of everyday drivers. Based in Pretoria, serving Gauteng, Cape Town &amp; Durban." />
   <meta property="og:description" content="RoadReach was founded by Fulufhelo Tambani with a vision to put money in the pockets of everyday South Africans." />
+  <link rel="canonical" href="https://www.roadreach.co.za/about.html" />
   <link rel="icon" href="images/logo-square.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,43 +36,45 @@
       "url": "https://www.roadreach.co.za/",
       "logo": "https://www.roadreach.co.za/images/logo-square.png",
       "description": "South Africa's premier mobile billboard network. Connecting brands with communities, one kilometre at a time.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Festura Street, Lotus Gardens",
-        "addressLocality": "Pretoria",
-        "postalCode": "0008",
-        "addressCountry": "ZA"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+27-81-298-7137",
-        "contactType": "sales",
-        "email": "info@roadreach.co.za"
-      },
-      "sameAs": [
-        "https://www.facebook.com/roadreachza",
-        "https://www.instagram.com/roadreachza/",
-        "https://www.linkedin.com/company/roadreachza",
-        "https://www.tiktok.com/@roadreachza"
-      ]
+      "address": { "@type": "PostalAddress", "streetAddress": "Festura Street, Lotus Gardens", "addressLocality": "Pretoria", "postalCode": "0008", "addressCountry": "ZA" },
+      "contactPoint": { "@type": "ContactPoint", "telephone": "+27-81-298-7137", "contactType": "sales", "email": "info@roadreach.co.za" },
+      "sameAs": ["https://www.facebook.com/roadreachza", "https://www.instagram.com/roadreachza/", "https://www.linkedin.com/company/roadreachza", "https://www.tiktok.com/@roadreachza"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.roadreach.co.za/#localbusiness",
+      "name": "RoadReach Media",
+      "url": "https://www.roadreach.co.za/",
+      "image": "https://www.roadreach.co.za/images/logo-square.png",
+      "description": "South Africa's premier mobile billboard network.",
+      "telephone": "+27-81-298-7137",
+      "priceRange": "R2,125 - R17,000/month",
+      "areaServed": ["Gauteng", "Cape Town", "Durban", "Pretoria", "Johannesburg", "South Africa"],
+      "openingHours": "Mo-Fr 08:00-17:00",
+      "address": { "@id": "https://www.roadreach.co.za/#organization" }
     },
     {
       "@type": "WebPage",
       "@id": "https://www.roadreach.co.za/about.html",
-      "name": "About Us — RoadReach",
-      "description": "Learn about RoadReach Media's story, our mission to connect brands with communities, and our commitment to empowering South African drivers.",
-      "isPartOf": {
-        "@id": "https://www.roadreach.co.za/#website"
-      }
+      "name": "About RoadReach — South Africa's Mobile Billboard Network | Pretoria",
+      "description": "RoadReach was founded to connect brands with South African communities while putting money in the pockets of everyday drivers.",
+      "isPartOf": { "@id": "https://www.roadreach.co.za/#website" },
+      "breadcrumb": { "@id": "https://www.roadreach.co.za/about.html#breadcrumb" }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.roadreach.co.za/#website",
       "name": "RoadReach",
       "url": "https://www.roadreach.co.za/",
-      "publisher": {
-        "@id": "https://www.roadreach.co.za/#organization"
-      }
+      "publisher": { "@id": "https://www.roadreach.co.za/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.roadreach.co.za/about.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.roadreach.co.za/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.roadreach.co.za/about.html" }
+      ]
     }
   ]
 }
@@ -283,6 +287,6 @@
 
 
   <a href="https://wa.me/27812987137" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-  <script src="js/main.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>
