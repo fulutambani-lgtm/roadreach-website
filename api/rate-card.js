@@ -208,8 +208,8 @@ export default async function handler(req, res) {
       }
     }
 
-    // 3. Log to Google Sheet (fire-and-forget)
-    logToSheet(body);
+    // 3. Log to Google Sheet
+    await logToSheet(body);
 
     return res.status(200).json({
       success: true,
