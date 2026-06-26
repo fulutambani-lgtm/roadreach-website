@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Application — RoadReach</title>
+  <meta name="description" content="Apply to become a RoadReach driver. Earn money displaying premium brand advertising on your vehicle. Simple application process, flexible commitment." />
+  <link rel="icon" href="images/logo-square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page-header { background: var(--dark-charcoal); padding: 150px 0 60px; text-align: center; }
+    .page-header h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; color: var(--white); }
+    .page-header p { color: rgba(255,255,255,0.6); margin-top: 8px; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    @media (max-width: 768px) { .page-header h1 { font-size: 2rem; } .page-header { padding: 120px 0 40px; } }
+
+    .app-step { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 28px; }
+    .app-step-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--brand-red); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; }
+    .app-step h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--dark-text); margin-bottom: 4px; }
+    .app-step p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    .notify-form { max-width: 500px; margin: 32px auto 0; }
+    .notify-form .form-group { margin-bottom: 16px; }
+    .notify-form input { width: 100%; padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; font-family: var(--font-body); font-size: 1rem; }
+    .notify-form input:focus { outline: none; border-color: var(--brand-red); }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.roadreach.co.za/#organization",
+      "name": "RoadReach Media",
+      "url": "https://www.roadreach.co.za/",
+      "logo": "https://www.roadreach.co.za/images/logo-square.png",
+      "description": "South Africa's premier mobile billboard network.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Festura Street, Lotus Gardens",
+        "addressLocality": "Pretoria",
+        "postalCode": "0008",
+        "addressCountry": "ZA"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+27-81-298-7137",
+        "contactType": "sales",
+        "email": "info@roadreach.co.za"
+      },
+      "sameAs": [
+        "https://www.facebook.com/roadreachza",
+        "https://www.instagram.com/roadreachza/",
+        "https://www.linkedin.com/company/roadreachza",
+        "https://www.tiktok.com/@roadreachza"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.roadreach.co.za/driver-application.html",
+      "name": "Driver Application — RoadReach",
+      "description": "Apply to become a RoadReach driver. Earn money displaying premium brand advertising on your vehicle.",
+      "isPartOf": { "@id": "https://www.roadreach.co.za/#website" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.roadreach.co.za/#website",
+      "name": "RoadReach",
+      "url": "https://www.roadreach.co.za/",
+      "publisher": { "@id": "https://www.roadreach.co.za/#organization" }
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F13FWS4SWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F13FWS4SWH');
+</script>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-landscape.png" alt="RoadReach Logo" />
+        <span>RoadReach</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-primary">Book a Meeting</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label" style="color:var(--brand-red);background:rgba(217,4,14,0.15);padding:8px 16px;border-radius:4px;">Driver Application</span>
+      <h1>Join the RoadReach Fleet</h1>
+      <p>Turn your car into an income stream. Apply to become a RoadReach driver and earn money displaying premium brand advertising while driving your normal routes.</p>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="about section-padding">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text animate-up">
+          <span class="section-label">Simple Process</span>
+          <h2>How It Works</h2>
+          <p>Becoming a RoadReach driver is straightforward. We handle the wrap installation, you drive as normal, and you earn a monthly payout.</p>
+
+          <div class="app-step">
+            <div class="app-step-num">1</div>
+            <div>
+              <h3>Submit Your Expression of Interest</h3>
+              <p>Send us your details including your vehicle type and size. We'll review your application and let you know if your vehicle meets our quality standards.</p>
+            </div>
+          </div>
+          <div class="app-step">
+            <div class="app-step-num">2</div>
+            <div>
+              <h3>Vehicle Assessment</h3>
+              <p>We'll inspect your vehicle to confirm it's in good condition and measure it to determine the right wrap package and your monthly payout.</p>
+            </div>
+          </div>
+          <div class="app-step">
+            <div class="app-step-num">3</div>
+            <div>
+              <h3>Professional Wrap Installation</h3>
+              <p>Our signage partners (Signorama) install a premium-quality vinyl wrap on your vehicle at no cost to you. No damage to your paint — guaranteed.</p>
+            </div>
+          </div>
+          <div class="app-step">
+            <div class="app-step-num">4</div>
+            <div>
+              <h3>Drive &amp; Earn</h3>
+              <p>Drive your normal routes — commuting, errands, or business travel. Your monthly payout is deposited directly into your bank account.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-image animate-up">
+          <div style="background:var(--light-gray);border-radius:12px;padding:40px 32px;text-align:center;">
+            <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:8px;">Average Monthly Earnings</div>
+            <div style="font-family:var(--font-heading);font-size:3rem;font-weight:800;color:var(--brand-red);">R2,500+</div>
+            <div style="font-size:0.9rem;color:var(--text-muted);margin-bottom:20px;">Depending on vehicle size &amp; wrap coverage</div>
+            <a href="drivers.html#earnings-calculator" class="btn btn-dark">Calculate Your Earnings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REQUIREMENTS ========== -->
+  <section class="mission-section section-padding">
+    <div class="container text-center">
+      <span class="section-label">Requirements</span>
+      <h2 class="section-title">What You Need to Qualify</h2>
+    </div>
+    <div class="container">
+      <div class="why-grid" style="margin-top:40px;">
+        <div class="why-card animate-up">
+          <div class="why-icon"><i class="fas fa-id-card"></i></div>
+          <h3>SA Citizen or Resident</h3>
+          <p>Must be a South African citizen or permanent resident with a valid ID document.</p>
+        </div>
+        <div class="why-card animate-up">
+          <div class="why-icon"><i class="fas fa-id-card"></i></div>
+          <h3>Valid Driver's Licence</h3>
+          <p>Hold a valid South African driver's licence and be at least 18 years of age.</p>
+        </div>
+        <div class="why-card animate-up">
+          <div class="why-icon"><i class="fas fa-car"></i></div>
+          <h3>Own a Vehicle</h3>
+          <p>Own a vehicle in good condition that meets our quality standards. All sizes welcome — from hatchbacks to minibuses.</p>
+        </div>
+        <div class="why-card animate-up">
+          <div class="why-icon"><i class="fas fa-road"></i></div>
+          <h3>Drive Regularly</h3>
+          <p>Use your vehicle at least 5 days per week so the brand gets adequate exposure. Your normal daily routine is usually sufficient.</p>
+        </div>
+        <div class="why-card animate-up">
+          <div class="why-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Smartphone</h3>
+          <p>Have a smartphone to receive campaign updates, submit periodic photos if required, and stay in touch with the RoadReach team.</p>
+        </div>
+        <div class="why-card animate-up">
+          <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Bank Account</h3>
+          <p>Have a South African bank account for monthly payout deposits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== APPLICATIONS CLOSED / NOTIFY ========== -->
+  <section class="cta-banner">
+    <div class="container text-center">
+      <h2>Applications Currently Closed</h2>
+      <p style="max-width:600px;margin:0 auto 24px;">We're not accepting new driver applications right now, but we'll announce new openings on our social channels. Leave your email below and we'll notify you the moment recruitment reopens.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <form class="notify-form" action="/api/contact" method="POST" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:0;">
+          <input type="hidden" name="name" value="Driver Waitlist" />
+          <input type="hidden" name="company" value="Individual Driver" />
+          <input type="hidden" name="interest" value="driving" />
+          <input type="hidden" name="message" value="Driver application waitlist signup" />
+          <input type="email" name="email" required placeholder="Enter your email address" style="padding:14px 20px;border:2px solid #ddd;border-radius:8px;font-size:1rem;min-width:280px;font-family:inherit;" />
+          <button type="submit" class="btn btn-lg" style="white-space:nowrap;"><i class="fas fa-bell"></i> Notify Me</button>
+        </form>
+      </div>
+      <p style="margin-top:20px;font-size:0.9rem;color:rgba(255,255,255,0.6);">Or follow us on <a href="https://www.facebook.com/roadreachza" target="_blank" style="color:var(--white);text-decoration:underline;">Facebook</a>, <a href="https://www.instagram.com/roadreachza/" target="_blank" style="color:var(--white);text-decoration:underline;">Instagram</a>, or <a href="https://www.linkedin.com/company/roadreachza" target="_blank" style="color:var(--white);text-decoration:underline;">LinkedIn</a> for updates.</p>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="section-padding">
+    <div class="container text-center">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Application Questions</h2>
+      <p class="section-subtitle">Common questions about the driver application process.</p>
+    </div>
+    <div class="container" style="max-width:800px;margin-top:40px;">
+      <div class="why-card animate-up" style="text-align:left;margin-bottom:16px;padding:24px 32px;">
+        <h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;color:var(--dark-text);margin-bottom:8px;">How long does the application process take?</h3>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.6;">Once applications reopen, the process typically takes 1-2 weeks from submission to wrap installation, depending on vehicle inspection scheduling and wrap availability.</p>
+      </div>
+      <div class="why-card animate-up" style="text-align:left;margin-bottom:16px;padding:24px 32px;">
+        <h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;color:var(--dark-text);margin-bottom:8px;">Is there a cost to join?</h3>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.6;">No. There is no cost to join RoadReach. We cover the full cost of professional wrap installation and removal. Your vehicle just needs to pass our quality inspection.</p>
+      </div>
+      <div class="why-card animate-up" style="text-align:left;margin-bottom:16px;padding:24px 32px;">
+        <h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;color:var(--dark-text);margin-bottom:8px;">What if my car has existing damage or rust?</h3>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.6;">Vehicles must be in good condition with no significant rust, damaged panels, or peeling paint. Minor wear and tear is generally acceptable. We'll assess your vehicle during the inspection.</p>
+      </div>
+      <div class="why-card animate-up" style="text-align:left;margin-bottom:16px;padding:24px 32px;">
+        <h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;color:var(--dark-text);margin-bottom:8px;">Can I remove the wrap if I sell my car?</h3>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.6;">Yes. We'll arrange professional removal at no cost to you. You're free to leave the program after the initial campaign commitment period with 30 days' notice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-banner" style="background:var(--dark-charcoal);">
+    <div class="container">
+      <h2>Ready to Start Earning?</h2>
+      <p>Use our calculator to see what you could earn, then join the waitlist for when applications reopen.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="drivers.html#earnings-calculator" class="btn btn-lg"><i class="fas fa-calculator"></i> Calculate Your Earnings</a>
+        <a href="driver-terms.html" class="btn btn-outline btn-lg"><i class="fas fa-file-contract"></i> View Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-landscape.png" alt="RoadReach" />
+          <p>South Africa's premier mobile billboard network.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="drivers.html">For Drivers</a></li>
+            <li><a href="driver-application.html">Driver Application</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog/">Insights</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.facebook.com/roadreachza" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/roadreachza/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/roadreachza" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@roadreach.co.za">info@roadreach.co.za</a></li>
+            <li><a href="https://wa.me/27812987137" target="_blank">WhatsApp: +27 81 298 7137</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="trust-bar">
+        <div class="container">
+          <div class="trust-bar-grid">
+            <span class="trust-badge-item"><i class="fas fa-shield-alt"></i> POPIA Compliant</span>
+            <span class="trust-badge-item"><i class="fas fa-lock"></i> Secure Data Handling</span>
+            <span class="trust-badge-item"><i class="fas fa-handshake"></i> 70% to Drivers</span>
+            <span class="trust-badge-item"><i class="fas fa-certificate"></i> Signorama Partner</span>
+            <span class="trust-badge-item"><i class="fas fa-phone-alt"></i> WhatsApp Support</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 RoadReach Media. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="driver-terms.html">Driver Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/27812987137" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <script src="js/main.js"></script>
+</body>
+</html>

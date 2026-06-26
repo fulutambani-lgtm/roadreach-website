@@ -29,28 +29,18 @@
       "permanent": true
     },
     {
-      "source": "/driver-application",
-      "destination": "/drivers.html",
-      "permanent": true
-    },
-    {
       "source": "/driver-apply",
-      "destination": "/drivers.html",
-      "permanent": true
-    },
-    {
-      "source": "/driver-terms",
-      "destination": "/drivers.html",
+      "destination": "/driver-application",
       "permanent": true
     },
     {
       "source": "/driver-terms-and-conditions",
-      "destination": "/drivers.html",
+      "destination": "/driver-terms",
       "permanent": true
     },
     {
       "source": "/passive-income-drivers",
-      "destination": "/drivers.html",
+      "destination": "/drivers",
       "permanent": true
     }
   ],
