@@ -58,6 +58,7 @@
     .rc-table td { padding: 14px 16px; text-align: center; border-bottom: 1px solid #e0e0e0; background: var(--white); }
     .rc-table tr:nth-child(even) td { background: #fafafa; }
     .rc-table .pkg-name { text-align: left; font-weight: 600; color: var(--dark-text); }
+    .rc-table td[rowspan] { vertical-align: middle; }
 
     /* ── Download / Form ── */
     .rc-form-box { background: var(--white); border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); max-width: 600px; margin: 0 auto; text-align: center; }
@@ -227,9 +228,6 @@
             <i class="fas fa-file-pdf"></i> Send Me the Rate Card
           </button>
         </form>
-        <div class="rc-alt-download">
-          Already have an account? <a href="https://docs.google.com/spreadsheets/d/1YjVG0nhpl42n0k7sbnY1gKBscE25L9fztjma6piZAdI/edit?usp=sharing" target="_blank">Open the Rate Card in Google Sheets</a>
-        </div>
       </div>
     </div>
   </section>
@@ -241,7 +239,7 @@
     <section class="rc-section rc-section-alt">
       <div class="container">
         <h2>Choose Your Package</h2>
-        <p class="rc-subtitle">Three wrap levels, each available across all four vehicle categories. All include professional installation and removal.</p>
+        <p class="rc-subtitle">Three wrap levels, each available across all four vehicle categories. Installation is charged separately — see rates below.</p>
         <div class="rc-packages">
           <!-- Lite -->
           <div class="rc-card">
@@ -253,7 +251,6 @@
               <li><i class="fas fa-check"></i> Front door branding (both sides)</li>
               <li><i class="fas fa-check"></i> Rear window branding</li>
               <li><i class="fas fa-check"></i> Ideal for small vehicles</li>
-              <li><i class="fas fa-check"></i> Professional installation included</li>
             </ul>
           </div>
           <!-- Standard (Featured) -->
@@ -262,12 +259,11 @@
             <div class="icon"><i class="fas fa-truck"></i></div>
             <h3>Standard</h3>
             <div class="price">R4,675 <span>/car/month</span></div>
-            <p>Half-car wrap from the back doors forward. Our most popular choice for maximum impact.</p>
+            <p>Half-car wrap covering the back doors backwards. Our most popular choice for maximum impact.</p>
             <ul>
-              <li><i class="fas fa-check"></i> Half-car wrap (back doors forward)</li>
+              <li><i class="fas fa-check"></i> Half-car wrap (back doors backwards)</li>
               <li><i class="fas fa-check"></i> Both sides + rear</li>
               <li><i class="fas fa-check"></i> Suitable for all vehicle sizes</li>
-              <li><i class="fas fa-check"></i> Professional installation included</li>
               <li><i class="fas fa-check"></i> Campaign analytics dashboard</li>
             </ul>
           </div>
@@ -281,7 +277,6 @@
               <li><i class="fas fa-check"></i> Full vehicle wrap (entire car)</li>
               <li><i class="fas fa-check"></i> 360-degree brand presence</li>
               <li><i class="fas fa-check"></i> Premium vinyl — gloss or matte finish</li>
-              <li><i class="fas fa-check"></i> Professional installation included</li>
               <li><i class="fas fa-check"></i> Campaign analytics dashboard</li>
               <li><i class="fas fa-check"></i> Priority driver matching</li>
             </ul>
@@ -358,6 +353,78 @@
                 <td>R12,750</td>
                 <td>R17,000</td>
                 <td>20% off 10+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALLATION RATES -->
+    <section class="rc-section" id="installation">
+      <div class="container">
+        <h2>Installation Rates</h2>
+        <p class="rc-subtitle">One-off installation fees charged per vehicle. These are separate from the monthly wrap rental.</p>
+        <div class="rc-table-wrap">
+          <table class="rc-table">
+            <thead>
+              <tr>
+                <th>Wrap Type</th>
+                <th>Vehicle Type</th>
+                <th>Cost to Brand</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pkg-name" rowspan="4">Full Wrap</td>
+                <td>Small (Hyundai i10, Kia Picanto, VW Up) 14–16 sq</td>
+                <td>R18,200</td>
+              </tr>
+              <tr>
+                <td>Medium (Polo, Fiesta, Yaris, i20) 16–19 sq</td>
+                <td>R32,500</td>
+              </tr>
+              <tr>
+                <td>Large (Corolla, Jetta, Kia Optima, BMW 3 Series) 19–22 sq</td>
+                <td>R45,500</td>
+              </tr>
+              <tr>
+                <td>Extra Large (Fortuner, Ranger, Amarok, Everest, X5) 22–25 sq</td>
+                <td>R71,500</td>
+              </tr>
+              <tr>
+                <td class="pkg-name" rowspan="4">Half Wrap</td>
+                <td>Small (Hyundai i10, Kia Picanto, VW Up) 14–16 sq</td>
+                <td>R9,100</td>
+              </tr>
+              <tr>
+                <td>Medium (Polo, Fiesta, Yaris, i20) 16–19 sq</td>
+                <td>R19,500</td>
+              </tr>
+              <tr>
+                <td>Large (Corolla, Jetta, Kia Optima, BMW 3 Series) 19–22 sq</td>
+                <td>R26,000</td>
+              </tr>
+              <tr>
+                <td>Extra Large (Fortuner, Ranger, Amarok, Everest, X5) 22–25 sq</td>
+                <td>R45,500</td>
+              </tr>
+              <tr>
+                <td class="pkg-name" rowspan="4">Decals<br />(Rear Window + Front Doors)</td>
+                <td>Small (Hyundai i10, Kia Picanto, VW Up) 14–16 sq</td>
+                <td>R3,900</td>
+              </tr>
+              <tr>
+                <td>Medium (Polo, Fiesta, Yaris, i20) 16–19 sq</td>
+                <td>R10,400</td>
+              </tr>
+              <tr>
+                <td>Large (Corolla, Jetta, Kia Optima, BMW 3 Series) 19–22 sq</td>
+                <td>R19,500</td>
+              </tr>
+              <tr>
+                <td>Extra Large (Fortuner, Ranger, Amarok, Everest, X5) 22–25 sq</td>
+                <td>R26,000</td>
               </tr>
             </tbody>
           </table>
