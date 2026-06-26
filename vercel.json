@@ -27,6 +27,37 @@
       "source": "/blog",
       "destination": "/blog/",
       "permanent": true
+    },
+    {
+      "source": "/driver-application",
+      "destination": "/drivers.html",
+      "permanent": true
+    },
+    {
+      "source": "/driver-apply",
+      "destination": "/drivers.html",
+      "permanent": true
+    },
+    {
+      "source": "/driver-terms",
+      "destination": "/drivers.html",
+      "permanent": true
+    },
+    {
+      "source": "/driver-terms-and-conditions",
+      "destination": "/drivers.html",
+      "permanent": true
+    },
+    {
+      "source": "/passive-income-drivers",
+      "destination": "/drivers.html",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:page",
+      "destination": "/:page.html"
     }
   ]
 }
