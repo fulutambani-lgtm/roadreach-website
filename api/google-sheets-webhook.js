@@ -32,21 +32,19 @@
  * ===============================================================
  */
 
+/**
+ * Google Sheet ID where webhook data is stored.
+ * Replace this with your own sheet ID if you want to use a different sheet.
+ * To get the ID: open your Google Sheet, look at the URL:
+ * https://docs.google.com/spreadsheets/d/<THIS_IS_THE_ID>/edit
+ */
+const SHEET_ID = '132fBCwviAIEhVgKc3UegnsERQ21p2hvA4ullmBWVsjk';
+
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     const type = data.type || 'unknown';
-    let ss = SpreadsheetApp.getActiveSpreadsheet();
-    if (!ss) {
-      // Standalone deployment — create or open the webhook spreadsheet
-      const ssName = 'RoadReach Webhook Data';
-      const files = DriveApp.getFilesByName(ssName);
-      if (files.hasNext()) {
-        ss = SpreadsheetApp.open(files.next());
-      } else {
-        ss = SpreadsheetApp.create(ssName);
-      }
-    }
+    let ss = SpreadsheetApp.openById(SHEET_ID);
 
     if (type === 'rate-card') {
       logRateCard(ss, data);
