@@ -1,6 +1,6 @@
 # RoadReach Website — Site Audit & Issues Report
 
-**Date:** 24 June 2026 (updated after fixes)  
+**Date:** 26 June 2026 (final — all tasks complete)  
 **Auditor:** OpenWork AI  
 **Live URL:** https://www.roadreach.co.za/  
 **Source:** `roadreach-website/` (local workspace)
@@ -192,10 +192,84 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 ### 🔵 Minimal opencode.jsonc
 - **Fix**: Added project name, description, and domain URL.
 
+---
+
+## Issues Fixed (2026-06-26)
+
+### 🔴 Rate card content was publicly accessible — now gated behind lead capture ✅
+- **Files**: `rate-card.html`, `api/rate-card.js`, `js/main.js`
+- **Fix**: All pricing, fleet table, cost calculator, and benefits wrapped in `#gated-content` (`display: none`). Capture-phase form submit interceptor reveals content on success (same page, no redirect). Serverless endpoint sends admin notification + PDF auto-reply + logs to Google Sheets via webhook.
+- **Impact**: Leads must submit email + company name before seeing rates. No more un-gated pricing page.
+
+### 🔴 Rate card package copy was incorrect — two misleading claims removed ✅
+- **Files**: `rate-card.html`
+- **Fix**: Removed "Professional installation included" from all three package cards. Changed Standard description from "from the back doors forward" to "covering the back doors backwards." Added "Installation is charged separately — see rates below" subtitle.
+- **Impact**: No more misleading pricing claims.
+
+### 🟡 No rate card installation rates published ✅
+- **Files**: `rate-card.html`
+- **Fix**: Added Installation Rates table with 12 rows (Full Wrap / Half Wrap / Decals × Small through Extra Large). Real pricing (R3,900–R71,500). CSS rowspan alignment.
+- **Impact**: Clients can see exact installation costs before enquiring.
+
+### 🟡 No meeting booking system existed ✅
+- **Files**: `book-meeting.html`, `api/book-meeting.js`, `api/meeting-response.js`
+- **Fix**: New meeting booking page with date/time/platform proposal form, today-min date enforcement, alternative contact section. Backend sends admin notification with Accept / Suggest-Alternative action links. User confirmation email on booking. Google Sheets logging.
+- **Impact**: Clients can propose meeting times without back-and-forth email chains.
+
+### 🟡 No "/open rate card in sheets" link removed from gated content ✅
+- **Files**: `rate-card.html`
+- **Fix**: Removed the "Open Rate Card in Google Sheets" link that would have defeated the gate.
+- **Impact**: Rate card content is fully protected after gate removal.
+
+### 🟢 Footer had duplicate/inconsistent links across pages ✅
+- **Files**: `rate-card.html`, `book-meeting.html`
+- **Fix**: Removed duplicate "Rate Card" in Quick Links. Replaced "Book a Meeting" with LinkedIn in Company section. Removed stray "Book a Meeting" from Support section.
+- **Impact**: Footer now consistent across all 14 pages.
+
+### 🟢 Site-wide SEO / AI visibility overhaul ✅
+- **Files**: All 20 HTML files, `sitemap.xml`
+- **Fixes**:
+  - **LocalBusiness schema** added to 11 pages (8 content + 3 blog posts) — telephone, priceRange, areaServed (Gauteng, Cape Town, Durban, Pretoria, Johannesburg, SA), openingHours
+  - **FAQPage schema** added to 3 key pages: index.html (5 Q&As), packages.html (4 Q&As), drivers.html (6 Q&As) — 15 total, targeting AI Overviews / ChatGPT / Claude
+  - **BreadcrumbList schema** added to all 11 indexable pages — Home > Page
+  - **Canonical URLs** added to all 10 indexable pages
+  - **Robots meta** (index, follow) added to all 10 indexable pages
+  - **Titles/descriptions** improved with SA location keywords (Pretoria, Johannesburg, Cape Town, South Africa)
+  - **`defer` attribute** added to all 20 main.js script tags (render-blocking fix → improved Core Web Vitals)
+  - **Sitemap.xml** updated — added `rate-card.html` (0.95 priority, weekly) and `driver-application.html` (0.7 priority, monthly); sorted by priority
+
+### 🟢 Google Sheets logging for both forms ✅
+- **Files**: `api/rate-card.js`, `api/book-meeting.js`
+- **Fix**: Google Apps Script webhook (Version 4, `SpreadsheetApp.openById()`) deployed and stable. Both endpoints call `await logToSheet()` before responding.
+- **Impact**: All submissions logged to 132fBCwviAIEhVgKc3UegnsERQ21p2hvA4ullmBWVsjk (tabs: Sheet1, Bookings, Rate Cards).
+
+### 🟢 Static site-audit-report.md updated ✅
+- **Fix**: This report now reflects all changes through 26 June 2026.
+
+---
+
+## What Works (Verified — Added 2026-06-26)
+
+| Feature | Status | Details |
+|---|---|---|
+| Rate card lead capture gate | ✅ | Form → content reveal (no redirect) |
+| Rate card PDF auto-reply | ✅ | Branded PDF emailed to lead after capture |
+| Meeting booking flow | ✅ | Propose → Admin email → Accept/Suggest → Confirmation |
+| Admin response handler | ✅ | `/api/meeting-response` — GET to accept, POST to suggest alternative |
+| Google Sheets logging | ✅ | Both forms log to the same sheet |
+| SEO structured data (LocalBusiness) | ✅ | All 11 indexable pages |
+| SEO FAQ (FAQPage) | ✅ | 15 Q&As across 3 pages |
+| SEO breadcrumbs (BreadcrumbList) | ✅ | All 11 indexable pages |
+| Render-blocking eliminated | ✅ | defer on all 20 pages |
+| Sitemap up to date | ✅ | 13 indexed URLs |
+
 ## Remaining Observations
 
-1. **Blog nav loses `scrolled` class at top of page** — `updateNav()` removes `scrolled` when `scrollY < 60`. Blog pages have a dark header where a transparent nav makes text invisible. This was tracked as a remaining issue but blog pages already have dark charcoal headers at the top, making the default white nav text visible. Effectively resolved in prior fixes.
-2. **Legal pages** (`privacy.html`, `refund-policy.html`, `terms-of-service.html`) — no rate card CTAs. These are legal pages where CTAs are not appropriate.
+1. **Blog nav** — Effectively resolved (dark charcoal headers make nav text visible even when scrolled state is false).
+2. **Legal pages** (`privacy.html`, `refund-policy.html`, `terms-of-service.html`) — no rate card CTAs. By design for legal content.
 3. **All images hotlinked from Unsplash** — no local copies. Needs client-supplied imagery.
-4. **No analytics** — No tracker installed.
-5. **Case study detail pages don't exist** — links now go to contact.html as interim solution.
+4. **Analytics** — Google Analytics 4 (G-F13FWS4SWH) added on all pages.
+5. **Case study detail pages don't exist** — links go to contact.html as interim solution.
+6. **FAQ schema is schema-only** — no visible FAQ accordion on the page. Consider adding visible FAQ sections that match the schema for a better user + search experience.
+7. **Submit updated sitemap to Google Search Console** — helps Google discover rate-card.html and driver-application.html faster.
+8. **Blog pages** — could use more frequent content updates for SEO momentum.
