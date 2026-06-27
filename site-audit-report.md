@@ -282,6 +282,16 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 - **Fix**: Created project governance log with decision history, API routes, env vars, and sheet schema. Created suggestions doc with prioritized future improvements.
 - **Impact**: Institutional knowledge preserved for future sessions and contributors.
 
+### 🟢 "70%" claim removed from site — replaced with driver payout range ✅
+- **Files**: `index.html`, `api/generate-rate-card.js`, `css/style.css`
+- **Fix**: Reworded "70% of media spend goes directly to drivers" across the site. In `index.html` hero stats, first the label was changed from "of Media Spend Goes Directly to Drivers" to "Fair Driver Payouts", then the entire animated "70%" counter was replaced with static text: "Drivers earn R800–R9,842/mo" / "Monthly Driver Payout Range". In `api/generate-rate-card.js` PDF bullet, changed to "Fair and competitive driver payouts — drivers earn R800–R9,842/month". Added `.hero-stat .stat-text` CSS class with matching visual style.
+- **Impact**: No more potentially misleading percentage claim. Uses verified figures (R800–R9,842/month) already published elsewhere on the site.
+
+### 🟢 WhatsApp bot SMTP_PASS configured and restarted ✅
+- **Files**: `roadreach-whatsapp-bot/.env`
+- **Fix**: Added SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS to bot's .env. Killed stale process on port 3001 and restarted bot.
+- **Impact**: Escalation email alerts will work when nodemailer code is enabled. Bot running on port 3001.
+
 ### Files Modified (2026-06-27)
 | File | Changes |
 |---|---|
@@ -295,6 +305,9 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 | `memory.md` | New — session memory for AI continuity |
 | `governance.md` | New — project governance & decision log |
 | `suggestions.md` | New — future improvements tracker |
+| `index.html` | Hero stat "70%" replaced with "Drivers earn R800–R9,842/mo" |
+| `api/generate-rate-card.js` | PDF bullet reworded — no more 70% claim |
+| `css/style.css` | Added `.hero-stat .stat-text` class |
 
 ## What Works (Verified — Added 2026-06-26)
 
@@ -323,6 +336,8 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 | Contact form safe auto-reply | ✅ | General submissions get simple confirmation, no PDF |
 | Governance docs | ✅ | `governance.md`, `suggestions.md`, `memory.md` created |
 | GitHub push → Vercel deploy | ✅ | `bb95716` pushed and deployed |
+| 70% claim removed | ✅ | Replaced with "Drivers earn R800–R9,842/mo" on hero + PDF |
+| WhatsApp bot SMTP_PASS configured | ✅ | SMTP vars added to .env, bot restarted on port 3001 |
 
 ## Remaining Observations
 
