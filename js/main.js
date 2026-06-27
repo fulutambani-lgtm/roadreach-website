@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (name === 'rate-card') return '/api/rate-card';
     if (name === 'book-meeting') return '/api/book-meeting';
     if (name === 'booking-response') return '/api/meeting-response';
+    if (name === 'driver-waitlist') return '/api/driver-waitlist';
     return '/api/contact';
   }
 
@@ -128,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var type = 'contact';
     if (formName === 'rate-card') type = 'rate-card';
     else if (formName === 'book-meeting' || formName === 'booking-response') type = 'booking';
+    else if (formName === 'driver-waitlist') type = 'driver-waitlist';
     window.location.href = '/thank-you.html?type=' + type;
   }
 

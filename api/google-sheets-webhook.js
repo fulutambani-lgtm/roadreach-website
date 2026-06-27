@@ -26,8 +26,9 @@
  *
  * SHEET STRUCTURE:
  *   The script creates two tabs (if they don't exist):
- *     "Rate Cards"  — for rate card PDF downloads
- *     "Bookings"    — for meeting booking requests
+ *    "Rate Cards"       — for rate card PDF downloads
+ *    "Bookings"         — for meeting booking requests
+ *    "Driver Waitlist"  — for driver application waitlist signups
  *
  * ===============================================================
  */
@@ -50,6 +51,8 @@ function doPost(e) {
       logRateCard(ss, data);
     } else if (type === 'book-meeting') {
       logBooking(ss, data);
+    } else if (type === 'driver-waitlist') {
+      logDriverWaitlist(ss, data);
     } else {
       // Generic fallback sheet
       logGeneric(ss, data);
@@ -71,7 +74,7 @@ function doGet() {
     .createTextOutput(JSON.stringify({
       status: 'OK',
       message: 'RoadReach Google Sheets Webhook is running.',
-      endpoints: { POST: '/ (rate-card, book-meeting)' },
+      endpoints: { POST: '/ (rate-card, book-meeting, driver-waitlist)' },
     }))
     .setMimeType(ContentService.MimeType.JSON);
 }
@@ -109,6 +112,25 @@ function logBooking(ss, data) {
     data.platform || '',
     data.message || '',
     data.source || '',
+  ]);
+}
+
+// ── Driver Waitlist ──
+function logDriverWaitlist(ss, data) {
+  const sheet = ensureSheet(ss, 'Driver Waitlist', [
+    'Timestamp', 'Name', 'Email', 'Phone', 'Vehicle Type', 'Vehicle Year', 'City', 'Message', 'Source', 'Notified'
+  ]);
+  sheet.appendRow([
+    data.timestamp || new Date().toISOString(),
+    data.name || '',
+    data.email || '',
+    data.phone || '',
+    data.vehicleType || '',
+    data.vehicleYear || '',
+    data.city || '',
+    data.message || '',
+    data.source || '',
+    'No',  // Notified column — set to 'Yes' when notified of reopened apps
   ]);
 }
 

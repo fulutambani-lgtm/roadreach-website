@@ -228,6 +228,16 @@
           }
           break;
 
+        case 'driver-waitlist':
+          subtitle.textContent = "You're on the Driver Waitlist!";
+          body.innerHTML = 'We\'ll email you the moment driver applications reopen. You\'ll be among the <strong>first to know</strong>.';
+          followup.innerHTML = 'In the meantime, use the <a href="drivers.html#earnings-calculator">earnings calculator</a> to see your potential payout.';
+          if (actionSecondary) {
+            actionSecondary.href = 'drivers.html';
+            actionSecondary.innerHTML = '<i class="fas fa-calculator"></i> Calculate Earnings';
+          }
+          break;
+
         case 'contact':
         default:
           subtitle.textContent = 'Your message has been received.';

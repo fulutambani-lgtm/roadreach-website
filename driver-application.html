@@ -24,10 +24,7 @@
     .app-step h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--dark-text); margin-bottom: 4px; }
     .app-step p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
-    .notify-form { max-width: 500px; margin: 32px auto 0; }
-    .notify-form .form-group { margin-bottom: 16px; }
-    .notify-form input { width: 100%; padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; font-family: var(--font-body); font-size: 1rem; }
-    .notify-form input:focus { outline: none; border-color: var(--brand-red); }
+
   </style>
 <script type="application/ld+json">
 {
@@ -218,22 +215,80 @@
     </div>
   </section>
 
-  <!-- ========== APPLICATIONS CLOSED / NOTIFY ========== -->
-  <section class="cta-banner">
+  <!-- ========== DRIVER WAITLIST ========== -->
+  <section class="cta-banner" id="driver-waitlist">
     <div class="container text-center">
       <h2>Applications Currently Closed</h2>
-      <p style="max-width:600px;margin:0 auto 24px;">We're not accepting new driver applications right now, but we'll announce new openings on our social channels. Leave your email below and we'll notify you the moment recruitment reopens.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <form class="notify-form" action="/api/contact" method="POST" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:0;">
-          <input type="hidden" name="name" value="Driver Waitlist" />
-          <input type="hidden" name="company" value="Individual Driver" />
-          <input type="hidden" name="interest" value="driving" />
-          <input type="hidden" name="message" value="Driver application waitlist signup" />
-          <input type="email" name="email" required placeholder="Enter your email address" style="padding:14px 20px;border:2px solid #ddd;border-radius:8px;font-size:1rem;min-width:280px;font-family:inherit;" />
-          <button type="submit" class="btn btn-lg" style="white-space:nowrap;"><i class="fas fa-bell"></i> Notify Me</button>
-        </form>
-      </div>
-      <p style="margin-top:20px;font-size:0.9rem;color:rgba(255,255,255,0.6);">Or follow us on <a href="https://www.facebook.com/roadreachza" target="_blank" style="color:var(--white);text-decoration:underline;">Facebook</a>, <a href="https://www.instagram.com/roadreachza/" target="_blank" style="color:var(--white);text-decoration:underline;">Instagram</a>, or <a href="https://www.linkedin.com/company/roadreachza" target="_blank" style="color:var(--white);text-decoration:underline;">LinkedIn</a> for updates.</p>
+      <p style="max-width:600px;margin:0 auto 8px;">We're not accepting new driver applications right now. Join the waitlist and we'll notify you the moment recruitment reopens — you'll be among the first to apply.</p>
+
+      <form class="waitlist-form" style="max-width:560px;margin:24px auto 0;text-align:left;">
+        <input type="hidden" name="form-name" value="driver-waitlist" />
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+          <div>
+            <label for="wl-name" style="display:block;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Full Name *</label>
+            <input type="text" id="wl-name" name="name" required placeholder="Your full name" style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.95rem;font-family:inherit;background:rgba(255,255,255,0.1);color:var(--white);box-sizing:border-box;" />
+          </div>
+          <div>
+            <label for="wl-email" style="display:block;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Email Address *</label>
+            <input type="email" id="wl-email" name="email" required placeholder="your@email.com" style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.95rem;font-family:inherit;background:rgba(255,255,255,0.1);color:var(--white);box-sizing:border-box;" />
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+          <div>
+            <label for="wl-phone" style="display:block;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Phone</label>
+            <input type="tel" id="wl-phone" name="phone" placeholder="+27 XX XXX XXXX" style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.95rem;font-family:inherit;background:rgba(255,255,255,0.1);color:var(--white);box-sizing:border-box;" />
+          </div>
+          <div>
+            <label for="wl-vehicle" style="display:block;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Vehicle Type *</label>
+            <select id="wl-vehicle" name="vehicleType" required style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.95rem;font-family:inherit;background:rgba(255,255,255,0.1);color:var(--white);box-sizing:border-box;appearance:auto;">
+              <option value="" style="color:#333;">Select vehicle type</option>
+              <option value="Hatchback" style="color:#333;">Hatchback</option>
+              <option value="Sedan" style="color:#333;">Sedan</option>
+              <option value="SUV" style="color:#333;">SUV</option>
+              <option value="Bakkie" style="color:#333;">Bakkie / LDV</option>
+              <option value="Double Cab" style="color:#333;">Double Cab</option>
+              <option value="Minibus" style="color:#333;">Minibus</option>
+              <option value="Other" style="color:#333;">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div>
+            <label for="wl-year" style="display:block;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Vehicle Year</label>
+            <select id="wl-year" name="vehicleYear" style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.95rem;font-family:inherit;background:rgba(255,255,255,0.1);color:var(--white);box-sizing:border-box;appearance:auto;">
+              <option value="" style="color:#333;">Select year</option>
+              <option value="2020+" style="color:#333;">2020 or newer</option>
+              <option value="2015-2019" style="color:#333;">2015 — 2019</option>
+              <option value="2010-2014" style="color:#333;">2010 — 2014</option>
+              <option value="Pre-2010" style="color:#333;">2009 or older</option>
+            </select>
+          </div>
+          <div>
+            <label for="wl-city" style="display:block;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Your City *</label>
+            <select id="wl-city" name="city" required style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.95rem;font-family:inherit;background:rgba(255,255,255,0.1);color:var(--white);box-sizing:border-box;appearance:auto;">
+              <option value="" style="color:#333;">Select your city</option>
+              <option value="Gauteng - Johannesburg" style="color:#333;">Johannesburg / Gauteng</option>
+              <option value="Gauteng - Pretoria" style="color:#333;">Pretoria / Tshwane</option>
+              <option value="Cape Town" style="color:#333;">Cape Town</option>
+              <option value="Durban" style="color:#333;">Durban</option>
+              <option value="Other" style="color:#333;">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label for="wl-message" style="display:block;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Anything else? (optional)</label>
+          <textarea id="wl-message" name="message" rows="2" placeholder="Tell us anything about your availability, questions, or preferences..." style="width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:0.95rem;font-family:inherit;background:rgba(255,255,255,0.1);color:var(--white);box-sizing:border-box;resize:vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-lg" style="width:100%;"><i class="fas fa-bell"></i> Join the Waitlist</button>
+      </form>
+
+      <p style="margin-top:16px;font-size:0.85rem;color:rgba(255,255,255,0.5);">We'll never share your details. Unsubscribe at any time.</p>
+      <p style="margin-top:8px;font-size:0.9rem;color:rgba(255,255,255,0.6);">Or follow us on <a href="https://www.facebook.com/roadreachza" target="_blank" style="color:var(--white);text-decoration:underline;">Facebook</a>, <a href="https://www.instagram.com/roadreachza/" target="_blank" style="color:var(--white);text-decoration:underline;">Instagram</a>, or <a href="https://www.linkedin.com/company/roadreachza" target="_blank" style="color:var(--white);text-decoration:underline;">LinkedIn</a> for updates.</p>
     </div>
   </section>
 
@@ -319,7 +374,7 @@
           <div class="trust-bar-grid">
             <span class="trust-badge-item"><i class="fas fa-shield-alt"></i> POPIA Compliant</span>
             <span class="trust-badge-item"><i class="fas fa-lock"></i> Secure Data Handling</span>
-            <span class="trust-badge-item"><i class="fas fa-handshake"></i> 70% to Drivers</span>
+            <span class="trust-badge-item"><i class="fas fa-handshake"></i> Fair Driver Payouts (R800–R9,842/mo)</span>
             <span class="trust-badge-item"><i class="fas fa-certificate"></i> Signorama Partner</span>
             <span class="trust-badge-item"><i class="fas fa-phone-alt"></i> WhatsApp Support</span>
           </div>
