@@ -248,7 +248,7 @@ export async function generateRateCardPDF(recipient = {}) {
     y += 22;
 
     const reasons = [
-      '70% of campaign budget goes directly to drivers',
+      'Fair and competitive driver payouts — drivers earn R800–R9,842/month',
       'Professional installation and campaign management',
       'Real-time campaign analytics dashboard',
       'Volume-based pricing — more vehicles means better value',
