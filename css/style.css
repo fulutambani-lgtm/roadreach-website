@@ -296,7 +296,7 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   background: 
-    url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80') center center / cover no-repeat;
+    url('../images/hero-bg.jpg') center center / cover no-repeat;
   opacity: 0.15;
 }
 
@@ -391,6 +391,15 @@ ul { list-style: none; }
   font-weight: 700;
   color: var(--white);
   line-height: 1;
+  margin-bottom: 6px;
+}
+
+.hero-stat .stat-text {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
   margin-bottom: 6px;
 }
 
@@ -1627,6 +1636,7 @@ body.has-sticky-bar .whatsapp-float {
   .hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
   .hero-stat { padding: 20px 16px; }
   .hero-stat .number { font-size: 1.6rem; }
+  .hero-stat .stat-text { font-size: 1.2rem; }
 
   .steps-grid { grid-template-columns: 1fr; }
   .fleet-grid { grid-template-columns: 1fr 1fr; }
