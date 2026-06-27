@@ -1,6 +1,6 @@
 # RoadReach Website — Site Audit & Issues Report
 
-**Date:** 26 June 2026 (final — all tasks complete)  
+**Date:** 27 June 2026  
 **Auditor:** OpenWork AI  
 **Live URL:** https://www.roadreach.co.za/  
 **Source:** `roadreach-website/` (local workspace)
@@ -161,6 +161,16 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 | `blog/post3.html` | Added sticky CTA + modal; updated CTA box |
 | `.env.example` | ZohoMail credential template |
 | `.gitignore` | Added `.env`, `node_modules/` |
+| `api/driver-waitlist.js` | New — driver waitlist signup endpoint |
+| `api/contact.js` | Rate card PDF guard — only for `form-name=rate-card` |
+| `api/google-sheets-webhook.js` | Added `logDriverWaitlist()` handler |
+| `js/main.js` | Routes `driver-waitlist` to `/api/driver-waitlist` |
+| `drivers.html` | Waitlist form; removed inline onsubmit |
+| `driver-application.html` | Waitlist form; removed inline onsubmit |
+| `thank-you.html` | Branded `driver-waitlist` redirect case |
+| `memory.md` | New — session memory |
+| `governance.md` | New — project governance & decision log |
+| `suggestions.md` | New — future improvements tracker |
 
 ---
 
@@ -248,6 +258,44 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 
 ---
 
+---
+
+## Issues Fixed (2026-06-27)
+
+### 🔴 Rate card PDF sent to every form submission — now gated ✅
+- **Files**: `api/contact.js`
+- **Fix**: The auto-reply with rate card PDF only fires when `form-name === 'rate-card'`. All other submissions (contact, driver-waitlist, etc.) get a simple branded confirmation email with no PDF.
+- **Impact**: Driver waitlist signups no longer receive the rate card PDF. Contact form submitters get an appropriate response.
+
+### 🟡 Driver waitlist double-submit — inline handlers removed ✅
+- **Files**: `drivers.html`, `driver-application.html`
+- **Fix**: Removed inline `onsubmit="return submitWaitlist(this)"` handlers and the `submitWaitlist()` script blocks. `main.js` already handles all forms via `forms.forEach()` — was causing two parallel fetches per submission (two admin emails, two sheet rows).
+- **Impact**: Clean single-submit flow. No duplicates.
+
+### 🟢 Driver waitlist system added ✅
+- **Files**: `api/driver-waitlist.js`, `api/google-sheets-webhook.js`, `js/main.js`, `thank-you.html`
+- **Fix**: New dedicated Vercel endpoint for driver waitlist signups. Sends admin notification + branded waitlist confirmation email. Logs to Google Sheets "Driver Waitlist" tab with Timestamp, Name, Email, Phone, Vehicle Type, Vehicle Year, City, Message, Source, Notified columns.
+- **Impact**: Interested drivers can register interest while applications are closed. "Notified" column enables batch email when apps reopen.
+
+### 🟢 Governance & suggestions docs created ✅
+- **Files**: `governance.md`, `suggestions.md`
+- **Fix**: Created project governance log with decision history, API routes, env vars, and sheet schema. Created suggestions doc with prioritized future improvements.
+- **Impact**: Institutional knowledge preserved for future sessions and contributors.
+
+### Files Modified (2026-06-27)
+| File | Changes |
+|---|---|
+| `api/contact.js` | Rate card PDF guard — only sends PDF when `form-name=rate-card` |
+| `api/driver-waitlist.js` | New — dedicated waitlist endpoint |
+| `api/google-sheets-webhook.js` | Added `logDriverWaitlist()` handler |
+| `drivers.html` | Waitlist form; removed inline onsubmit handler |
+| `driver-application.html` | Waitlist form; removed inline onsubmit handler |
+| `js/main.js` | Routes `driver-waitlist` to `/api/driver-waitlist` |
+| `thank-you.html` | Branded `driver-waitlist` case |
+| `memory.md` | New — session memory for AI continuity |
+| `governance.md` | New — project governance & decision log |
+| `suggestions.md` | New — future improvements tracker |
+
 ## What Works (Verified — Added 2026-06-26)
 
 | Feature | Status | Details |
@@ -263,13 +311,27 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 | Render-blocking eliminated | ✅ | defer on all 20 pages |
 | Sitemap up to date | ✅ | 13 indexed URLs |
 
+## What Works (Verified — Added 2026-06-27)
+
+| Feature | Status | Details |
+|---|---|---|
+| Driver waitlist endpoint | ✅ | `/api/driver-waitlist` — admin notification + branded confirmation email |
+| Waitlist Google Sheets logging | ✅ | "Driver Waitlist" tab with Notified column |
+| Waitlist form on `drivers.html` | ✅ | Full form (name, email, vehicle, city) + `#driver-waitlist` anchor |
+| Waitlist form on `driver-application.html` | ✅ | Full form (name, email, phone, vehicle, year, city, message) |
+| Rate card PDF guard | ✅ | Only `form-name=rate-card` triggers PDF — no more PDF leaks |
+| Contact form safe auto-reply | ✅ | General submissions get simple confirmation, no PDF |
+| Governance docs | ✅ | `governance.md`, `suggestions.md`, `memory.md` created |
+| GitHub push → Vercel deploy | ✅ | `bb95716` pushed and deployed |
+
 ## Remaining Observations
 
 1. **Blog nav** — Effectively resolved (dark charcoal headers make nav text visible even when scrolled state is false).
 2. **Legal pages** (`privacy.html`, `refund-policy.html`, `terms-of-service.html`) — no rate card CTAs. By design for legal content.
-3. **All images hotlinked from Unsplash** — no local copies. Needs client-supplied imagery.
+3. ✅ **All images hotlinked from Unsplash** — **RESOLVED 2026-06-27**. All 11 images downloaded locally to `images/` folder and paths updated across all pages.
 4. **Analytics** — Google Analytics 4 (G-F13FWS4SWH) added on all pages.
 5. **Case study detail pages don't exist** — links go to contact.html as interim solution.
 6. **FAQ schema is schema-only** — no visible FAQ accordion on the page. Consider adding visible FAQ sections that match the schema for a better user + search experience.
 7. **Submit updated sitemap to Google Search Console** — helps Google discover rate-card.html and driver-application.html faster.
 8. **Blog pages** — could use more frequent content updates for SEO momentum.
+9. **Driver Waitlist** — ✅ Active and deployed. `/api/driver-waitlist.js` + Google Sheets webhook + forms on `drivers.html` and `driver-application.html`. ⚠️ When driver apps reopen: query "Driver Waitlist" sheet tab for "Notified = No", email signups, update to "Notified = Yes".
