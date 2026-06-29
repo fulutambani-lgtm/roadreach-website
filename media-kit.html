@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoadReach Media Kit — Mobile Billboard Advertising | South Africa</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="images/logo-square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Media Kit Styles ── */
+    .mk-header { background: #020202; padding: 120px 0 60px; text-align: center; position: relative; overflow: hidden; }
+    .mk-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(193,17,17,0.08) 0%, transparent 60%); }
+    .mk-header h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; position: relative; }
+    .mk-header .tagline { color: rgba(255,255,255,0.5); font-size: 1.1rem; margin-top: 8px; position: relative; }
+    .mk-header .badge-red { display: inline-block; background: #C11111; color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 6px 20px; border-radius: 4px; margin-bottom: 16px; position: relative; }
+
+    .mk-section { padding: 60px 0; }
+    .mk-section h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; color: #020202; margin-bottom: 8px; }
+    .mk-section .mk-subtitle { color: #525351; font-size: 0.95rem; margin-bottom: 32px; max-width: 600px; }
+    .mk-section-alt { background: #f8f8f8; }
+
+    .mk-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 32px 0; }
+    .mk-stat { text-align: center; padding: 32px 16px; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .mk-stat .num { font-family: 'Montserrat', sans-serif; font-size: 2.4rem; font-weight: 800; color: #C11111; }
+    .mk-stat .lbl { font-size: 0.8rem; color: #525351; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+    .mk-packages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .mk-pkg { background: #fff; border-radius: 12px; padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .mk-pkg.featured { border: 2px solid #C11111; }
+    .mk-pkg h3 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: #020202; margin-bottom: 8px; }
+    .mk-pkg .price { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 800; color: #C11111; }
+    .mk-pkg .price span { font-size: 0.8rem; font-weight: 400; color: #525351; }
+    .mk-pkg .old-price { text-decoration: line-through; color: #999; font-size: 1rem; font-weight: 400; margin-right: 8px; }
+    .mk-pkg .launch-badge { display: inline-block; background: #C11111; color: #fff; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+    .mk-pkg p { font-size: 0.85rem; color: #525351; line-height: 1.5; margin: 12px 0; }
+    .mk-pkg ul { list-style: none; padding: 0; }
+    .mk-pkg ul li { font-size: 0.8rem; color: #020202; padding: 4px 0; }
+    .mk-pkg ul li i { color: #C11111; width: 16px; margin-right: 6px; font-size: 0.7rem; }
+
+    .mk-bundles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .mk-bundle { background: #fff; border-radius: 12px; padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .mk-bundle.featured { border: 2px solid #C11111; }
+    .mk-bundle h3 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: #020202; }
+    .mk-bundle .bundle-meta { font-size: 0.8rem; color: #525351; margin: 4px 0 12px; }
+    .mk-bundle .bundle-price { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: #020202; }
+    .mk-bundle .bundle-price .old-price { font-size: 1rem; }
+
+    .mk-contact { background: #020202; color: #fff; padding: 60px 0; text-align: center; }
+    .mk-contact h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; }
+    .mk-contact p { color: rgba(255,255,255,0.6); max-width: 500px; margin: 8px auto 24px; }
+    .mk-contact .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 600px; margin: 0 auto; }
+    .mk-contact .contact-item { padding: 16px; background: rgba(255,255,255,0.05); border-radius: 8px; }
+    .mk-contact .contact-item i { font-size: 1.2rem; color: #C11111; margin-bottom: 8px; }
+    .mk-contact .contact-item h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+    .mk-contact .contact-item a { color: #fff; font-weight: 600; text-decoration: none; }
+    .mk-contact .contact-item a:hover { color: #C11111; }
+
+    .mk-drivers-choice { background: #020202; color: #fff; padding: 60px 0; }
+    .mk-drivers-choice h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 8px; }
+    .mk-drivers-choice .dc-subtitle { text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+    .mk-drivers-choice .dc-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 600px; margin: 32px auto 0; }
+    .mk-drivers-choice .dc-stat { text-align: center; }
+    .mk-drivers-choice .dc-stat .num { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 800; color: #C11111; }
+    .mk-drivers-choice .dc-stat .lbl { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .mk-volume { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .mk-volume-card { background: #fff; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .mk-volume-card h4 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #020202; }
+    .mk-volume-card .discount-pct { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800; color: #C11111; }
+    .mk-volume-card p { font-size: 0.8rem; color: #525351; }
+
+    .mk-print-note { text-align: center; font-size: 0.75rem; color: #999; padding: 16px; border-top: 1px solid #eee; }
+
+    @media print {
+      .nav, .footer, .whatsapp-float, .sticky-cta { display: none !important; }
+      .mk-header { padding: 40px 0 30px; }
+      .mk-section { padding: 30px 0; page-break-inside: avoid; }
+      .mk-stat { box-shadow: none; border: 1px solid #eee; }
+      body { font-size: 11pt; }
+    }
+
+    @media (max-width: 768px) {
+      .mk-stats { grid-template-columns: repeat(2, 1fr); }
+      .mk-packages { grid-template-columns: 1fr; }
+      .mk-bundles { grid-template-columns: 1fr; }
+      .mk-volume { grid-template-columns: repeat(2, 1fr); }
+      .mk-contact .contact-grid { grid-template-columns: 1fr; }
+      .mk-header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION (same as main site) -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-landscape.png" alt="RoadReach Logo" />
+        <span>RoadReach</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="rate-card.html">Rate Card</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="book-meeting.html" class="btn btn-primary">Book a Meeting</a>
+      </div>
+      <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════ HEADER ════════ -->
+  <header class="mk-header">
+    <div class="container">
+      <span class="badge-red">Media Kit · 2026</span>
+      <h1>RoadReach Media</h1>
+      <p class="tagline">South Africa's premier mobile billboard network — 750+ vehicles, 3 major metros, measurable results.</p>
+    </div>
+  </header>
+
+  <!-- ════════ STATS ════════ -->
+  <section class="mk-section">
+    <div class="container">
+      <h2>At a Glance</h2>
+      <p class="mk-subtitle">The network that puts your brand where your customers live, work, and commute.</p>
+      <div class="mk-stats">
+        <div class="mk-stat"><div class="num">750+</div><div class="lbl">Vehicles</div></div>
+        <div class="mk-stat"><div class="num">3</div><div class="lbl">Major Metros</div></div>
+        <div class="mk-stat"><div class="num">~3,000</div><div class="lbl">Impressions /hr /car</div></div>
+        <div class="mk-stat"><div class="num">15x</div><div class="lbl">Recall vs Digital</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ COVERAGE ════════ -->
+  <section class="mk-section mk-section-alt">
+    <div class="container">
+      <h2>Coverage Areas</h2>
+      <p class="mk-subtitle">Active driver fleets in South Africa's three most economically important regions.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="background:#fff;border-radius:10px;padding:24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+          <i class="fas fa-city" style="font-size:2rem;color:#C11111;margin-bottom:12px;"></i>
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#020202;">Gauteng</h3>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;">Johannesburg, Pretoria, Midrand, Sandton, Soweto — SA's economic heartland.</p>
+        </div>
+        <div style="background:#fff;border-radius:10px;padding:24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+          <i class="fas fa-mountain" style="font-size:2rem;color:#C11111;margin-bottom:12px;"></i>
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#020202;">Cape Town</h3>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;">CBD, Atlantic Seaboard, Southern Suburbs, Northern Suburbs — the Mother City.</p>
+        </div>
+        <div style="background:#fff;border-radius:10px;padding:24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+          <i class="fas fa-ship" style="font-size:2rem;color:#C11111;margin-bottom:12px;"></i>
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#020202;">Durban</h3>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;">Umhlanga, Gateway, Berea, Pinetown — KZN's economic hub.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ PACKAGES ════════ -->
+  <section class="mk-section">
+    <div class="container">
+      <h2>Advertising Packages</h2>
+      <p class="mk-subtitle">🚀 Launch pricing — valid until 31 August 2026. Regular prices 25–30% higher after.</p>
+      <div class="mk-packages">
+        <div class="mk-pkg">
+          <h3>Lite</h3>
+          <div class="price"><span class="old-price">R2,800</span>R2,125 <span>/car/month</span><span class="launch-badge">Launch</span></div>
+          <p>Front door decals + rear window branding. Ideal for small vehicles and targeted local campaigns.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Front door branding (both sides)</li>
+            <li><i class="fas fa-check"></i> Rear window branding</li>
+            <li><i class="fas fa-check"></i> All vehicle sizes</li>
+          </ul>
+        </div>
+        <div class="mk-pkg featured">
+          <div style="background:#C11111;color:#fff;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 12px;border-radius:4px;display:inline-block;margin-bottom:8px;">Most Popular</div>
+          <h3>Standard</h3>
+          <div class="price"><span class="old-price">R6,100</span>R4,675 <span>/car/month</span><span class="launch-badge">Launch</span></div>
+          <p>Half-car wrap (rear half backwards). Maximum impact, balanced cost. Includes campaign analytics.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Half-car wrap (both sides + rear)</li>
+            <li><i class="fas fa-check"></i> Campaign analytics dashboard</li>
+            <li><i class="fas fa-check"></i> GPS route reporting</li>
+          </ul>
+        </div>
+        <div class="mk-pkg">
+          <h3>Premium</h3>
+          <div class="price"><span class="old-price">R11,000</span>R8,500 <span>/car/month</span><span class="launch-badge">Launch</span></div>
+          <p>Full vehicle wrap — every surface covered. Unmissable 360-degree brand presence.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Full vehicle wrap (entire car)</li>
+            <li><i class="fas fa-check"></i> Premium vinyl — gloss or matte</li>
+            <li><i class="fas fa-check"></i> Priority driver matching</li>
+            <li><i class="fas fa-check"></i> Dedicated campaign manager</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CAMPAIGN BUNDLES ════════ -->
+  <section class="mk-section mk-section-alt">
+    <div class="container">
+      <h2>Campaign Bundles</h2>
+      <p class="mk-subtitle">Fixed-price campaigns with matched vehicles, curated routes, and launch pricing included.</p>
+      <div class="mk-bundles">
+        <div class="mk-bundle">
+          <i class="fas fa-location-dot" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
+          <h3>HyperLocal</h3>
+          <div class="bundle-meta">10 cars · Lite wraps · 1 city · 3 months</div>
+          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R90,000</span> R68,000 <span class="launch-badge">Launch</span></div>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Single suburb / new store launch. Consistent routes in your target neighbourhood.</p>
+        </div>
+        <div class="mk-bundle featured">
+          <i class="fas fa-city" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
+          <h3>City Impact</h3>
+          <div class="bundle-meta">25 cars · Standard wraps · 1 city · 3 months</div>
+          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R175,000</span> R136,000 <span class="launch-badge">Launch</span></div>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Full metro brand blitz. Analytics dashboard + GPS route reporting included.</p>
+        </div>
+        <div class="mk-bundle">
+          <i class="fas fa-map" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
+          <h3>Metro Dominance</h3>
+          <div class="bundle-meta">50 cars · Standard wraps · 2 cities · 3 months</div>
+          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R320,000</span> R245,000 <span class="launch-badge">Launch</span></div>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Two-metro saturation. Coordinated fleets + dedicated campaign manager.</p>
+        </div>
+        <div class="mk-bundle featured">
+          <i class="fas fa-globe" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
+          <h3>National Takeover</h3>
+          <div class="bundle-meta">100 cars · Premium/Standard mix · All 3 cities · 6 months</div>
+          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R720,000</span> R550,000 <span class="launch-badge">Launch</span></div>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Full-country brand immersion. Total market saturation + end-of-campaign impact report.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ VOLUME DISCOUNTS ════════ -->
+  <section class="mk-section">
+    <div class="container">
+      <h2>Volume Discounts</h2>
+      <p class="mk-subtitle">The more vehicles you activate, the higher your savings.</p>
+      <div class="mk-volume">
+        <div class="mk-volume-card">
+          <div class="discount-pct">5%</div>
+          <h4>5+ vehicles</h4>
+          <p>Entry-level volume saving</p>
+        </div>
+        <div class="mk-volume-card">
+          <div class="discount-pct">10%</div>
+          <h4>10+ vehicles</h4>
+          <p>Standard fleet discount</p>
+        </div>
+        <div class="mk-volume-card">
+          <div class="discount-pct">15%</div>
+          <h4>20+ vehicles</h4>
+          <p>Large campaign savings</p>
+        </div>
+        <div class="mk-volume-card">
+          <div class="discount-pct">20%</div>
+          <h4>50+ vehicles</h4>
+          <p>Maximum volume benefit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ DRIVERS' CHOICE ════════ -->
+  <section class="mk-drivers-choice">
+    <div class="container">
+      <h2>🎯 The Drivers' Choice Campaign</h2>
+      <p class="dc-subtitle">Real proof that our drivers want to carry your brand.</p>
+      <p style="text-align:center;color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.6;max-width:650px;margin:0 auto;">
+        We asked 750+ registered drivers: <strong>"What brand would you love to see on your car?"</strong><br />
+        Hundreds responded — tagging brands like Pineapple, Naked Insurance, Telkom, Spar, Coca-Cola, and many more.<br />
+        The campaign reached <strong>104.2K organic views</strong> on TikTok. No paid boost. Real drivers, real enthusiasm.
+      </p>
+      <div class="dc-stats">
+        <div class="dc-stat"><div class="num">104.2K</div><div class="lbl">TikTok Views</div></div>
+        <div class="dc-stat"><div class="num">750+</div><div class="lbl">Active Drivers</div></div>
+        <div class="dc-stat"><div class="num">50+</div><div class="lbl">Brands Tagged</div></div>
+      </div>
+      <div style="text-align:center;margin-top:24px;">
+        <a href="https://www.tiktok.com/@roadreachza/video/7648670506773859604" target="_blank" style="color:#C11111;font-weight:700;text-decoration:none;">Watch the campaign <i class="fas fa-external-link-alt" style="font-size:0.75rem;"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ WHY ROADREACH ════════ -->
+  <section class="mk-section mk-section-alt">
+    <div class="container">
+      <h2>Why RoadReach?</h2>
+      <p class="mk-subtitle">The channel your audience can't ignore.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div style="text-align:center;padding:24px;">
+          <i class="fas fa-chart-simple" style="font-size:2rem;color:#C11111;margin-bottom:12px;"></i>
+          <h4 style="font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:600;color:#020202;margin-bottom:6px;">15x Better Recall</h4>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;">Mobile billboards outperform digital at unprompted name recognition by 15 to 1.</p>
+        </div>
+        <div style="text-align:center;padding:24px;">
+          <i class="fas fa-location-crosshairs" style="font-size:2rem;color:#C11111;margin-bottom:12px;"></i>
+          <h4 style="font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:600;color:#020202;margin-bottom:6px;">Hyper-Local Targeting</h4>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;">80% of purchasing decisions happen within 20km of home. That's exactly where our fleet drives.</p>
+        </div>
+        <div style="text-align:center;padding:24px;">
+          <i class="fas fa-handshake" style="font-size:2rem;color:#C11111;margin-bottom:12px;"></i>
+          <h4 style="font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:600;color:#020202;margin-bottom:6px;">Fair Driver Payouts</h4>
+          <p style="font-size:0.85rem;color:#525351;line-height:1.5;">40–51% of every media rand goes directly to South African drivers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CONTACT ════════ -->
+  <section class="mk-contact">
+    <div class="container">
+      <h2>Ready to Move Your Brand?</h2>
+      <p>Book a free consultation to discuss your campaign goals, target areas, and ideal package mix.</p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <i class="fas fa-calendar"></i>
+          <h4>Book a Meeting</h4>
+          <a href="https://www.roadreach.co.za/book-meeting.html">roadreach.co.za/book-meeting</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <h4>Email</h4>
+          <a href="mailto:fulu.tambani@roadreach.co.za">fulu.tambani@roadreach.co.za</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/27812987137">+27 81 298 7137</a>
+        </div>
+      </div>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;margin-top:24px;">
+        🚀 Launch pricing valid until 31 August 2026 — lock in today. Prices rise 25–30% after.
+      </p>
+    </div>
+  </section>
+
+  <div class="mk-print-note">
+    Print or save as PDF: File → Print → Save as PDF · RoadReach Media Kit 2026 · roadreach.co.za
+  </div>
+
+  <script defer src="js/main.js"></script>
+</body>
+</html>

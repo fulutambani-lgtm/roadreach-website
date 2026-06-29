@@ -86,6 +86,50 @@
     .rc-benefit p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
 
     /* ── Responsive ── */
+    /* ── Launch Pricing / Strikethrough ── */
+    .rc-launch-banner { background: var(--brand-red); color: #fff; text-align: center; padding: 14px 20px; border-radius: 8px; margin-bottom: 32px; font-size: 1.05rem; }
+    .rc-launch-banner strong { font-weight: 800; text-decoration: underline; }
+    .rc-launch-banner .countdown { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-weight: 700; margin-left: 8px; }
+    .old-price { text-decoration: line-through; color: #999; font-size: 1rem; font-weight: 400; margin-right: 8px; }
+    .rc-card .price .old-price { font-size: 1.2rem; }
+    .launch-badge { display: inline-block; background: var(--brand-red); color: #fff; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+    .launch-save { display: block; font-size: 0.8rem; color: var(--brand-red); font-weight: 600; margin-top: 2px; }
+    .rc-price-cell { line-height: 1.8; }
+    .rc-price-cell .old-price { font-size: 0.8rem; display: block; }
+    .rc-price-cell .launch-price { font-weight: 700; font-size: 1rem; }
+    .rc-price-cell .launch-badge { font-size: 0.6rem; margin-left: 0; display: inline-block; margin-top: 2px; }
+
+    /* ── Campaign Bundles ── */
+    .bundle-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+    .bundle-card { background: var(--white); border-radius: 12px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); position: relative; }
+    .bundle-card.featured { border: 2px solid var(--brand-red); }
+    .bundle-card .bundle-icon { font-size: 1.8rem; color: var(--brand-red); margin-bottom: 12px; }
+    .bundle-card h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--dark-text); margin-bottom: 4px; }
+    .bundle-card .bundle-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
+    .bundle-card .bundle-price { font-size: 1.6rem; font-weight: 800; color: var(--dark-text); }
+    .bundle-card .bundle-price .old-price { font-size: 1.1rem; }
+    .bundle-card .bundle-price .launch-badge { font-size: 0.7rem; }
+    .bundle-card .bundle-detail { font-size: 0.85rem; color: var(--text-muted); margin: 8px 0 16px; line-height: 1.5; }
+    .bundle-card ul { list-style: none; padding: 0; margin: 0 0 20px; }
+    .bundle-card ul li { font-size: 0.85rem; padding: 5px 0; color: var(--body-text); }
+    .bundle-card ul li i { color: var(--brand-red); width: 18px; margin-right: 6px; }
+    .bundle-card .btn { width: 100%; justify-content: center; }
+
+    /* ── Drivers Choice ── */
+    .dc-section { background: var(--dark-charcoal); color: var(--white); padding: 64px 0; }
+    .dc-section h2 { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--white); text-align: center; margin-bottom: 8px; }
+    .dc-section .dc-subtitle { text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+    .dc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; max-width: 900px; margin: 0 auto; }
+    .dc-video-placeholder { background: #1a1a1a; border-radius: 12px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; border: 2px solid var(--brand-red); position: relative; overflow: hidden; }
+    .dc-video-placeholder .play-icon { font-size: 4rem; color: var(--brand-red); opacity: 0.8; }
+    .dc-video-placeholder .dc-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 40px 20px 16px; font-size: 0.8rem; color: rgba(255,255,255,0.7); text-align: center; }
+    .dc-content h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .dc-content p { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 16px; }
+    .dc-content .dc-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .dc-content .dc-stat { text-align: center; }
+    .dc-content .dc-stat .num { font-size: 1.8rem; font-weight: 800; color: var(--brand-red); }
+    .dc-content .dc-stat .lbl { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+
     @media (max-width: 768px) {
       .rc-header h1 { font-size: 1.8rem; }
       .rc-packages { grid-template-columns: 1fr; }
@@ -93,6 +137,9 @@
       .calc-grid { grid-template-columns: 1fr; }
       .rc-form { grid-template-columns: 1fr; }
       .rc-benefits { grid-template-columns: 1fr; }
+      .bundle-grid { grid-template-columns: 1fr; }
+      .dc-grid { grid-template-columns: 1fr; }
+      .dc-content .dc-stats { grid-template-columns: repeat(3, 1fr); }
       .calc-box, .rc-form-box { padding: 24px; }
     }
 
@@ -198,6 +245,10 @@
       <span class="section-label" style="color:var(--brand-red);background:rgba(217,4,14,0.15);padding:8px 16px;border-radius:4px;">2026 Rate Card</span>
       <h1>Pricing &amp; Packages</h1>
       <p>Full rates, vehicle categories, volume discounts, and a real-time cost estimator. Enter your details below to access everything.</p>
+      <div class="rc-launch-banner" style="max-width:700px;margin:24px auto 0;">
+        🚀 <strong>Launch Pricing Active</strong> — Lock in these rates now. Prices increase 25–30% after <strong>31 August 2026</strong>.
+        <span class="countdown">🔥 65 days</span>
+      </div>
     </div>
   </section>
 
@@ -211,6 +262,9 @@
         </h3>
         <p style="font-size:0.95rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6;">
           We'll email you the complete RoadReach Rate Card &amp; Media Kit as a PDF <strong>and</strong> unlock the full pricing, fleet categories, and cost estimator on this page.
+        </p>
+        <p style="font-size:0.85rem;color:#e67e00;margin:-16px 0 24px;font-weight:600;">
+          ⏳ Launch pricing — lock in today. Prices rise 25–30% after 31 August 2026.
         </p>
         <form class="rc-form" id="rateCardForm">
           <input type="hidden" name="form-name" value="rate-card" />
@@ -267,12 +321,19 @@
       <div class="container">
         <h2>Choose Your Package</h2>
         <p class="rc-subtitle">Three wrap levels, each available across all four vehicle categories. Installation is charged separately — see rates below.</p>
+        <p style="text-align:center;font-size:0.9rem;color:var(--brand-red);font-weight:600;margin-top:-24px;margin-bottom:32px;">
+          🚀 Launch pricing — all prices shown are locked-in rates. Regular prices 25–30% higher after 31 Aug 2026.
+        </p>
         <div class="rc-packages">
           <!-- Lite -->
           <div class="rc-card">
             <div class="icon"><i class="fas fa-car-side"></i></div>
             <h3>Lite</h3>
-            <div class="price">R2,125 <span>/car/month</span></div>
+            <div class="price">
+              <span class="old-price">R2,800</span> R2,125 <span>/car/month</span>
+              <span class="launch-badge">Launch Price</span>
+              <span class="launch-save">Save 24%</span>
+            </div>
             <p>Front door decals + rear window branding. Maximum visibility, minimum commitment.</p>
             <ul>
               <li><i class="fas fa-check"></i> Front door branding (both sides)</li>
@@ -285,7 +346,11 @@
             <div class="badge">Most Popular</div>
             <div class="icon"><i class="fas fa-truck"></i></div>
             <h3>Standard</h3>
-            <div class="price">R4,675 <span>/car/month</span></div>
+            <div class="price">
+              <span class="old-price">R6,100</span> R4,675 <span>/car/month</span>
+              <span class="launch-badge">Launch Price</span>
+              <span class="launch-save">Save 23%</span>
+            </div>
             <p>Half-car wrap covering the back doors backwards. Our most popular choice for maximum impact.</p>
             <ul>
               <li><i class="fas fa-check"></i> Half-car wrap (back doors backwards)</li>
@@ -298,7 +363,11 @@
           <div class="rc-card">
             <div class="icon"><i class="fas fa-truck-moving"></i></div>
             <h3>Premium</h3>
-            <div class="price">R8,500 <span>/car/month</span></div>
+            <div class="price">
+              <span class="old-price">R11,000</span> R8,500 <span>/car/month</span>
+              <span class="launch-badge">Launch Price</span>
+              <span class="launch-save">Save 23%</span>
+            </div>
             <p>Full vehicle wrap — every surface covered. Unmissable brand presence on every road.</p>
             <ul>
               <li><i class="fas fa-check"></i> Full vehicle wrap (entire car)</li>
@@ -383,6 +452,142 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAMPAIGN BUNDLES ════════════════════ -->
+    <section class="rc-section rc-section-alt">
+      <div class="container">
+        <h2>🚀 Campaign Bundles — Better Value, Clearer Outcomes</h2>
+        <p class="rc-subtitle">Fixed-price campaigns with matched vehicle types, curated routes, and launch pricing. No per-car maths — just results.</p>
+
+        <div class="bundle-grid">
+          <!-- HyperLocal -->
+          <div class="bundle-card">
+            <div class="bundle-icon"><i class="fas fa-location-dot"></i></div>
+            <h3>HyperLocal</h3>
+            <div class="bundle-meta">10 cars · Lite wraps · 1 city · 3 months</div>
+            <div class="bundle-price">
+              <span class="old-price">R90,000</span> R68,000 <span class="launch-badge">Launch Price</span>
+            </div>
+            <div class="bundle-detail">Perfect for a new store opening, event promotion, or neighbourhood-specific campaign. All cars run consistent routes in your target suburb.</div>
+            <ul>
+              <li><i class="fas fa-check"></i> 10 × Lite wraps (medium vehicles)</li>
+              <li><i class="fas fa-check"></i> Single metro: JHB / CPT / DBN</li>
+              <li><i class="fas fa-check"></i> Curated suburb routes</li>
+              <li><i class="fas fa-check"></i> Monthly route report</li>
+              <li><i class="fas fa-check"></i> No long-term commitment</li>
+            </ul>
+            <a href="book-meeting.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i> Book This Bundle</a>
+          </div>
+
+          <!-- City Impact -->
+          <div class="bundle-card featured">
+            <div class="bundle-icon"><i class="fas fa-city"></i></div>
+            <h3>City Impact</h3>
+            <div class="bundle-meta">25 cars · Standard wraps · 1 city · 3 months</div>
+            <div class="bundle-price">
+              <span class="old-price">R175,000</span> R136,000 <span class="launch-badge">Launch Price</span>
+            </div>
+            <div class="bundle-detail">Our most popular bundle. Half-car wraps across a coordinated fleet covering an entire metro. Ideal for brand launches and competitive takeovers.</div>
+            <ul>
+              <li><i class="fas fa-check"></i> 25 × Standard half-wraps (medium/large vehicles)</li>
+              <li><i class="fas fa-check"></i> Single metro: JHB / CPT / DBN</li>
+              <li><i class="fas fa-check"></i> Analytics dashboard included</li>
+              <li><i class="fas fa-check"></i> GPS route reporting</li>
+              <li><i class="fas fa-check"></i> Priority driver matching</li>
+            </ul>
+            <a href="book-meeting.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i> Book This Bundle</a>
+          </div>
+
+          <!-- Metro Dominance -->
+          <div class="bundle-card">
+            <div class="bundle-icon"><i class="fas fa-map"></i></div>
+            <h3>Metro Dominance</h3>
+            <div class="bundle-meta">50 cars · Standard wraps · 2 cities · 3 months</div>
+            <div class="bundle-price">
+              <span class="old-price">R320,000</span> R245,000 <span class="launch-badge">Launch Price</span>
+            </div>
+            <div class="bundle-detail">Simultaneous presence in Johannesburg and Cape Town (or any two metros). Geographically targeted fleets coordinated for maximum overlap.</div>
+            <ul>
+              <li><i class="fas fa-check"></i> 50 × Standard half-wraps</li>
+              <li><i class="fas fa-check"></i> Any 2 of: JHB / CPT / DBN</li>
+              <li><i class="fas fa-check"></i> Analytics dashboard included</li>
+              <li><i class="fas fa-check"></i> Volume discount: 15% off</li>
+              <li><i class="fas fa-check"></i> Dedicated campaign manager</li>
+            </ul>
+            <a href="book-meeting.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i> Book This Bundle</a>
+          </div>
+
+          <!-- National Takeover -->
+          <div class="bundle-card featured">
+            <div class="bundle-icon"><i class="fas fa-globe"></i></div>
+            <h3>National Takeover</h3>
+            <div class="bundle-meta">100 cars · Premium/Standard mix · All 3 cities · 6 months</div>
+            <div class="bundle-price">
+              <span class="old-price">R720,000</span> R550,000 <span class="launch-badge">Launch Price</span>
+            </div>
+            <div class="bundle-detail">Full-country brand immersion. Premium full wraps on high-visibility routes in Johannesburg, Cape Town, and Durban. For brands that want total market saturation.</div>
+            <ul>
+              <li><i class="fas fa-check"></i> 100 vehicles (mix of wrap tiers)</li>
+              <li><i class="fas fa-check"></i> All metros: JHB + CPT + DBN</li>
+              <li><i class="fas fa-check"></i> Premium analytics + route intelligence</li>
+              <li><i class="fas fa-check"></i> Volume discount: 20% off</li>
+              <li><i class="fas fa-check"></i> Dedicated campaign manager</li>
+              <li><i class="fas fa-check"></i> End-of-campaign impact report</li>
+            </ul>
+            <a href="book-meeting.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i> Book This Bundle</a>
+          </div>
+        </div>
+
+        <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);margin-top:24px;">
+          All bundles include professional installation (fees apply — see below). Custom bundles available — <a href="contact.html" style="color:var(--brand-red);">contact us</a> for a tailored proposal.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════════════ DRIVERS' CHOICE ════════════════════ -->
+    <section class="dc-section">
+      <div class="container">
+        <h2>🎯 Your Brand, Chosen by Our Drivers</h2>
+        <p class="dc-subtitle">Our drivers tag the brands they want to drive for. Your brand could be next.</p>
+        <div class="dc-grid">
+          <div class="dc-video-placeholder">
+            <div class="play-icon">▶</div>
+            <div class="dc-caption">@roadreachza · Drivers' Choice Campaign · 104.2K views</div>
+          </div>
+          <div class="dc-content">
+            <h3>The Drivers' Choice Campaign</h3>
+            <p>
+              We asked our 750+ registered drivers one question: <strong>"What brand would you love to see on your car?"</strong>
+            </p>
+            <p>
+              Hundreds responded — tagging brands like Pineapple, Naked Insurance, and others. These are real drivers, real people, real endorsements.
+            </p>
+            <p>
+              When a brand signs with RoadReach, they're not buying ad space. They're joining a community of drivers who <em>want</em> to be their moving billboard.
+            </p>
+            <p>
+              <a href="https://www.tiktok.com/@roadreachza/video/7648670506773859604" target="_blank" style="color:var(--brand-red);font-weight:700;">
+                Watch the campaign on TikTok <i class="fas fa-external-link-alt" style="font-size:0.75rem;"></i>
+              </a>
+            </p>
+            <div class="dc-stats">
+              <div class="dc-stat">
+                <div class="num">104.2K</div>
+                <div class="lbl">Views</div>
+              </div>
+              <div class="dc-stat">
+                <div class="num">750+</div>
+                <div class="lbl">Drivers</div>
+              </div>
+              <div class="dc-stat">
+                <div class="num">50+</div>
+                <div class="lbl">Brands Tagged</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -494,10 +699,14 @@
             </div>
           </div>
           <div class="calc-total">
-            <div class="label">Estimated Monthly Investment</div>
+            <div class="label">Estimated Monthly Investment <span class="launch-badge" style="font-size:0.7rem;">Launch Price</span></div>
             <div class="amount" id="calc-amount">R58,438</div>
             <div class="note">per month for all vehicles</div>
+            <div class="discount-note" id="calc-regular-note" style="font-size:0.75rem;color:#999;margin-bottom:4px;"></div>
             <div class="discount-note" id="calc-discount-note">Volume discount applied</div>
+            <div style="margin-top:8px;font-size:0.75rem;color:#e67e00;">
+              ⏳ Prices rise 25–30% after 31 August 2026. <a href="book-meeting.html" style="color:var(--brand-red);font-weight:600;">Lock in now →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -511,8 +720,8 @@
         <div class="rc-benefits">
           <div class="rc-benefit">
             <i class="fas fa-handshake"></i>
-            <h4>70% Goes to Drivers</h4>
-            <p>The majority of your campaign budget goes directly to South African drivers — not middlemen.</p>
+            <h4>Fair Driver Payouts</h4>
+            <p>Drivers earn R800–R9,842/month depending on wrap tier and vehicle size. 40–51% of media fees go directly to South African drivers — not middlemen. <a href="drivers.html" style="color:var(--brand-red);">See full payout table →</a></p>
           </div>
           <div class="rc-benefit">
             <i class="fas fa-chart-line"></i>
@@ -597,7 +806,7 @@
           <div class="trust-bar-grid">
             <span class="trust-badge-item"><i class="fas fa-shield-alt"></i> POPIA Compliant</span>
             <span class="trust-badge-item"><i class="fas fa-lock"></i> Secure Data Handling</span>
-            <span class="trust-badge-item"><i class="fas fa-handshake"></i> 70% to Drivers</span>
+            <span class="trust-badge-item"><i class="fas fa-handshake"></i> Fair Driver Payouts (R800–R9,842/mo)</span>
             <span class="trust-badge-item"><i class="fas fa-certificate"></i> Signorama Partner</span>
             <span class="trust-badge-item"><i class="fas fa-phone-alt"></i> WhatsApp Support</span>
           </div>
@@ -679,9 +888,12 @@
       }, true); // capture phase
     })();
 
-    // ── Cost Calculator ──
+    // ── Cost Calculator (Launch Pricing) ──
     (function() {
+      // Launch prices (current)
       var BASE = { lite: 2125, standard: 4675, premium: 8500 };
+      // Future regular prices (~30% higher)
+      var BASE_FUTURE = { lite: 2800, standard: 6100, premium: 11000 };
       var SIZE_MULT = { small: 1.0, medium: 1.25, large: 1.5, xl: 2.0 };
 
       var pkgEl    = document.getElementById('calc-package');
@@ -690,6 +902,7 @@
       var fleetLbl = document.getElementById('calc-fleet-label');
       var amtEl    = document.getElementById('calc-amount');
       var discEl   = document.getElementById('calc-discount-note');
+      var regEl    = document.getElementById('calc-regular-note');
 
       function fmtRand(n) { return 'R' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
@@ -700,17 +913,29 @@
 
         fleetLbl.textContent = fleet + ' vehicle' + (fleet > 1 ? 's' : '');
 
-        var perCar = BASE[pkg] * SIZE_MULT[size];
+        var perCar      = BASE[pkg] * SIZE_MULT[size];
+        var perCarFuture = BASE_FUTURE[pkg] * SIZE_MULT[size];
 
-        // Volume discount tiers
+        // Volume discount tiers (same for both)
         var discount = 0;
         if (fleet >= 50) discount = 0.20;
         else if (fleet >= 20) discount = 0.15;
         else if (fleet >= 10) discount = 0.10;
         else if (fleet >= 5)  discount = 0.05;
 
-        var total = perCar * fleet * (1 - discount);
+        var total       = perCar * fleet * (1 - discount);
+        var totalFuture = perCarFuture * fleet * (1 - discount);
+        var savings     = totalFuture - total;
+
         amtEl.textContent = fmtRand(total);
+
+        // Show regular price comparison
+        if (savings > 0) {
+          regEl.textContent = 'Regular price: ' + fmtRand(totalFuture) + '/month — you save ' + fmtRand(savings) + '/month with launch pricing';
+          regEl.style.color = '#999';
+        } else {
+          regEl.textContent = '';
+        }
 
         if (discount > 0) {
           discEl.textContent = Math.round(discount * 100) + '% volume discount applied — saves you ' + fmtRand(perCar * fleet * discount) + '/month';
@@ -725,6 +950,25 @@
       vehEl.addEventListener('change', update);
       fleetEl.addEventListener('input', update);
       update();
+    })();
+
+    // ── Live Countdown to 31 August 2026 ──
+    (function() {
+      var target = new Date('2026-08-31T23:59:59').getTime();
+      var el = document.querySelector('.countdown');
+      if (!el) return;
+      function tick() {
+        var now = new Date().getTime();
+        var diff = target - now;
+        if (diff <= 0) { el.textContent = 'Expired'; return; }
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hrs  = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var secs = Math.floor((diff % (1000 * 60)) / 1000);
+        el.textContent = '🔥 ' + days + 'd ' + hrs + 'h ' + mins + 'm ' + secs + 's';
+      }
+      tick();
+      setInterval(tick, 1000);
     })();
   </script>
 
