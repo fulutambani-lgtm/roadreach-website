@@ -296,8 +296,8 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   background: 
-    url('../images/hero-bg.jpg') center center / cover no-repeat;
-  opacity: 0.15;
+    url('../images/team-photo.jpg') center center / cover no-repeat;
+  opacity: 0.25;
 }
 
 .hero-overlay {
