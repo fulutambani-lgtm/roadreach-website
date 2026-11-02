@@ -226,43 +226,262 @@ npm start    # starts server.js on port 3480
 
 ### Current State
 - **Bot**: Moved from OpenWork workspace to `roadreach-whatsapp-bot/` ✅
-- **AI (Ollama)**: llama3.2 running and tested ✅
-- **Knowledge base**: 4990 chars loaded with full RoadReach info ✅
-- **Connection**: Waiting for QR code scan ⏳
+- **AI (Ollama)**: v0.30.11 with llama3.2 (2.0 GB) — running and tested ✅
+- **Knowledge base**: `knowledge/roadreach.md` loaded with full RoadReach info ✅
+- **Connection**: Session was corrupted by multiple hard process kills. **Fresh QR scan needed** ⏳
+- **Status page**: http://localhost:3001 — shows QR code + connection status
 
 ### Architecture (v2.0 — whatsapp-web.js)
 - **Library**: whatsapp-web.js v1.34.7 (WhatsApp Web — no Meta/Facebook account needed)
-- **Session persistence**: LocalAuth saves to `.whatsapp-session/` — scan once, then it persists
-- **Status page**: http://localhost:3001 shows QR code as image + connection status
-- **AI**: Ollama (local) — no API keys, no monthly fees
+- **Session persistence**: LocalAuth saves to `.whatsapp-session/` — scan once, then persists
+- **AI**: Ollama (local) with llama3.2 — no API keys, no monthly fees
 - **Puppeteer**: Uses system Chrome at `C:\Program Files\Google\Chrome\Application\chrome.exe`
+- **Escalation**: Emails fulu.tambani@roadreach.co.za (configured in .env)
+- **SMTP**: ZohoMail configured in .env (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)
+
+### Bug Fixes Applied (2026-06-27)
+| Bug | Fix | File |
+|-----|-----|------|
+| Ghost `_...thinking..._` message sent as placeholder, then real reply sent as separate message → two bot messages | Removed thinking message entirely. Uses WhatsApp native typing indicator instead. Real reply is now `message.reply()` (threaded) not `sendMessage()` (separate). | `src/webhook.js` |
+| Message event handler registered inside `onReady` — if whatsapp-web.js fired `ready` twice (common on reconnect), handler doubled → every message processed twice | Moved handler registration outside `onReady` to module level. Only registered once regardless of reconnect count. | `src/index.js` |
+| Error fallback used `sendMessage()` which could silently fail (.catch(() => {})) | Changed to `message.reply()` with proper error logging | `src/webhook.js` |
 
 ### How to Activate
-1. Run `npm start` in `roadreach-whatsapp-bot/` or double-click `start-bot.bat`
-2. Open http://localhost:3001 in browser to see QR code
-3. On phone: WhatsApp → Menu → Linked Devices → Link a Device → Scan QR
-4. Bot goes live automatically
+1. Kill any running node processes. Delete `.whatsapp-session/` and `.wwebjs_cache/` folders.
+2. Run `npm start` in `roadreach-whatsapp-bot/` or double-click `start-bot.bat`
+3. Open http://localhost:3001 in browser to see QR code
+4. On phone: WhatsApp → Menu → Linked Devices → Link a Device → Scan QR
+5. Bot goes live automatically — session saved for future starts
+6. **Test**: Send any message to your number — should get one clean AI reply, no duplicates
 
-## Outreach Campaign — Growth Team Activation
+---
 
-### Status
-| Lead | Channel | Sent | Notes |
-|------|---------|------|-------|
-| Pineapple Insurance | Email | ✅ 2026-06-27 04:30 SAST | marnus@pineapple.co.za — "Sans Billboards" hook |
-| Naked Insurance | Email | ✅ 2026-06-27 04:30 SAST | alex@naked.insure — OOH campaign + Art Director hook |
-| African Bank | Email | ✅ 2026-06-27 04:30 SAST | sbusiso.kumalo@africanbank.co.za — "You Audacious People" hook |
-| Pret A Manger SA | LinkedIn InMail | ⏳ Pending | Hamza Farooqui — needs LinkedIn login |
-| Delivery Ka Speed | LinkedIn InMail | ⏳ Pending | Godiragetse Mogajane — needs LinkedIn login |
+## Growth Team (4 Agents)
+
+**File:** `growth-team-lead-dossier.md`
+
+A 4-agent pipeline for lead generation and outreach: Lead Scout → Intelligence Analyst → Copywriter → Account Executive.
+
+### Agent Pipeline
+| Agent | Role | Responsibility | Status |
+|-------|------|---------------|--------|
+| Lead Scout | Market Intelligence | Scan 28-brand pipeline, identify expansion targets, monitor competitor OOH activity | ✅ Complete (28 brands mapped) |
+| Intelligence Analyst | ICP Research | Decision-maker contact finding via Apollo.io, email pattern analysis, company research | ✅ Complete (5 ICP priorities, 20+ orgs researched) |
+| Copywriter (Stage 3) | Outreach Sequences | LinkedIn InMail, WhatsApp, Email scripts with brand-specific hooks per tier (hot/warm/cold) | ✅ Complete (Sequences A-E in dossier) |
+| Account Executive (Stage 4) | Response Playbook | REVEAL framework, objection handling, pricing toolkit, escalation to Fulu | ✅ Complete (6 response categories) |
+
+### 5 ICP Priorities
+1. **Sanlam** — Verified Marketing Director: Zaid Razak (zaid.razak@sanlam.co.za). LinkedIn: linkedin.com/in/zaid-razak-b7952919
+2. **FNB** — Pending decision-maker verification
+3. **Hollard** — Pending decision-maker verification
+4. **Naked Insurance** — Email sent (alex@naked.insure) on 27 Jun. Naked posted Senior Art Director (OOH) job in Jun 2026 — strong alignment.
+5. **Momentum** — Pending decision-maker verification
+
+### 28-Brand Pipeline
+- **Tier 1 (14 brands)** — Scheduled for Mon 29 Jun 08:00 send via `outreach/send-tier1-campaign.ps1`
+- **Tier 2 (8 brands)** — National B2C brands, batch outreach pending (CellC, African Bank, Huletts, Aquelle, Huggies, Pampers, Adidas, Lacoste) — African Bank has corrected contacts: Tammy Sondlo TSondlo@africanbank.co.za (Head of Integrated Media)
+- **Tier 3 (6 brands)** — Automotive brands, LinkedIn InMail channel (scripts in `outreach/tier3-linkedin-inmails.md`)
+- **Expansion (3 brands)** — Capitec (LD-033), Pep (LD-034), Ackermans (LD-035) — added via Apollo research, not in Mon send
+- **Excluded** — Spitz (Davide Masi is at Spitz Restaurant, not SA footwear retailer owned by AVI)
+
+### Outreach Sequences (Copywriter Stage 3)
+- **Sequence A**: LinkedIn InMail — for Tier 3 automotive brands (Pret A Manger, Delivery Ka Speed)
+- **Sequence B**: WhatsApp — for mobile/instant-reply prospects
+- **Sequence C**: Email (warm) — for brands with existing relationship or TikTok engagement
+- **Sequence D**: Email (cold) — standard cold outreach (used for Pineapple, Naked, African Bank)
+- **Sequence E**: Email (expansion) — for newly researched prospects (Capitec, Pep, Ackermans)
+
+### ⚠️ Growth Dossier Still Has Old 70% Claims
+- Line 57: "RoadReach's 70%-to-drivers model"
+- Line 130: "community-first mission mirrors RoadReach's 70%-to-drivers model"
+- Line 228: "70% of spend to drivers" in Sequence D
+- **Needs correction** before campaign materials reference it
+
+---
+
+## Social Media Agent Team (5 Agents)
+
+**File:** `RoadReach_Social_Assets_July2026.md`
+
+A 5-agent pipeline for social media content creation and engagement.
+
+### Agent Pipeline
+| Agent | Role | Deliverable | Status |
+|-------|------|-------------|--------|
+| Agent 1 | Content Strategy | Audit (750 cars, 104.2K TikTok views, 28 brands tagged), 4 content pillars, 4-week calendar + creative briefs | ✅ Complete |
+| Agent 2 | Copywriter | 4 platform-optimized assets (LinkedIn stat drop, TikTok wrap tour, LinkedIn carousel, founder story) — 3 hook variations each | ✅ Complete |
+| Agent 3 | Visual Director | Storyboards, carousel layouts (5 slides), image prompts — Pitch Black + Vivid Red + Montserrat | ✅ Complete |
+| Agent 4 | Guardrail | Brand compliance review — approved all 4 assets with zero revisions | ✅ Approved |
+| Agent 5 | Engagement | Comment scripts (positive/skeptical/objection/troll), DM templates, lead escalation flow | ✅ Complete |
+
+### 4 Content Pillars
+1. **ROI & Data** — campaign results, stats, OOH comparisons → LinkedIn, Blog
+2. **Fleet in Action** — driver stories, behind-the-wrap → TikTok, Instagram, Facebook
+3. **Founder & Mission** — Fulu's story, the 70% model → LinkedIn, Instagram
+4. **Education** — how it works, packages explained → LinkedIn Carousels, TikTok
+
+### Brand Corrections Locked
+- Rate card CTAs lead to roadreach.co.za/rate-card.html (lead gen, not giveaway)
+- No Signorama — "professional installers" / "professional partners"
+- Minimum commitment: 3 months with 3/6/12 options
+- Driver earnings → roadreach.co.za/drivers.html (earnings calculator)
+- No X/Twitter
+- Industries: "any brand with physical presence or online with specific geographic targets"
+
+### 4 Week 1 Assets (Approved by Agent 4 — Pending Fulu's Final Green Light)
+| # | Asset | Platform | Scheduled Day |
+|---|-------|----------|---------------|
+| 1 | "750-Car Stat Drop" — data-driven LinkedIn post | LinkedIn | Mon 29 Jun |
+| 2 | "Inside the Wrap" — driver POV TikTok | TikTok | Tue 30 Jun |
+| 3 | "Case Study Carousel" — 5-slide carousel | LinkedIn | Fri 3 Jul |
+| 4 | "Fulu's Origin Story" — founder story | LinkedIn | Wed 1 Jul |
+
+### ⚠️ Asset #1 Still Has Old 70% Claims (CONTRADICTS SITE CORRECTION)
+- Line 15: Hook B — "We put 70% of every media rand into drivers' pockets"
+- Line 30: Body copy — "And 70% of your media spend goes directly to South African drivers"
+- Line 40: "Single red element: '70%' in Vivid Red"
+- **Must be corrected before publishing Mon 29 Jun** — contradicts the entire pricing restructure
+
+### Engagement Playbook
+- Comment reply scripts for all 4 assets (tone: professional, helpful, not defensive)
+- DM templates: advertiser inquiry, pricing objection, proof of ROI, driver inquiry
+- Lead escalation: 10+ cars / Marketing Director or CMO / specific budget / competitor mention → fulu.tambani@roadreach.co.za + WhatsApp
+
+### Visual Assets
+- **Location**: `RoadReach_Visual_Assets/` (7 HTML/CSS brand-accurate templates)
+- **Format**: Open in browser → screenshot for publishing (no Canva integration available)
+
+---
+
+## Executive Assistant System
+
+**System**: Express server (port 3480) — PDF generation, email management, ZohoMail SMTP integration  
+**Mailboxes managed**: info@roadreach.co.za, fulu.tambani@roadreach.co.za
+
+### Documents Maintained
+| Document | Purpose | Last Update |
+|----------|---------|-------------|
+| `outreach/email-templates.md` | 8 standard templates + ZohoMail routing rules (Templates A-H) | 28 Jun |
+| `outreach/tiktok-brand-drip-campaign.md` | 28-brand pipeline with custom hooks per Tier 1 brand — Phase 1 scheduled Mon 08:00 | 28 Jun |
+| `outreach/lead-scoring-rules.md` | Scoring matrix (1-100), auto-escalation triggers for high-value inbound | 28 Jun |
+| `outreach/crm-dashboard.html` | Live pipeline dashboard (27+ leads, search, filter, export) — replaces `crm-tracker.csv` | 28 Jun |
+| `roadreach-website/media-kit.html` | Brand-facing overview — printable (PDF via browser), for attaching on kit requests | 28 Jun |
+| `outreach/crm-tracker.csv` | Legacy CSV — superseded by html dashboard | 28 Jun |
+
+### Lead Scoring Rules (info@ inbox)
+- **Score 80-100** (CMO, Marketing Director, "10+ cars", "national campaign", "budget", "partnership") → Escalate immediately to fulu.tambani@roadreach.co.za
+- **Score 40-79** (brand inquiry, pricing question, campaign interest) → Send template C (brand intro) + link to rate-card.html
+- **Score 10-39** (driver inquiry, application question) → Send template G (apps closed, redirect to drivers.html + wa.me)
+- **Score 0-9** (spam, out-of-South-Africa, unrelated) → Send template H (polite close)
+
+### TikTok Brand Drip Campaign (28-Brand Pipeline)
+- **Phase 1**: Tue 30 Jun 08:00 — 14 Tier 1 brands (Telkom, MTN, Spar, Pick n Pay, Woolworths, Truworths, Boxer, Hollywoodbets, McDonald's SA, Betway, Cremora/Lactalis, Red Bull SA, Coca-Cola SA, Nike SA) — via `send-tier1-campaign.ps1` (Task Scheduler, SYSTEM)
+- **Phase 2** (pending): Follow-up to non-responders after 5-7 days — industry case study
+- **Tier 2 TikTok brands** (pending batch send): CellC, African Bank (TSondlo@africanbank.co.za), Huletts, Aquelle, Huggies, Pampers, Adidas, Lacoste — 8 brands
+- **Expansion brands** (separate send): Shoprite, Checkers, Standard Bank, FNB, Sanlam, Mr D Food — 6 brands
+- **Apollo batch** (separate send): Capitec, Pep, Ackermans — 3 brands
+
+---
+
+## Campaign Execution — Current Status
+
+### Tier 1 TikTok Campaign (14 Brands)
+| Item | Status | Notes |
+|------|--------|-------|
+| Email scripts (14 personalized) | ✅ Complete | In `send-tier1-campaign.ps1` + `tiktok-brand-drip-campaign.md` |
+| Windows Task Scheduler | ✅ Registered | Fires Mon 29 Jun 08:00 — `register-task-scheduler.ps1` |
+| SMTP password exposure | ❌ **Unresolved** | `$FromPassword = "uBG2N5TGM5P4"` in clear text at line 23 of `send-tier1-campaign.ps1` |
+| Test-send to burner | ❌ **Not done** | Campaign will fire without prior delivery verification |
+| Send log | ❌ Not created yet | No `send-campaign-log.txt` exists — campaign hasn't run |
+
+### LinkedIn InMails (Tier 3 — Pret A Manger + Delivery Ka Speed)
+| Item | Status | Notes |
+|------|--------|-------|
+| Scripts | ✅ Complete | `outreach/tier3-linkedin-inmails.md` has full scripts |
+| Alternative emails found | ✅ Complete | info@millatinvest.com / altaaf@millatinvest.com (Pret), support@deliverykaspeed.com / admin@deliverykaspeed.com (DKS) |
+| Sent via alternative email | ❌ **Not sent** | Still waiting on Fulu to action |
+| Reason | ⏳ Blocked | Requires Fulu to either log into LinkedIn or send via email |
+
+### WhatsApp Bot
+| Item | Status | Notes |
+|------|--------|-------|
+| Bot code | ✅ Complete | v2.0 with whatsapp-web.js, Ollama AI pipeline |
+| SMTP configured | ✅ Done | .env has SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS |
+| Bugs fixed | ✅ Applied | Ghost thinking message removed, double handler fixed |
+| QR code scanned | ❌ **Not scanned** | Bot cannot go live until someone scans the WhatsApp Web QR code at http://localhost:3001 |
+| Session file | ❌ Stale | `.whatsapp-session/` from corrupted session — delete and re-scan |
+
+### 3 Outreach Emails Sent (Week of 27 Jun)
+| Lead | Channel | Date | Status |
+|------|---------|------|--------|
+| Pineapple Insurance (marnus@pineapple.co.za) | Email | 27 Jun 04:30 SAST | ✅ Sent — "Sans Billboards" blog post hook |
+| Naked Insurance (alex@naked.insure) | Email | 27 Jun 04:30 SAST | ✅ Sent — Senior Art Director (OOH) job posting hook |
+| African Bank (sbusiso.kumalo@africanbank.co.za) | Email | 27 Jun 04:30 SAST | ❌ Bounced 550 — Invalid Recipient via Mimecast. Corrected to Tammy Sondlo TSondlo@africanbank.co.za (Head of Integrated Media) |
+| **Booked meetings** | — | — | ❓ Unknown — no replies tracked or meetings confirmed |
 
 ### Sender Details
 - **From**: fulu.tambani@roadreach.co.za (Fulufhelo Tambani)
 - **SMTP**: Zoho Mail (smtp.zoho.com:587, STARTTLS, app-specific password)
-- **Method**: PowerShell + .NET SmtpClient
+- **Method**: PowerShell + .NET SmtpClient (`outreach/send-tier1-campaign.ps1`)
+
+---
+
+## 70% Claim — Current Verifiable State (29 Jun 2026)
+
+All "70% to drivers" claims have been removed from the project:
+
+| Location | Type | Status |
+|----------|------|--------|
+| `roadreach-website/packages.html` footer | Footer trust badge | ✅ **Fixed and deployed** — now shows "Fair Driver Payouts (R800–R9,842/mo)" |
+| `roadreach-website/rate-card.html`, `about.html`, `contact.html`, `case-studies.html`, `book-meeting.html`, `driver-application.html`, `driver-terms.html`, `blog/*` | Footer trust badges across site | ✅ **Fixed and deployed** — "Fair Driver Payouts" |
+| `roadreach-website/index.html` (hero stat) | Hero stat | ✅ **Fixed** — "Fair Driver Payouts / R800–R9,842/mo" |
+| `roadreach-website/api/generate-rate-card.js` (PDF bullet) | PDF auto-reply | ✅ **Fixed** — "Fair and competitive driver payouts" |
+| `RoadReach_Social_Assets_July2026.md` (Asset #1) | Copy | ✅ **Already clean** — no false "70% to drivers" claim (industry stat "60–70% of OOH budget" is factual) |
+| `growth-team-lead-dossier.md` (lines 57, 130, 228) | Outreach sequence copy | ✅ **Fixed 2026-06-29** — updated to "fair-driver-payout model (drivers earn R800–R9,842/mo)" |
+| `roadreach-website/drivers.html` | Driver page | ✅ **Never had 70% claim** |
+
+---
+
+## Outreach Campaign — Growth Team Activation
+
+### 5 Original Leads
+| Lead | Channel | Sent | Status | Notes |
+|------|---------|------|--------|-------|
+| Pineapple Insurance | Email | ✅ 2026-06-27 04:30 SAST | Sent | marnus@pineapple.co.za — "Sans Billboards" hook |
+| Naked Insurance | Email | ✅ 2026-06-27 04:30 SAST | Sent | alex@naked.insure — OOH campaign + Art Director hook |
+| African Bank | Email | ❌ 2026-06-27 04:30 SAST | Bounced 550 | sbusiso.kumalo@africanbank.co.za — bounced. Corrected: TSondlo@africanbank.co.za (Tammy Sondlo, Integrated Media Head) |
+| Pret A Manger SA | Email | ⏳ Pending | Unblocked via alt contacts | info@millatinvest.com / altaaf@millatinvest.com |
+| Delivery Ka Speed | Email | ⏳ Pending | Unblocked via alt contacts | support@deliverykaspeed.com / admin@deliverykaspeed.com |
+
+### Tier 1 TikTok Campaign — 14 Brands (Scheduled Tue 30 Jun 08:00)
+- **Script**: `outreach/send-tier1-campaign.ps1` — PowerShell sends all 14 with 5-min spacing via Zoho SMTP
+- **Task Scheduler**: Runs as SYSTEM — fires whether logged in or not. Registered via schtasks /ru SYSTEM.
+- **Log**: Output written to `send-campaign-log.txt`
+- **Corrections applied**: Pick n Pay changed to Jonathan Ackerman (jonathan.ackerman@pnp.co.za), NOT Andrew Mills
+- **CRM total**: 35 leads (5 original + 28 TikTok - 1 excluded + 3 Apollo expansion)
+
+### Apollo.io Deep Research (2026-06-27)
+- **Report**: `outreach/apollo-io-contacts.md` — searched 20+ orgs via Apollo internal API
+- **Corrections found**:
+  - Pick n Pay: Jonathan Ackerman (Marketing Director) — NOT Andrew Mills
+  - Pep: Beyers van der Merwe (CMO) — NOT Vladan Cogoljevic (wrong person, Serbian institution)
+  - Capitec: Francois Viviers (CMO) — confirmed, email francoisviviers@capitecbank.co.za
+  - Ackermans: Bronwyn Pretorius (CMO) — confirmed, email bpretorius@ackermans.co.za
+  - Spitz: REMOVED — Davide Masi is at "Spitz Restaurant", not SA footwear (Spitz owned by AVI, not Pepkor)
+- **Email patterns**: Patterns analyzed for 16 companies (Capitec, Pep, Ackermans, Spar, Pick n Pay, Woolworths, Truworths, Boxer, Telkom, Hollywoodbets, Red Bull, Coca-Cola SA, Nike SA, McDonald's SA, Betway, Cremora/Lactalis)
+- **Expansion leads added**: Capitec (LD-033), Pep (LD-034), Ackermans (LD-035) — Tier 1 expansion prospects, drafted in drip campaign but NOT in Monday send script
+
+### Sender Details
+- **From**: fulu.tambani@roadreach.co.za (Fulufhelo Tambani)
+- **SMTP**: Zoho Mail (smtp.zoho.com:587, STARTTLS, app-specific password)
+- **Method**: PowerShell + .NET SmtpClient (script: `outreach/send-tier1-campaign.ps1`)
+- **⚠️ SMTP_PASS exposed in send-tier1-campaign.ps1** — needs to be moved to env variable
 
 ### What's in each email
 - **Pineapple**: Referenced their Oct 2024 blog post about needing mobile billboard alternatives in Cape Town → direct solution offer
 - **Naked**: Referenced their June 2026 Senior Art Director job posting for OOH campaigns → channel alignment pitch
 - **African Bank**: Referenced their active "You Audacious People" brand campaign → extension onto mobile canvases
+- **TikTok Tier 1 brands**: Driver comment hook + launch pricing + book-meeting CTA (14 personalized drafts in `outreach/tiktok-brand-drip-campaign.md`)
 - **All**: R2,125/car/month Lite pricing, volume discounts, roadreach.co.za/book-meeting.html CTA
 
 ---
@@ -274,6 +493,12 @@ After extensive testing (XHR interception, native DOM events, React fiber dispat
 
 **All 11 prepared replies remain unsent.** User must reply manually via mobile app.
 
+**2026-06-27 Resolution**: User installed **BlueStacks** Android emulator on desktop with @roadreachza TikTok logged in. ADB connected (`emulator-5554 device` via `HD-Adb.exe`). Session ended before automation scripts could be run — user said good night. Automation scripts ready for next session.
+
+### Corrected — stat-card.html (2026-06-27)
+- Removed false "70% / To drivers" claim from `RoadReach_Visual_Assets/stat-card.html`
+- Replaced with factual **"R9,842 / Top driver payout /mo"**
+
 ### Critical DM Discovery (2026-06-27)
 Navigated to TikTok Messages (https://www.tiktok.com/messages) — found:
 - **244 pending message requests**
@@ -282,46 +507,18 @@ Navigated to TikTok Messages (https://www.tiktok.com/messages) — found:
 - Driver inquiries with various RoadReach auto-responses already sent
 - Most message types unsupported on web — must view on phone
 
-## Social Media Strategy — July 2026 Launch
+---
 
-### Overview
-- **Primary goal**: Advertiser/client acquisition (driver applications closed)
-- **Priority platforms**: LinkedIn (advertisers/leads) + TikTok (drivers/culture)
-- **Also active**: Instagram, Facebook
-- **Not on**: X/Twitter
-- **Status**: All 5 agents completed. Assets approved and ready to publish Week 1 starting Mon 29 June.
+## Social Media — Quick Reference
 
-### 4 Content Pillars
-1. **ROI & Data** — campaign results, stats, OOH comparisons → LinkedIn, Blog
-2. **Fleet in Action** — driver stories, behind-the-wrap → TikTok, Instagram, Facebook
-3. **Founder & Mission** — Fulu's story, the 70% model → LinkedIn, Instagram
-4. **Education** — how it works, packages explained → LinkedIn Carousels, TikTok
+*(Full details in the **Social Media Agent Team (5 Agents)** section above)*
 
-### Brand Corrections Locked
-- Rate card CTAs lead to roadreach.co.za/rate-card.html (visitor enters details → lead generated)
-- No Signorama mentioned — just "professional installers" / "professional partners"
-- Minimum commitment: 3 months. Options: 3, 6, 12 months
-- Driver earnings: link to roadreach.co.za/drivers.html (earnings calculator)
-- Industries: "any brand with physical presence or online with specific geographic targets"
-
-### Visual Assets Created
-- **Location**: `RoadReach_Visual_Assets/`
-- **Files**: stat-card.html, carousel-slide-1.html through carousel-slide-5.html, quote-card.html
-- **Style**: Pitch Black (#020202) backgrounds, Vivid Red (#C11111) single accents, Montserrat typography
-- **Format**: HTML/CSS — open in browser and screenshot for publishing
-
-### 4 Week 1 Assets (Approved)
-| # | Asset | Platform | Day |
-|---|---|---|---|
-| 1 | "750-Car Stat Drop" — data-driven LinkedIn post | LinkedIn | Mon 29 Jun |
-| 2 | "Inside the Wrap" — driver POV TikTok | TikTok | Tue 30 Jun |
-| 3 | "Case Study Carousel" — 5-slide carousel | LinkedIn | Fri 3 Jul |
-| 4 | "Fulu's Origin Story" — founder story | LinkedIn | Wed 1 Jul |
-
-### Engagement Playbook Complete
-- Comment reply scripts for all 4 assets (positive, skeptical, objections, trolls)
-- DM templates (lead inquiry, pricing objection, proof of ROI, driver inquiry)
-- Lead escalation flow — triggers (10+ cars, Marketing Director/CMO, campaign budget) → fulu.tambani@roadreach.co.za + WhatsApp
+- **Status**: All 5 agents complete, 4 Week 1 assets approved by Agent 4 Guardrail
+- **Go-live**: Mon 29 Jun (Asset #1 on LinkedIn)
+- **⚠️ Must fix**: Asset #1 copy still has "70% to drivers" in `RoadReach_Social_Assets_July2026.md` lines 15, 30, 40
+- **Visual assets**: `RoadReach_Visual_Assets/` (7 HTML/CSS templates)
+- **Platforms**: LinkedIn (advertisers) + TikTok (drivers/culture) + Instagram, Facebook. No X/Twitter.
+- **Engagement**: Comment scripts + DM templates + lead escalation to fulu.tambani@roadreach.co.za
 
 ---
 
@@ -338,7 +535,7 @@ Navigated to TikTok Messages (https://www.tiktok.com/messages) — found:
 ### Key Changes
 | Change | Detail |
 |--------|--------|
-| **70% claim removed** | All 14 HTML pages + blog posts + meta descriptions + JSON-LD updated to factual driver payout ranges |
+| **70% claim removed (partial)** | Most HTML pages + blog + meta + JSON-LD updated. ⚠️ REMAINING: packages.html footer badge, RoadReach_Social_Assets_July2026.md Asset #1 copy (lines 15,30,40), growth-team-lead-dossier.md (lines 57,130,228) |
 | **Launch pricing** | Current prices tagged as "Launch Pricing" with strikethrough regular prices (25-30% higher) |
 | **Campaign bundles** | HyperLocal (R68K), City Impact (R136K), Metro Dominance (R245K), National Takeover (R550K) added to rate-card.html and packages.html |
 | **Drivers' Choice** | New section on rate-card.html + packages.html leveraging 104.2K-view TikTok campaign |
@@ -378,16 +575,34 @@ When a brand asks for "media kit" or "company overview":
 2. Direct to `roadreach.co.za/rate-card.html` (lead gen gate)
 3. Direct to `roadreach.co.za/book-meeting.html` (call booking)
 
+### Board Analysis #2 — Full Business Review (28 June 2026)
+- **Report**: `board-analysis-02.md` — covers market position, revenue model, sales pipeline, brand coherence, operations, technology, risks, strategic recommendations
+- **Key findings**: Asset #1 LinkedIn post still has "70% to drivers" claim (contradicts site), SMTP password exposed in send-tier1-campaign.ps1, zero deals closed after 4 days, fleet capped at 750 (apps closed), no financial transparency on revenue/margins
+- **10 critical issues identified** — see board-analysis-02.md for full detail
+
+### 🔴 Critical Actions Before Monday 29 June
+- **Fix Asset #1 copy** — remove remaining "70% to drivers" claim from body and visual description in RoadReach_Social_Assets_July2026.md
+- **Remove SMTP password** from send-tier1-campaign.ps1 — move to env var or .env
+- **Test-send** one Tier 1 brand email to burner inbox — verify delivery before Monday 08:00 campaign send
+- **Unblock LinkedIn bottleneck** — send Pret A Manger and DKS outreach via alternative emails (info@millatinvest.com / support@deliverykaspeed.com) if Fulu cannot access LinkedIn
+- **Scan WhatsApp bot QR code** — activates driver support automation (takes 2 minutes)
+
 ### Open Actions
 - Fulu needs to log into LinkedIn and send InMails to Pret A Manger and Delivery Ka Speed (pending since 27 June) — **Alternative contacts found**: info@millatinvest.com / altaaf@millatinvest.com (Pret), support@deliverykaspeed.com / admin@deliverykaspeed.com (DKS)
 - WhatsApp bot QR code needs scanning (`roadreach-whatsapp-bot/`)
-- Social launch Mon 29 June — Asset #1 (corrected stat card) on LinkedIn
+- Social launch Mon 29 June — Asset #1 (corrected stat card) on LinkedIn — **⚠️ Must remove 70% claim from copy first**
 - Research decision-makers for 14 Tier 1 TikTok brands — LinkedIn search needed to find CMOs/Marketing Directors
 
 ## Session History
 |---|---|---|
-| 2026-06-27 (Session 3) | **Rate card PDF guard, 70% claim removed, SMTP_PASS set** — (1) Fixed `/api/contact.js` PDF auto-reply: guarded to only send rate card PDF when `form-name=rate-card`; other submissions get generic confirmation. (2) Removed inline `onsubmit` and `submitWaitlist()` handlers from `drivers.html` and `driver-application.html` (double-submit fix — main.js already handled all forms). (3) Reworded index.html "70% of media spend" → "Fair Driver Payouts"; replaced animated 70% counter with static "Drivers earn R800–R9,842/mo". (4) Updated `api/generate-rate-card.js` PDF bullet to "Fair and competitive driver payouts". (5) Set SMTP config in `roadreach-whatsapp-bot/.env`; killed stale bot PID 16308 on port 3001; restarted bot (PID 3356). (6) Pushed 3 commits to GitHub → Vercel deploy. Updated all tracking files. |
+| 2026-06-29 (Session 7) | **Remaining 70% claims fixed + deployed to live site** — User said good morning. Followed Section 9 protocol (read all 4 files). Discovered Tier 1 campaign never fired (Task Scheduler not registered). Fixed: (1) packages.html footer "70% to Drivers" badge — was already corrected in source but never deployed. Committed and pushed 23 files (pricing restructure, bundles, local images, media kit) to GitHub commit `2b84d34` → Vercel auto-deploy. Live verified — footer now shows "Fair Driver Payouts (R800–R9,842/mo)". (2) growth-team-lead-dossier.md 3 references corrected (lines 57, 130, 228) — replaced "70%-to-drivers model" with "fair-driver-payout model (R800–R9,842/mo)". (3) RoadReach_Social_Assets_July2026.md Asset #1 verified as already clean (was incorrectly flagged in Board #2). Updated governance.md entry, memory.md 70% Claim table, memory.md session history. **Next session: correct Board Analysis #2 to reflect true state, run Tier 1 campaign (fix SMTP password first), send Pret/DKS outreach.** |
+| 2026-06-27 (current) | **Documentation overhaul + WhatsApp bot debugging + Apollo corrections** — User flagged that Section 9 good-night protocol was NOT followed in prior session. Comprehensive fix across ALL files: (1) **instructions.md** added explicit good morning/good night protocols (Section 9). (2) **governance.md** added 3 new entries: WhatsApp bot bug fixes, Apollo.io deep research/corrections, Tier 1 send script + Task Scheduler. (3) **memory.md** WhatsApp bot section rewritten (ghost thinking bug, double handler fixed, fresh QR needed), outreach section expanded (35 leads, Apollo corrections, email patterns, send script). (4) **RoadReach_Social_Assets_July2026.md** Asset #1 fixed — Hook B 70% claim removed, body corrected to verified payout range, visual element changed from "70%" to "R2,125/car/month". (5) **board-analysis-02.md** Asset #1 finding updated from 🔴 STILL PRESENT to ✅ FIXED with full detail of changes. Immediate actions table now has status column. (6) **WhatsApp bot**: Fixed two code bugs (ghost `_...thinking..._` message removed from webhook.js, double message handler registration fixed in index.js). Session corrupted by hard kills — fresh QR scan needed. Bot running at http://localhost:3001. **Files still needing attention**: Remove SMTP_PASS from send-tier1-campaign.ps1. Send Pret/DKS alt emails. Scan WhatsApp QR. **Next session: Scan WhatsApp QR, check Mon 08:00 send log, send Pret/DKS emails.** |
+| 2026-06-27 (This session) | **TikTok anti-spam confirmed + BlueStacks setup + DM discovery + stat card fix** — Key accomplishments: (1) TikTok automated replies proven BLOCKED — API returns fake "Comment sent successfully" (HTTP 200) but silently drops the reply (visible optimistically in React UI, vanishes on reload). Tested XHR interceptor, native DOM events, React fiber dispatch, fetch() with exact headers/body across 3+ video threads. (2) TikTok DM inbox discovered via browser — 244 pending message requests including brand leads from Cremora SA and Telkom. (3) Existing DM conversations found: RoadReach had already pitched GoTyme Bank ZA, Discovery SA, Pineapple, Bp Lavender, Naked Insurance. (4) BlueStacks Android emulator installed on desktop, TikTok logged in with @roadreachza, ADB connected via HD-Adb.exe (emulator-5554 device). Automation scripts ready for next session. (5) stat-card.html corrected — removed "70% / To drivers" claim, replaced with factual "R9,842 / Top driver payout /mo". (6) Instructions.md Section 9 (Good Morning/Good Night Protocols) and Section 10 (.opencode sync) updated. (7) Governance.md TikTok anti-spam decision logged. (8) Suggestions.md third-party TikTok API idea added. ⚠️ CRITICAL VIOLATION: User said "good night" and AI did NOT follow Section 9 Good Night Protocol — continued working, did not update files in order, did not sync .opencode copies, did not give proper sign-off. User called out the violation. This is now corrected. |
+| 2026-06-27 (Session 7) | **Driver Management System built from spreadsheet data** — Analyzed 120+ driver applications from the live Google Sheet (1g7lPgW9ITXNB6SLIwwijt9nM7_kfKRKmvaNIWxdW19M). Designed and built a comprehensive interactive Driver Management System at `opendesign/mockups/roadreach-driver-management/index.html` using the RoadReach design system (Montserrat + EB Garamond, #C11111 red accent, #020202 black sidebar). 6 modules: Dashboard (KPIs, pipeline, vehicle mix, acquisition channels), Applications Queue (24 pending, filterable by status/wrap/size), Driver Directory (searchable, filterable, click-for-profile modal), Campaigns (5 campaigns, 65 slots, fill rates), Payments (ledger with payout estimates), Referrals (network tracking, leaderboard, rewards). Data embedded from real spreadsheet with 50+ structured driver records. OpenDesign viewer at http://localhost:8289/opendesign/. ⚠️ User said "good night" — protocol was violated the first time (I kept working instead of stopping to log). Corrected now. |
+| 2026-06-28 (Session 5) | **Board Analysis #2: Full business review** — Produced comprehensive eight-dimension Board analysis of the entire RoadReach business at board-analysis-02.md. Built on Analysis #1 findings (verified 100% executed). Key discoveries: Asset #1 LinkedIn post still contains "70% to drivers" claim (contradicts entire site correction), SMTP password exposed in clear text in send-tier1-campaign.ps1, zero booked meetings despite 4 days of outreach, LinkedIn InMails (Pret/DKS) overdue since 27 June, WhatsApp bot QR code never scanned, fleet capacity capped at 750 (apps closed), no financial data available on revenue/margins. Identified 10 critical issues and 14 priority-ordered recommendations. Updated all logging files. ⚠️ User flagged that multiple "not done" findings were actually already completed — analysis needs correction against real state. |
+| 2026-06-28 (Session 6) | **Comprehensive team read + ALL team info logged across memory.md, governance.md, suggestions.md, instructions.md + .opencode synced** — User flagged that Board Analysis #2 claimed things "not done" that were actually already completed (violated good-night protocol — only updated memory.md, skipped other 3 files + .opencode sync). Fixed by: reading all 6 team/agent systems (Growth Team 4 agents, Social Media Team 5 agents, Financial Squad 4 agents, Executive Assistant, WhatsApp bot/campaign, Campaign Execution), verifying live site state (packages.html footer still has "70% to Drivers" badge), discovering remaining 70% issues in social assets doc (lines 15, 30, 40) and growth dossier (lines 57, 130, 228). Added dedicated sections to memory.md for Growth Team, Social Media Agent Team, Executive Assistant, Campaign Execution, 70% Claim State. Added governance.md entry. Added suggestions.md entries. Updated instructions.md Section 11. Synced all .opencode copies. **Next session: correct Board Analysis #2 against verified team state, fix remaining 70% claims, remove SMTP password, test-send one campaign email.** |
 | 2026-06-28 (Session 2) | **Executive email manager + 7-suggestion execution** — Activated as Elite AI Email Manager for info@ and fulu.tambani@ mailboxes. Executed all 7 strategic suggestions: (1) TikTok brand drip campaign — 28-brand pipeline doc with sequenced email outreach, custom hooks per Tier 1 brand. (2) Email templates library (8 templates) + ZohoMail auto-routing rules at outreach/email-templates.md. (3) CRM live dashboard (HTML/JS, 27 leads, pipeline view, search/filter, export) at outreach/crm-dashboard.html — replaces static CSV. (4) Lead scoring matrix for info@ inbox with auto-escalation triggers at outreach/lead-scoring-rules.md. (5) Pret A Manger unblocked — Hamza Farooqui can be reached via info@millatinvest.com or Altaaf Kazi altaaf@millatinvest.com. Delivery Ka Speed unblocked — admin@deliverykaspeed.com or support@deliverykaspeed.com. Email drafts ready. (6) Two-phase TikTok outreach for all 28 brands documented. (7) Live JS countdown timer to 31 Aug 2026 added to rate-card.html. Additionally: Brand Media Kit created at roadreach-website/media-kit.html (printable, stats, packages, bundles, Drivers' Choice proof). Driver support link suggestion: roadreach.co.za/contact.html + drivers.html + wa.me/27812987137. |
+| 2026-06-27 (Session 3) | **70% claim removed, SMTP_PASS set, bot restarted** — Scanned site for "70% of media spend goes directly to drivers" claim. Reworded on index.html hero stat (label changed to "Fair Driver Payouts") and api/generate-rate-card.js PDF bullet (changed to "Fair and competitive driver payouts — drivers earn R800–R9,842/month"). Later replaced the entire 70% counter stat with static text showing verified driver payout range: "Drivers earn R800–R9,842/mo". Added CSS class `.hero-stat .stat-text`. Also set SMTP_PASS and SMTP config in `roadreach-whatsapp-bot/.env`, killed stale bot on port 3001, restarted bot. Pushed all changes to GitHub → Vercel deploy. Updated governance.md, suggestions.md, site-audit-report.md with all changes. |
 | 2026-06-27 | **Upgraded Financial Squad to v1.1 (multi-client + backend)** — Rewrote `index.html` with multi-client concurrent workflows (client CRUD, per-client pipeline state, top-bar selector), created `server.js` (Express + pdfkit PDF generation + Nodemailer email reminders on port 3480), wired PDF download buttons and email reminder buttons to server API, updated `manifest.json` to reference server URL, updated `governance.md` and `memory.md` with full v1.1 details. |
 | 2026-06-27 | **Built Driver Waitlist system** — Created `/api/driver-waitlist.js` Vercel function, updated Google Apps Script webhook with `logDriverWaitlist()` handler, added full waitlist forms on `drivers.html` and `driver-application.html` (name, email, phone, vehicle type, year, city, message), updated `main.js` and `thank-you.html` with `driver-waitlist` routing. Data stores in Google Sheet "Driver Waitlist" tab with "Notified" tracker column. Admin email notification + branded confirmation email to signup. ⚠️ When apps reopen, query sheet for "Notified = No" and email first. |
 | 2026-06-27 | **Migrated all 11 Unsplash images to local** — Downloaded all hotlinked images from 19 references across 17 files into `roadreach-website/images/`. Updated all HTML src, CSS url(), and OG meta tag. Removed CDN dependency completely. Total ~989 KB of new local assets. |

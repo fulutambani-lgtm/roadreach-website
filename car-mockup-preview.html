@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Mock-up Preview — RoadReach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-red: #D9040E;
+      --dark-charcoal: #2C2C2C;
+      --light-gray: #F5F5F5;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Bitter', serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      background: var(--light-gray);
+      color: #444;
+      padding: 40px 20px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+    .section-label {
+      display: inline-block;
+      background: rgba(217,4,14,0.1);
+      color: var(--brand-red);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .preview-section {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .preview-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      margin-bottom: 16px;
+    }
+    .preview-section > p {
+      color: #777;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* ── FLEET GRID ── */
+    .fleet-demo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .fleet-card {
+      background: var(--light-gray);
+      border-radius: 12px;
+      padding: 20px 16px 24px;
+      text-align: center;
+    }
+    .fleet-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .fleet-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      margin-top: 14px;
+    }
+    .fleet-card .car-model {
+      font-size: 0.85rem;
+      color: var(--brand-red);
+      font-weight: 600;
+      margin: 2px 0 6px;
+    }
+    .fleet-card .car-desc {
+      font-size: 0.8rem;
+      color: #777;
+      line-height: 1.5;
+    }
+    .fleet-card .tag {
+      display: inline-block;
+      background: rgba(217,4,14,0.1);
+      color: var(--brand-red);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    /* ── PACKAGE CARDS ── */
+    .package-demo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .package-card {
+      background: var(--light-gray);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .package-card.featured {
+      border: 2px solid var(--brand-red);
+      background: #fff;
+    }
+    .package-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-red);
+    }
+    .package-card .price {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      margin: 6px 0 12px;
+    }
+    .package-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 0 0 12px;
+    }
+    .package-card .desc {
+      font-size: 0.8rem;
+      color: #777;
+      line-height: 1.5;
+    }
+
+    /* ── PLACEMENT ── */
+    .placement-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .placement-item {
+      background: rgba(217,4,14,0.05);
+      border: 1px solid rgba(217,4,14,0.15);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .placement-item h5 {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brand-red);
+    }
+    .placement-item p {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .fleet-demo, .package-demo { grid-template-columns: 1fr; }
+      .placement-grid { grid-template-columns: 1fr; }
+      .preview-section { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Car Mock-up Preview</h1>
+  <p class="subtitle">Your images in context — review before they go live</p>
+
+  <!-- ═══════════ FLEET SHOWCASE ═══════════ -->
+  <div class="preview-section">
+    <span class="section-label">Vehicle Showcase</span>
+    <h2>Real Cars, Real Mock-ups — 3 Vehicle Categories</h2>
+    <p>Photorealistic ¾-view mock-ups replacing the generic icons in the fleet section. Each shows actual branded wrap design.</p>
+
+    <div class="fleet-demo">
+      <div class="fleet-card">
+        <img src="car mockups/Hyandai i10 Half wrap.png" alt="Hyundai i10 with half wrap">
+        <h4>Small</h4>
+        <div class="car-model">Hyundai i10</div>
+        <div class="car-desc">Half wrap shown. Compact, urban-focused route coverage.</div>
+        <span class="tag">From R2,125 / mo</span>
+      </div>
+
+      <div class="fleet-card">
+        <img src="car mockups/Hyndai i10 Full wrap.png" alt="Hyundai i10 with full wrap">
+        <h4>Medium</h4>
+        <div class="car-model">Hyundai i10</div>
+        <div class="car-desc">Full wrap example. Maximum brand presence on a compact platform.</div>
+        <span class="tag">From R4,675 / mo</span>
+      </div>
+
+      <div class="fleet-card">
+        <img src="car mockups/RoadReach Car Mock-up Large.png" alt="Large vehicle mock-up">
+        <h4>Large / XL</h4>
+        <div class="car-model">Larger platform</div>
+        <div class="car-desc">Maximum surface area for full-brand immersion across metros.</div>
+        <span class="tag">From R8,500 / mo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PACKAGE CARDS ═══════════ -->
+  <div class="preview-section">
+    <span class="section-label">Package Cards</span>
+    <h2>How They Look in Package Cards</h2>
+    <p>Each tier shows the relevant wrap style on a real vehicle mock-up.</p>
+
+    <div class="package-demo">
+      <div class="package-card">
+        <h4>LITE</h4>
+        <div class="price">From R2,125 / month</div>
+        <img src="car mockups/Hyandai i10 Half wrap.png" alt="Lite wrap Hyundai i10">
+        <p class="desc">Front door decals + rear window branding. Maximum visibility, minimum commitment.<br><strong>Hyundai i10 (Small)</strong></p>
+      </div>
+
+      <div class="package-card featured">
+        <h4>STANDARD</h4>
+        <div class="price">From R4,675 / month</div>
+        <img src="car mockups/Hyndai i10 Full wrap.png" alt="Full wrap Hyundai i10">
+        <p class="desc">Full vehicle coverage. Most popular choice for maximum impact.<br><strong>Hyundai i10 (Small)</strong></p>
+      </div>
+
+      <div class="package-card">
+        <h4>PREMIUM</h4>
+        <div class="price">From R8,500 / month</div>
+        <img src="car mockups/RoadReach Car Mock-up Large.png" alt="Premium wrap large vehicle">
+        <p class="desc">Full wrap on a larger platform. 360-degree brand presence.<br><strong>Large Platform</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PLACEMENT PLAN ═══════════ -->
+  <div class="preview-section">
+    <span class="section-label">Placement Plan</span>
+    <h2>Where They Go</h2>
+    <p>All 3 images placed across 4 pages:</p>
+
+    <div class="placement-grid">
+      <div class="placement-item">
+        <h5>Packages (packages.html)</h5>
+        <p>Images inside each package card + fleet section</p>
+      </div>
+      <div class="placement-item">
+        <h5>Rate Card (rate-card.html)</h5>
+        <p>Fleet showcase above the pricing table</p>
+      </div>
+      <div class="placement-item">
+        <h5>Drivers (drivers.html)</h5>
+        <p>Show vehicle types drivers can use</p>
+      </div>
+      <div class="placement-item">
+        <h5>Homepage (index.html)</h5>
+        <p>Fleet showcase in the "Our Fleet" section</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:40px 0 20px;padding:20px;background:#fff;border-radius:12px;border:2px solid var(--brand-red);">
+    <p style="font-family:var(--font-heading);font-size:1.1rem;font-weight:600;color:var(--brand-red);">Preview only — nothing changed on the live site.</p>
+    <p style="color:#777;margin-top:8px;">What would you like adjusted?</p>
+  </div>
+
+</div>
+
+</body>
+</html>

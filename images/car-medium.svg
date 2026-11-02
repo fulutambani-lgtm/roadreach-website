@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 150" width="360" height="150">
+  <defs>
+    <clipPath id="body-clip-m">
+      <path d="M48,90 L58,90 L65,80 L90,75 L265,75 L278,62 Q285,55 295,55 L315,55 Q327,55 327,65 L327,90 L48,90 Z"/>
+    </clipPath>
+  </defs>
+
+  <ellipse cx="180" cy="135" rx="155" ry="6" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- Car body -->
+  <path d="M40,95 L55,95 L62,82 L88,76 L96,74 L260,74 L275,62 Q282,54 292,54 L316,54 Q330,54 330,65 L330,70 Q326,80 322,86 L328,90 L328,95 L40,95 Z"
+        fill="#2C2C2C" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Windows -->
+  <path d="M88,76 L96,74 L255,74 L268,64 Q273,58 282,58 L290,58 Q280,66 277,74 L270,78 L88,78 Z"
+        fill="#4a4a4a"/>
+
+  <!-- Windshield -->
+  <path d="M88,76 L96,74 L130,74 L124,80 L92,80 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Rear window -->
+  <path d="M253,74 L262,64 Q266,58 274,58 L280,58 Q275,66 270,74 L265,76 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Wrap overlay - Standard: half car from back doors -->
+  <path d="M130,74 L260,74 L260,93 L130,93 Z" fill="#D9040E" opacity="0.45"/>
+
+  <rect x="130" y="96" width="130" height="4" rx="2" fill="#D9040E" opacity="0.8"/>
+  <text x="195" y="112" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" font-weight="600" fill="#D9040E">Wrap Area</text>
+
+  <!-- Wheels -->
+  <circle cx="95" cy="112" r="20" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+  <circle cx="95" cy="112" r="11" fill="#444"/>
+  <circle cx="95" cy="112" r="4" fill="#666"/>
+
+  <circle cx="282" cy="112" r="20" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+  <circle cx="282" cy="112" r="11" fill="#444"/>
+  <circle cx="282" cy="112" r="4" fill="#666"/>
+
+  <text x="180" y="142" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="#2C2C2C">MEDIUM</text>
+</svg>

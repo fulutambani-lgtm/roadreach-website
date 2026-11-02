@@ -101,7 +101,6 @@ export async function generateRateCardPDF(recipient = {}) {
     const col1 = 50;   // Package name
     const col2 = 195;  // Coverage description
     const col3 = 370;  // Price
-    const col4 = 475;  // Volume discount note
     const rowH = 24;
     let y = tableTop + 42;
 
@@ -116,8 +115,7 @@ export async function generateRateCardPDF(recipient = {}) {
       .fillColor(WHITE);
     doc.text('PACKAGE', col1 + 8, y, { width: 135 });
     doc.text('COVERAGE', col2 + 8, y, { width: 165 });
-    doc.text('PRICE PER CAR / MO', col3 + 6, y, { width: 100 });
-    doc.text('VOLUME DISCOUNT', col4 + 4, y, { width: 70 });
+    doc.text('PRICE PER CAR / MO', col3 + 6, y, { width: 160 });
 
     y += rowH;
 
@@ -125,21 +123,18 @@ export async function generateRateCardPDF(recipient = {}) {
     const packages = [
       {
         name: 'LITE',
-        coverage: 'Front door decals and rear window',
-        price: 'From R2,125',
-        discount: '10% off 20+',
+        coverage: 'Decals — rear window + sides',
+        price: 'From R1,550',
       },
       {
         name: 'STANDARD (Most Popular)',
-        coverage: 'Half-car wrap — back doors forward',
-        price: 'From R4,675',
-        discount: '15% off 20+',
+        coverage: 'Half wrap — sides + rear',
+        price: 'From R3,800',
       },
       {
         name: 'PREMIUM',
-        coverage: 'Full vehicle wrap — entire car',
-        price: 'From R8,500',
-        discount: '20% off 10+',
+        coverage: 'Full wrap — total transformation',
+        price: 'From R7,550',
       },
     ];
 
@@ -163,12 +158,7 @@ export async function generateRateCardPDF(recipient = {}) {
       doc
         .font('Helvetica-Bold', 9)
         .fillColor(RED);
-      doc.text(pkg.price, col3 + 6, y, { width: 95 });
-
-      doc
-        .font('Helvetica', 8)
-        .fillColor(CHARCOAL);
-      doc.text(pkg.discount, col4 + 4, y, { width: 70 });
+      doc.text(pkg.price, col3 + 6, y, { width: 160 });
 
       y += rowH;
     });
@@ -177,6 +167,19 @@ export async function generateRateCardPDF(recipient = {}) {
     divider(y);
 
     y += 18;
+
+    // Volume discount note
+    doc
+      .font('Helvetica-Bold', 10)
+      .fillColor(DARK)
+      .text('Volume discounts (off monthly subscription):', 50, y);
+
+    doc
+      .font('Helvetica', 10)
+      .fillColor(CHARCOAL)
+      .text('5+ vehicles 5%  ·  10+ vehicles 10%  ·  20+ vehicles 15%  ·  50+ vehicles 20%', 50, y + 16);
+
+    y += 44;
 
     // ═════════════════════ FLEET SECTION ═════════════════════
     doc
@@ -189,10 +192,10 @@ export async function generateRateCardPDF(recipient = {}) {
     y += 42;
 
     const fleet = [
-      { type: 'Small', vehicles: 'Hyundai i10, Kia Picanto, VW Up', use: 'Urban routes, tight spaces' },
-      { type: 'Medium', vehicles: 'VW Polo, Ford Fiesta, Toyota Yaris', use: 'Versatile, all suburbs' },
-      { type: 'Large', vehicles: 'Toyota Corolla, BMW 3 Series, Kia Optima', use: 'Bold, detailed branding' },
-      { type: 'Extra Large', vehicles: 'SUVs, bakkies, delivery vans', use: 'Maximum surface area' },
+      { type: 'Small', vehicles: 'Hyundai i10, Kia Picanto, VW Up (14–16 m²)', use: 'Urban routes, tight spaces' },
+      { type: 'Medium', vehicles: 'VW Polo, Ford Fiesta, Toyota Yaris (16–19 m²)', use: 'Versatile, all suburbs' },
+      { type: 'Large', vehicles: 'Toyota Corolla, VW Jetta, BMW 3 (19–22 m²)', use: 'Bold, detailed branding' },
+      { type: 'Extra Large', vehicles: 'Fortuner, Ranger, Amarok, Everest (22–25 m²)', use: 'Maximum surface area' },
     ];
 
     // Fleet mini-table header
@@ -281,7 +284,7 @@ export async function generateRateCardPDF(recipient = {}) {
     doc
       .font('Helvetica', 10)
       .fillColor(CHARCOAL)
-      .text('Email: info@roadreach.co.za', 50, y);
+      .text('Email: fulu.tambani@roadreach.co.za', 50, y);
 
     doc
       .font('Helvetica', 10)
@@ -319,17 +322,17 @@ We have received your enquiry and will be in touch within 24 hours with a person
 
 In the meantime, here's a quick overview:
 
-PACKAGES (per car per month):
-  • LITE — From R2,125 — Front door decals + rear window branding
-  • STANDARD — From R4,675 — Half-car wrap (most popular)
-  • PREMIUM — From R8,500 — Full vehicle wrap
+PACKAGES (per car per month, from):
+  • LITE — From R1,550 — Decals (rear window + sides)
+  • STANDARD — From R3,800 — Half wrap (sides + rear, most popular)
+  • PREMIUM — From R7,550 — Full wrap (total transformation)
 
-Volume discounts available for fleets of 10+ vehicles.
+Volume discounts (off monthly subscription): 5+ vehicles 5% · 10+ 10% · 20+ 15% · 50+ 20%.
 
 FLEET CATEGORIES: Small, Medium, Large, Extra Large
 
 CONTACT US:
-  Email: info@roadreach.co.za
+  Email: fulu.tambani@roadreach.co.za
   WhatsApp: +27 81 298 7137
   Web: www.roadreach.co.za
 

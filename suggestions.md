@@ -225,8 +225,44 @@ A running list of ideas to improve workflow, code quality, product direction, to
 - **Effort estimate**: small
 - **Status**: implemented (contacts researched: info@millatinvest.com / altaaf@millatinvest.com for Pret; support@deliverykaspeed.com for DKS. Email drafts ready in outreach/email-templates.md Template E)
 
+### 2026-06-28 — Move SMTP password from PowerShell script to environment variable
+- **Idea**: `$FromPassword = "uBG2N5TGM5P4"` is exposed in clear text at line 23 of `outreach/send-tier1-campaign.ps1`. Replace with `$FromPassword = $env:SMTP_PASS` and set the env var in the Windows user profile or a `.env` file read before script execution.
+- **Why**: The script is committed to the repo and the password is visible to anyone who reads it. Compromises the Zoho Mail account.
+- **Effort estimate**: trivial
+- **Status**: open
+
+### 2026-06-28 — Fix remaining 70% claims before Monday launch
+- **Idea**: Three remaining locations still have the "70% to drivers" claim that was supposed to be removed site-wide: (1) packages.html footer on live site, (2) RoadReach_Social_Assets_July2026.md Asset #1 copy (lines 15, 30, 40), (3) growth-team-lead-dossier.md (lines 57, 130, 228). Fix all three before Mon 29 Jun publishing.
+- **Why**: If Asset #1 goes live with "70% to drivers", it contradicts the entire pricing restructure. The gap between 70% claim and actual payout ratio (41-51%) is a trust liability.
+- **Effort estimate**: small
+- **Status**: open
+
+### 2026-06-28 — Add team/agent system inventory to instructions.md
+- **Idea**: Create a Section 11 in instructions.md that lists all 6 team/agent systems with their files and purpose — so every session starts with full organizational awareness.
+- **Why**: Team info was scattered across memory.md and session history. A quick-reference table in instructions.md (read first every session) ensures no session starts blind.
+- **Effort estimate**: trivial
+- **Status**: implemented (Section 11 added to instructions.md)
+
 ### 2026-06-28 — Create a "Leads from TikTok" email sequence for all 28 brands
 - **Idea**: Two-phase outreach for TikTok-identified brands. Phase 1: TikTok link + one-liner. Phase 2: Industry case study.
 - **Why**: The TikTok comments are real, organic, and brand-specific — actionable proof no media kit can match.
 - **Effort estimate**: medium
 - **Status**: implemented (all 28 brands sequenced in outreach/tiktok-brand-drip-campaign.md with custom hooks per Tier 1 brand)
+
+### 2026-06-27 — Add write-back capability to Driver Management System status updates
+- **Idea**: Allow Fleet Ops to change driver status (Lead → Vetting → Approved → Active → Exited) directly from the modal or table row, with a timestamped audit trail logged to a JSON store or Google Sheet.
+- **Why**: Currently status is display-only. The whole point of a management system is to move drivers through the pipeline. Without write-back, the sheet remains the source of truth and the dashboard is read-only.
+- **Effort estimate**: medium (backend + Google Sheets API or sql.js persistence)
+- **Status**: open
+
+### 2026-06-27 — Connect Driver Management System to live Google Sheets data via API
+- **Idea**: Replace the embedded static driver data with live fetch from the Google Sheet (via Apps Script webhook or sheets API), so new applications appear automatically without rebuilding the HTML.
+- **Why**: The 120+ driver records are embedded statically. Every new batch of applications requires a manual rebuild. A live connection keeps the dashboard always current.
+- **Effort estimate**: medium (Apps Script webhook + JSON endpoint + frontend fetch)
+- **Status**: open
+
+### 2026-06-27 — Add geo-fencing and route analysis to campaign assignment
+- **Idea**: When assigning drivers to campaigns, overlay driver daily routes (from the spreadsheet) with campaign target areas on a mini-map, so Fleet Ops can see which drivers naturally cover the right suburbs.
+- **Why**: Campaign effectiveness depends on physical presence. A driver who commutes through Sandton is worth more to a Sandton-targeting brand than one who doesn't. Currently assignments are manual and city-based.
+- **Effort estimate**: large (needs geo-coding of route text + map rendering)
+- **Status**: open

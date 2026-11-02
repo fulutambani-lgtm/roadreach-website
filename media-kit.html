@@ -33,22 +33,10 @@
     .mk-pkg { background: #fff; border-radius: 12px; padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
     .mk-pkg.featured { border: 2px solid #C11111; }
     .mk-pkg h3 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: #020202; margin-bottom: 8px; }
-    .mk-pkg .price { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 800; color: #C11111; }
-    .mk-pkg .price span { font-size: 0.8rem; font-weight: 400; color: #525351; }
-    .mk-pkg .old-price { text-decoration: line-through; color: #999; font-size: 1rem; font-weight: 400; margin-right: 8px; }
-    .mk-pkg .launch-badge { display: inline-block; background: #C11111; color: #fff; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
     .mk-pkg p { font-size: 0.85rem; color: #525351; line-height: 1.5; margin: 12px 0; }
     .mk-pkg ul { list-style: none; padding: 0; }
     .mk-pkg ul li { font-size: 0.8rem; color: #020202; padding: 4px 0; }
     .mk-pkg ul li i { color: #C11111; width: 16px; margin-right: 6px; font-size: 0.7rem; }
-
-    .mk-bundles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .mk-bundle { background: #fff; border-radius: 12px; padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-    .mk-bundle.featured { border: 2px solid #C11111; }
-    .mk-bundle h3 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: #020202; }
-    .mk-bundle .bundle-meta { font-size: 0.8rem; color: #525351; margin: 4px 0 12px; }
-    .mk-bundle .bundle-price { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: #020202; }
-    .mk-bundle .bundle-price .old-price { font-size: 1rem; }
 
     .mk-contact { background: #020202; color: #fff; padding: 60px 0; text-align: center; }
     .mk-contact h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; }
@@ -87,12 +75,54 @@
     @media (max-width: 768px) {
       .mk-stats { grid-template-columns: repeat(2, 1fr); }
       .mk-packages { grid-template-columns: 1fr; }
-      .mk-bundles { grid-template-columns: 1fr; }
       .mk-volume { grid-template-columns: repeat(2, 1fr); }
       .mk-contact .contact-grid { grid-template-columns: 1fr; }
       .mk-header h1 { font-size: 2rem; }
     }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.roadreach.co.za/#organization",
+      "name": "RoadReach Media",
+      "url": "https://www.roadreach.co.za/",
+      "logo": "https://www.roadreach.co.za/images/logo-square.png",
+      "description": "South Africa's premier mobile billboard network.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Festura Street, Lotus Gardens",
+        "addressLocality": "Pretoria",
+        "postalCode": "0008",
+        "addressCountry": "ZA"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.roadreach.co.za/media-kit.html",
+      "name": "RoadReach Media Kit — Mobile Billboard Advertising | South Africa",
+      "description": "RoadReach brand media kit — packages, pricing, fleet, and proof points for advertisers.",
+      "isPartOf": { "@id": "https://www.roadreach.co.za/#website" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.roadreach.co.za/#website",
+      "name": "RoadReach",
+      "url": "https://www.roadreach.co.za/",
+      "publisher": { "@id": "https://www.roadreach.co.za/#organization" }
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F13FWS4SWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F13FWS4SWH');
+</script>
 </head>
 <body>
 
@@ -171,32 +201,29 @@
   <section class="mk-section">
     <div class="container">
       <h2>Advertising Packages</h2>
-      <p class="mk-subtitle">🚀 Launch pricing — valid until 31 August 2026. Regular prices 25–30% higher after.</p>
+      <p class="mk-subtitle">Three wrap levels, each available across all four vehicle categories. Request the full rate card for detailed pricing.</p>
       <div class="mk-packages">
         <div class="mk-pkg">
           <h3>Lite</h3>
-          <div class="price"><span class="old-price">R2,800</span>R2,125 <span>/car/month</span><span class="launch-badge">Launch</span></div>
-          <p>Front door decals + rear window branding. Ideal for small vehicles and targeted local campaigns.</p>
+          <p>Decals — rear window + side decals. Ideal for small vehicles and targeted local campaigns.</p>
           <ul>
-            <li><i class="fas fa-check"></i> Front door branding (both sides)</li>
             <li><i class="fas fa-check"></i> Rear window branding</li>
+            <li><i class="fas fa-check"></i> Side decals (both sides)</li>
             <li><i class="fas fa-check"></i> All vehicle sizes</li>
           </ul>
         </div>
         <div class="mk-pkg featured">
           <div style="background:#C11111;color:#fff;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 12px;border-radius:4px;display:inline-block;margin-bottom:8px;">Most Popular</div>
           <h3>Standard</h3>
-          <div class="price"><span class="old-price">R6,100</span>R4,675 <span>/car/month</span><span class="launch-badge">Launch</span></div>
-          <p>Half-car wrap (rear half backwards). Maximum impact, balanced cost. Includes campaign analytics.</p>
+          <p>Half wrap — sides + rear. Maximum impact, balanced cost. Includes campaign analytics.</p>
           <ul>
-            <li><i class="fas fa-check"></i> Half-car wrap (both sides + rear)</li>
+            <li><i class="fas fa-check"></i> Half wrap (both sides + rear)</li>
             <li><i class="fas fa-check"></i> Campaign analytics dashboard</li>
             <li><i class="fas fa-check"></i> GPS route reporting</li>
           </ul>
         </div>
         <div class="mk-pkg">
           <h3>Premium</h3>
-          <div class="price"><span class="old-price">R11,000</span>R8,500 <span>/car/month</span><span class="launch-badge">Launch</span></div>
           <p>Full vehicle wrap — every surface covered. Unmissable 360-degree brand presence.</p>
           <ul>
             <li><i class="fas fa-check"></i> Full vehicle wrap (entire car)</li>
@@ -206,43 +233,23 @@
           </ul>
         </div>
       </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="rate-card.html" class="btn btn-primary btn-lg">
+          <i class="fas fa-file-invoice"></i> Get the Full Rate Card
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ════════ CAMPAIGN BUNDLES ════════ -->
+  <!-- ════════ RATE CARD ════════ -->
   <section class="mk-section mk-section-alt">
     <div class="container">
-      <h2>Campaign Bundles</h2>
-      <p class="mk-subtitle">Fixed-price campaigns with matched vehicles, curated routes, and launch pricing included.</p>
-      <div class="mk-bundles">
-        <div class="mk-bundle">
-          <i class="fas fa-location-dot" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
-          <h3>HyperLocal</h3>
-          <div class="bundle-meta">10 cars · Lite wraps · 1 city · 3 months</div>
-          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R90,000</span> R68,000 <span class="launch-badge">Launch</span></div>
-          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Single suburb / new store launch. Consistent routes in your target neighbourhood.</p>
-        </div>
-        <div class="mk-bundle featured">
-          <i class="fas fa-city" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
-          <h3>City Impact</h3>
-          <div class="bundle-meta">25 cars · Standard wraps · 1 city · 3 months</div>
-          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R175,000</span> R136,000 <span class="launch-badge">Launch</span></div>
-          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Full metro brand blitz. Analytics dashboard + GPS route reporting included.</p>
-        </div>
-        <div class="mk-bundle">
-          <i class="fas fa-map" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
-          <h3>Metro Dominance</h3>
-          <div class="bundle-meta">50 cars · Standard wraps · 2 cities · 3 months</div>
-          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R320,000</span> R245,000 <span class="launch-badge">Launch</span></div>
-          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Two-metro saturation. Coordinated fleets + dedicated campaign manager.</p>
-        </div>
-        <div class="mk-bundle featured">
-          <i class="fas fa-globe" style="font-size:1.4rem;color:#C11111;margin-bottom:8px;"></i>
-          <h3>National Takeover</h3>
-          <div class="bundle-meta">100 cars · Premium/Standard mix · All 3 cities · 6 months</div>
-          <div class="bundle-price"><span class="old-price" style="text-decoration:line-through;color:#999;">R720,000</span> R550,000 <span class="launch-badge">Launch</span></div>
-          <p style="font-size:0.85rem;color:#525351;line-height:1.5;margin-top:8px;">Full-country brand immersion. Total market saturation + end-of-campaign impact report.</p>
-        </div>
+      <h2>Pricing</h2>
+      <p class="mk-subtitle">Three packages (Lite decals, Standard half wrap, Premium full wrap) across four vehicle categories. Volume discounts of up to 20% for fleets of 5+ vehicles. Full pricing on the rate card.</p>
+      <div style="text-align:center;margin-top:28px;">
+        <a href="rate-card.html" class="btn btn-primary btn-lg">
+          <i class="fas fa-file-invoice"></i> Get the Full Rate Card
+        </a>
       </div>
     </div>
   </section>
@@ -345,9 +352,6 @@
           <a href="https://wa.me/27812987137">+27 81 298 7137</a>
         </div>
       </div>
-      <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;margin-top:24px;">
-        🚀 Launch pricing valid until 31 August 2026 — lock in today. Prices rise 25–30% after.
-      </p>
     </div>
   </section>
 

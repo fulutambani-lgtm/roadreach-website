@@ -12,7 +12,6 @@ desktop.ini
 *.swp
 *.swo
 *~
-*~
 
 # Dependencies (Vercel installs its own)
 api/node_modules

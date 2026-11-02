@@ -1,6 +1,6 @@
 # RoadReach Website — Site Audit & Issues Report
 
-**Date:** 27 June 2026  
+**Date:** 22 September 2026  
 **Auditor:** OpenWork AI  
 **Live URL:** https://www.roadreach.co.za/  
 **Source:** `roadreach-website/` (local workspace)
@@ -308,6 +308,18 @@ When a user dismisses the sticky CTA bar, `sessionStorage.setItem('roadreach_cta
 | `index.html` | Hero stat "70%" replaced with "Drivers earn R800–R9,842/mo" |
 | `api/generate-rate-card.js` | PDF bullet reworded — no more 70% claim |
 | `css/style.css` | Added `.hero-stat .stat-text` class |
+
+## Issues Fixed (2026-09-22)
+
+### 🔵 Audit runner findings — 6 issues fixed ✅
+- **Files**: `.gitignore`, `blog/index.html`, `media-kit.html`
+- **Fixes**:
+  - Removed duplicate `*~` entry from `.gitignore`
+  - `blog/index.html` — added `defer` to `main.js` script tag (render-blocking fix)
+  - `blog/index.html` — added canonical URL (`https://www.roadreach.co.za/blog/`) and robots meta (`index, follow`)
+  - `media-kit.html` — added JSON-LD structured data (Organization + WebPage + WebSite) and GA4 snippet (G-F13FWS4SWH), matching the convention on all other noindex pages
+- **Tooling**: `audit-runner.ps1` created (`.opencode/skills/roadreach-website-audit/`) — automates the verification greps. Runner treats pages with `noindex` robots meta as non-indexable (canonical/robots checks skipped) while still requiring JSON-LD + GA4 on all pages.
+- **Impact**: Audit runner reports 33/33 checks green. Blog index is now properly indexable; media kit is analytics-tracked and schema-complete.
 
 ## What Works (Verified — Added 2026-06-26)
 

@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="900" height="260">
+  <!-- ============ CAR 1 — LITE ============ -->
+  <g transform="translate(10, 15)">
+    <text x="140" y="10" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#D9040E">LITE</text>
+    <text x="140" y="28" text-anchor="middle" font-family="Bitter, serif" font-size="11" fill="#777">Front doors + rear window</text>
+
+    <!-- Shadow -->
+    <ellipse cx="140" cy="198" rx="125" ry="5" fill="rgba(0,0,0,0.08)"/>
+
+    <!-- Car body -->
+    <path d="M30,148 L42,148 L48,134 L72,128 L80,126 L210,126 L222,116 Q228,108 236,108 L252,108 Q264,108 264,118 L264,122 Q260,130 258,134 L260,138 L260,148 L30,148 Z"
+          fill="#2C2C2C" stroke="#1a1a1a" stroke-width="1.2"/>
+
+    <!-- Windows -->
+    <path d="M72,128 L80,126 L202,126 L212,116 Q216,110 224,110 L230,110 Q222,118 218,126 L212,130 L72,130 Z"
+          fill="#4a4a4a"/>
+
+    <!-- Windshield -->
+    <path d="M72,128 L80,126 L105,126 L100,132 L75,132 Z" fill="#5a5a5a" opacity="0.6"/>
+    <path d="M200,126 L206,116 Q210,110 216,110 L222,110 Q216,118 212,126 L208,130 Z" fill="#5a5a5a" opacity="0.6"/>
+
+    <!-- Lite wrap overlay — front door area + rear window -->
+    <path d="M105,126 L180,126 L180,146 L105,146 Z" fill="#D9040E" opacity="0.4"/>
+    <path d="M195,126 L205,116 L215,126 L205,130 Z" fill="#D9040E" opacity="0.3"/>
+
+    <rect x="105" y="150" width="110" height="3" rx="1.5" fill="#D9040E" opacity="0.7"/>
+
+    <!-- Wheels -->
+    <circle cx="80" cy="164" r="16" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <circle cx="80" cy="164" r="9" fill="#444"/>
+    <circle cx="80" cy="164" r="3" fill="#666"/>
+
+    <circle cx="228" cy="164" r="16" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <circle cx="228" cy="164" r="9" fill="#444"/>
+    <circle cx="228" cy="164" r="3" fill="#666"/>
+
+    <!-- Coverage indicator arrows -->
+    <path d="M105,156 L105,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <path d="M180,156 L180,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <path d="M105,170 L180,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <text x="142" y="183" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9" fill="#D9040E">Front doors + rear window</text>
+  </g>
+
+  <!-- ============ CAR 2 — STANDARD ============ -->
+  <g transform="translate(300, 15)">
+    <text x="150" y="10" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#D9040E">STANDARD</text>
+    <text x="150" y="28" text-anchor="middle" font-family="Bitter, serif" font-size="11" fill="#777">Half wrap — back doors forward</text>
+
+    <ellipse cx="150" cy="198" rx="130" ry="5" fill="rgba(0,0,0,0.08)"/>
+
+    <path d="M35,148 L47,148 L53,134 L78,128 L86,126 L220,126 L232,116 Q238,108 248,108 L264,108 Q276,108 276,118 L276,122 Q272,130 270,134 L272,138 L272,148 L35,148 Z"
+          fill="#2C2C2C" stroke="#1a1a1a" stroke-width="1.2"/>
+
+    <path d="M78,128 L86,126 L212,126 L222,116 Q226,110 236,110 L242,110 Q234,118 228,126 L222,130 L78,130 Z"
+          fill="#4a4a4a"/>
+
+    <path d="M78,128 L86,126 L112,126 L107,132 L82,132 Z" fill="#5a5a5a" opacity="0.6"/>
+    <path d="M210,126 L216,116 Q220,110 228,110 L234,110 Q226,118 222,126 L218,130 Z" fill="#5a5a5a" opacity="0.6"/>
+
+    <!-- Standard wrap overlay — half car (back half) -->
+    <path d="M125,126 L220,126 L220,146 L125,146 Z" fill="#D9040E" opacity="0.4"/>
+
+    <rect x="125" y="150" width="95" height="3" rx="1.5" fill="#D9040E" opacity="0.7"/>
+
+    <circle cx="86" cy="164" r="16" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <circle cx="86" cy="164" r="9" fill="#444"/>
+    <circle cx="86" cy="164" r="3" fill="#666"/>
+
+    <circle cx="238" cy="164" r="16" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <circle cx="238" cy="164" r="9" fill="#444"/>
+    <circle cx="238" cy="164" r="3" fill="#666"/>
+
+    <!-- Coverage arrows -->
+    <path d="M125,156 L125,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <path d="M220,156 L220,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <path d="M125,170 L220,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <text x="172" y="183" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9" fill="#D9040E">Half car (rear half)</text>
+  </g>
+
+  <!-- ============ CAR 3 — PREMIUM ============ -->
+  <g transform="translate(600, 15)">
+    <text x="140" y="10" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#D9040E">PREMIUM</text>
+    <text x="140" y="28" text-anchor="middle" font-family="Bitter, serif" font-size="11" fill="#777">Full vehicle wrap</text>
+
+    <ellipse cx="140" cy="198" rx="125" ry="5" fill="rgba(0,0,0,0.08)"/>
+
+    <path d="M30,148 L42,148 L48,134 L72,128 L80,126 L210,126 L222,116 Q228,108 236,108 L252,108 Q264,108 264,118 L264,122 Q260,130 258,134 L260,138 L260,148 L30,148 Z"
+          fill="#2C2C2C" stroke="#1a1a1a" stroke-width="1.2"/>
+
+    <path d="M72,128 L80,126 L202,126 L212,116 Q216,110 224,110 L230,110 Q222,118 218,126 L212,130 L72,130 Z"
+          fill="#4a4a4a"/>
+
+    <path d="M72,128 L80,126 L105,126 L100,132 L75,132 Z" fill="#5a5a5a" opacity="0.6"/>
+    <path d="M200,126 L206,116 Q210,110 216,110 L222,110 Q216,118 212,126 L208,130 Z" fill="#5a5a5a" opacity="0.6"/>
+
+    <!-- Premium wrap overlay — full body -->
+    <path d="M42,148 L48,134 L72,128 L80,126 L210,126 L222,116 L264,118 L264,148 Z" fill="#D9040E" opacity="0.4"/>
+
+    <rect x="42" y="150" width="222" height="3" rx="1.5" fill="#D9040E" opacity="0.7"/>
+
+    <circle cx="80" cy="164" r="16" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <circle cx="80" cy="164" r="9" fill="#444"/>
+    <circle cx="80" cy="164" r="3" fill="#666"/>
+
+    <circle cx="228" cy="164" r="16" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <circle cx="228" cy="164" r="9" fill="#444"/>
+    <circle cx="228" cy="164" r="3" fill="#666"/>
+
+    <!-- Coverage indicator -->
+    <path d="M42,156 L42,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <path d="M264,156 L264,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <path d="M42,170 L264,170" stroke="#D9040E" stroke-width="1.5" fill="none"/>
+    <text x="153" y="183" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9" fill="#D9040E">Entire vehicle</text>
+  </g>
+
+  <!-- Bottom note -->
+  <text x="450" y="248" text-anchor="middle" font-family="Bitter, serif" font-size="11" fill="#999">Side view illustration — actual wrap coverage varies by vehicle model</text>
+</svg>

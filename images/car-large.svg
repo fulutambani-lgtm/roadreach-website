@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <defs>
+    <clipPath id="body-clip-l">
+      <path d="M55,100 L68,100 L75,88 L102,82 L295,82 L310,68 Q318,60 328,60 L352,60 Q365,60 365,72 L365,100 L55,100 Z"/>
+    </clipPath>
+  </defs>
+
+  <ellipse cx="200" cy="144" rx="175" ry="7" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- Car body -->
+  <path d="M45,106 L62,106 L70,92 L98,84 L108,82 L285,82 L302,68 Q310,58 322,58 L352,58 Q368,58 368,70 L368,76 Q364,86 360,92 L366,96 L366,106 L45,106 Z"
+        fill="#2C2C2C" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Windows -->
+  <path d="M98,84 L108,82 L280,82 L295,70 Q300,64 310,64 L320,64 Q310,72 305,82 L298,86 L98,86 Z"
+        fill="#4a4a4a"/>
+
+  <!-- Windshield -->
+  <path d="M98,84 L108,82 L145,82 L138,88 L102,88 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Rear window -->
+  <path d="M278,82 L290,70 Q294,64 302,64 L310,64 Q304,72 298,82 L292,85 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Wrap overlay - Premium: full body -->
+  <path d="M62,106 L70,92 L98,84 L108,82 L285,82 L302,68 L366,96 L366,106 Z" fill="#D9040E" opacity="0.45"/>
+
+  <rect x="62" y="110" width="304" height="4" rx="2" fill="#D9040E" opacity="0.8"/>
+  <text x="214" y="126" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" font-weight="600" fill="#D9040E">Full Wrap Coverage</text>
+
+  <!-- Wheels -->
+  <circle cx="108" cy="122" r="22" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+  <circle cx="108" cy="122" r="12" fill="#444"/>
+  <circle cx="108" cy="122" r="5" fill="#666"/>
+
+  <circle cx="315" cy="122" r="22" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+  <circle cx="315" cy="122" r="12" fill="#444"/>
+  <circle cx="315" cy="122" r="5" fill="#666"/>
+
+  <text x="200" y="153" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="#2C2C2C">LARGE</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 175" width="440" height="175">
+  <ellipse cx="220" cy="158" rx="195" ry="7" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- SUV body shape - taller, boxier -->
+  <path d="M55,118 L72,118 L80,104 L110,98 L125,94 L310,94 L332,78 Q340,68 352,68 L388,68 Q404,68 404,80 L404,88 Q398,98 394,104 L400,108 L400,118 L55,118 Z"
+        fill="#2C2C2C" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- SUV higher roof line windows -->
+  <path d="M110,98 L125,94 L305,94 L325,78 Q330,72 340,72 L352,72 Q340,80 335,94 L326,100 L110,100 Z"
+        fill="#4a4a4a"/>
+
+  <!-- Windshield -->
+  <path d="M110,98 L125,94 L165,94 L156,100 L114,100 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Rear window (SUV style) -->
+  <path d="M303,94 L318,78 Q322,72 332,72 L342,72 Q334,80 328,94 L320,98 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Wrap overlay - Premium XL full body -->
+  <path d="M72,118 L80,104 L110,98 L125,94 L310,94 L332,78 L400,108 L400,118 Z" fill="#D9040E" opacity="0.45"/>
+
+  <rect x="72" y="122" width="328" height="4" rx="2" fill="#D9040E" opacity="0.8"/>
+  <text x="236" y="138" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" font-weight="600" fill="#D9040E">Maximum Coverage — XL SUV</text>
+
+  <!-- Larger wheels for SUV -->
+  <circle cx="125" cy="136" r="24" fill="#1a1a1a" stroke="#333" stroke-width="2.5"/>
+  <circle cx="125" cy="136" r="14" fill="#444"/>
+  <circle cx="125" cy="136" r="5" fill="#666"/>
+
+  <circle cx="345" cy="136" r="24" fill="#1a1a1a" stroke="#333" stroke-width="2.5"/>
+  <circle cx="345" cy="136" r="14" fill="#444"/>
+  <circle cx="345" cy="136" r="5" fill="#666"/>
+
+  <text x="220" y="168" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="#2C2C2C">EXTRA LARGE (SUV / Bakkie)</text>
+</svg>

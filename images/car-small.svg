@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" width="320" height="140">
+  <defs>
+    <clipPath id="body-clip-s">
+      <path d="M38,80 L50,80 L55,70 L80,65 L240,65 L250,55 Q255,50 262,50 L280,50 Q290,50 290,58 L290,80 L38,80 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="160" cy="125" rx="140" ry="6" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- Car body -->
+  <path d="M30,85 L45,85 L50,72 L75,66 L82,64 L235,64 L248,54 Q254,48 262,48 L282,48 Q294,48 294,58 L294,62 Q294,72 290,78 L294,82 L294,85 L30,85 Z"
+        fill="#2C2C2C" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Windows area (lighter) -->
+  <path d="M75,67 L82,65 L230,65 L240,58 Q245,53 252,53 L258,53 Q250,60 248,65 L245,68 L75,68 Z"
+        fill="#4a4a4a"/>
+
+  <!-- Windshield -->
+  <path d="M75,67 L82,65 L110,65 L105,70 L78,70 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Rear window -->
+  <path d="M225,65 L232,58 Q236,54 242,54 L248,54 Q244,60 240,65 L235,66 Z" fill="#5a5a5a" opacity="0.6"/>
+
+  <!-- Wrap overlay zone - LITE: front door + rear window area -->
+  <path d="M110,65 L195,65 L195,82 L110,82 Z" fill="#D9040E" opacity="0.45"/>
+
+  <!-- Wrap label indicator -->
+  <rect x="110" y="86" width="85" height="4" rx="2" fill="#D9040E" opacity="0.8"/>
+  <text x="152" y="102" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" font-weight="600" fill="#D9040E">Wrap Area</text>
+
+  <!-- Wheels -->
+  <circle cx="80" cy="102" r="18" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+  <circle cx="80" cy="102" r="10" fill="#444"/>
+  <circle cx="80" cy="102" r="4" fill="#666"/>
+
+  <circle cx="252" cy="102" r="18" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+  <circle cx="252" cy="102" r="10" fill="#444"/>
+  <circle cx="252" cy="102" r="4" fill="#666"/>
+
+  <!-- Size label -->
+  <text x="160" y="132" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="#2C2C2C">SMALL</text>
+</svg>
